@@ -24,8 +24,10 @@ fn make_synthetic_log(n_lines: usize) -> String {
 
 fn bench_reduce(c: &mut Criterion) {
     let mut group = c.benchmark_group("reduce");
+    // Fewer samples for the large case to keep wall-clock reasonable
+    group.sample_size(20);
 
-    for n in [1_000usize, 10_000, 100_000] {
+    for n in [10_000usize, 100_000, 1_000_000] {
         let log = make_synthetic_log(n);
         let log_bytes = log.len() as u64;
         group.throughput(Throughput::Bytes(log_bytes));
@@ -46,5 +48,36 @@ fn bench_reduce(c: &mut Criterion) {
     group.finish();
 }
 
-criterion_group!(benches, bench_reduce);
+// Thread-scaling benchmark: same 1M-line log at 1, 4, 8, 16 threads
+fn bench_scaling(c: &mut Criterion) {
+    let log = make_synthetic_log(1_000_000);
+    let log_bytes = log.len() as u64;
+    let mut group = c.benchmark_group("scaling");
+    group.sample_size(10);
+
+    for threads in [1usize, 4, 8, 16] {
+        group.throughput(Throughput::Bytes(log_bytes));
+        group.bench_with_input(BenchmarkId::new("threads", threads), &log, |b, log| {
+            let pool = rayon::ThreadPoolBuilder::new()
+                .num_threads(threads)
+                .build()
+                .unwrap();
+            let config = ReduceConfig {
+                budget_tokens: 2000,
+                context_window: 2,
+                ..Default::default()
+            };
+            b.iter(|| {
+                pool.install(|| {
+                    let out = reduce(&config, log);
+                    criterion::black_box(out.kept_lines)
+                })
+            });
+        });
+    }
+
+    group.finish();
+}
+
+criterion_group!(benches, bench_reduce, bench_scaling);
 criterion_main!(benches);
