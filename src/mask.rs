@@ -1,5 +1,6 @@
 use crate::{LogRecord, ReduceConfig};
 use once_cell::sync::Lazy;
+use rayon::prelude::*;
 use regex::Regex;
 use rustc_hash::FxHasher;
 use std::hash::Hasher;
@@ -55,15 +56,11 @@ static RE_DUR: Lazy<Regex> =
 static RE_NUM: Lazy<Regex> = Lazy::new(|| Regex::new(r"\b\d{2,}\b").unwrap());
 
 pub fn apply(mut records: Vec<LogRecord>, config: &ReduceConfig) -> Vec<LogRecord> {
-    for rec in &mut records {
-        let redacted = if config.redact {
-            redact(&rec.raw)
-        } else {
-            rec.raw.clone()
-        };
+    records.par_iter_mut().for_each(|rec| {
+        let redacted = if config.redact { redact(&rec.raw) } else { rec.raw.clone() };
         rec.template = mask_variables(&redacted);
         rec.redacted = redacted;
-    }
+    });
     records
 }
 

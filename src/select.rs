@@ -1,11 +1,12 @@
 use crate::score::blended_score;
-use crate::{LogRecord, ReduceConfig, ScoredLine, Template};
+use crate::{LogRecord, ReduceConfig, ScoredLine, Template, TokenCounter};
 
 pub fn select(
     n_records: usize,
     records: &[LogRecord],
     templates: &[Template],
     config: &ReduceConfig,
+    count_tokens: &TokenCounter,
 ) -> Vec<ScoredLine> {
     if records.is_empty() {
         return vec![];
@@ -36,9 +37,6 @@ pub fn select(
             .unwrap_or(std::cmp::Ordering::Equal)
             .then(a.cmp(&b))
     });
-
-    // Token counting — use tiktoken if available, else chars/4
-    let count_tokens = make_token_counter();
 
     let budget = config.budget_tokens as usize;
     let max_lines = config.max_lines.map(|m| m as usize).unwrap_or(usize::MAX);
@@ -156,12 +154,3 @@ pub fn select(
     scored
 }
 
-fn make_token_counter() -> Box<dyn Fn(&str) -> usize> {
-    match tiktoken_rs::cl100k_base() {
-        Ok(enc) => {
-            let enc = std::sync::Arc::new(enc);
-            Box::new(move |s: &str| enc.encode_ordinary(s).len())
-        }
-        Err(_) => Box::new(|s: &str| s.chars().count().div_ceil(4)),
-    }
-}

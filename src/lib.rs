@@ -162,7 +162,23 @@ impl Default for ReduceConfig {
 
 // ── Pipeline wiring ───────────────────────────────────────────────────────────
 
+pub type TokenCounter = Box<dyn Fn(&str) -> usize + Send + Sync>;
+
+/// Initialise the token counter once per reduce call (tiktoken startup is expensive).
+pub fn make_token_counter() -> TokenCounter {
+    match tiktoken_rs::cl100k_base() {
+        Ok(enc) => {
+            let enc = std::sync::Arc::new(enc);
+            Box::new(move |s: &str| enc.encode_ordinary(s).len())
+        }
+        Err(_) => Box::new(|s: &str| s.chars().count().div_ceil(4)),
+    }
+}
+
 pub fn reduce(config: &ReduceConfig, raw_text: &str) -> ReducedOutput {
+    // Initialise once — tiktoken BPE model load is ~50 ms cold
+    let counter = make_token_counter();
+
     // [1] Parse
     let records = parse::parse_lines(raw_text, config);
 
@@ -173,7 +189,7 @@ pub fn reduce(config: &ReduceConfig, raw_text: &str) -> ReducedOutput {
     let (records, templates) = score::build_and_score(records, config);
 
     // [6] Token-budget selection + context windows
-    let selected = select::select(records.len(), &records, &templates, config);
+    let selected = select::select(records.len(), &records, &templates, config, &counter);
 
     // [7] Chronological render + header + gap markers
     render::render(&records, &templates, &selected, config)
