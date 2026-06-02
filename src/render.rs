@@ -177,8 +177,16 @@ fn build_body(
             } else {
                 &rec.redacted
             };
-            let line = display.lines().next().unwrap_or(display);
-            body.push_str(&format!("{line}{count_annotation}{ctx_marker}\n"));
+            // Multi-line records (joined continuation lines, e.g. stack traces):
+            // put annotation on the first line, emit remaining lines verbatim.
+            let mut display_lines = display.lines();
+            if let Some(first) = display_lines.next() {
+                body.push_str(&format!("{first}{count_annotation}{ctx_marker}\n"));
+                for cont in display_lines {
+                    body.push_str(cont);
+                    body.push('\n');
+                }
+            }
 
             prev_kept_idx = Some(i);
         } else {

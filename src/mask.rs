@@ -50,7 +50,6 @@ static RE_IP4: Lazy<Regex> =
     Lazy::new(|| Regex::new(r"\b(?:\d{1,3}\.){3}\d{1,3}(?::\d{2,5})?\b").unwrap());
 static RE_IP6: Lazy<Regex> =
     Lazy::new(|| Regex::new(r"\b(?:[0-9a-fA-F]{1,4}:){3,7}[0-9a-fA-F]{1,4}\b").unwrap());
-static RE_PATH: Lazy<Regex> = Lazy::new(|| Regex::new(r"(?:\/[\w.\-]+){3,}").unwrap());
 static RE_DUR: Lazy<Regex> =
     Lazy::new(|| Regex::new(r"\b\d+(?:\.\d+)?(?:ms|us|µs|ns|s|m|h)\b").unwrap());
 static RE_NUM: Lazy<Regex> = Lazy::new(|| Regex::new(r"\b\d{2,}\b").unwrap());
@@ -101,7 +100,6 @@ fn mask_variables(s: &str) -> String {
     let s = RE_HASH.replace_all(&s, "<ID>");
     let s = RE_IP4.replace_all(&s, "<IP>");
     let s = RE_IP6.replace_all(&s, "<IP>");
-    let s = RE_PATH.replace_all(&s, "<PATH>");
     let s = RE_DUR.replace_all(&s, "<DUR>");
     let s = RE_NUM.replace_all(&s, "<NUM>");
     // Collapse whitespace for stable template keys
