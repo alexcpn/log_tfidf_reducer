@@ -56,7 +56,11 @@ static RE_NUM: Lazy<Regex> = Lazy::new(|| Regex::new(r"\b\d{2,}\b").unwrap());
 
 pub fn apply(mut records: Vec<LogRecord>, config: &ReduceConfig) -> Vec<LogRecord> {
     records.par_iter_mut().for_each(|rec| {
-        let redacted = if config.redact { redact(&rec.raw) } else { rec.raw.clone() };
+        let redacted = if config.redact {
+            redact(&rec.raw)
+        } else {
+            rec.raw.clone()
+        };
         rec.template = mask_variables(&redacted);
         rec.redacted = redacted;
     });

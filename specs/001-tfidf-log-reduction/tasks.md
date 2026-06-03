@@ -141,8 +141,8 @@ script absent.
 - [x] T033 [P] Edge-case tests in `tests/pipeline.rs`: empty/whitespace-only, no timestamps, all-identical, all-unique, budget < one line, malformed/binary, extremely long lines (FR-013)
 - [x] T034 [P] Determinism test in `tests/pipeline.rs`: run twice on the same input/config, assert byte-identical output (SC-005/FR-010)
 - [x] T035 [P] Redaction corpus test in `tests/pipeline.rs`: fixture seeded with fake secrets/PII → 100% of known-pattern values redacted (SC-007)
-- [ ] T036 [P] Update `README.md` + `specs/001-tfidf-log-reduction/quickstart.md` so build/run/verify steps match the shipped CLI; confirm all quality gates pass
-- [ ] T037 Run quickstart.md end-to-end validation (build → reduce a sample → optional analyze) and confirm SC-001/002/003/006
+- [x] T036 [P] Update `README.md` + `specs/001-tfidf-log-reduction/quickstart.md` so build/run/verify steps match the shipped CLI; confirm all quality gates pass
+- [x] T037 Run quickstart.md end-to-end validation (build → reduce a sample → optional analyze) and confirm SC-001/002/003/006
 
 ---
 

@@ -314,7 +314,10 @@ fn t036_stack_trace_frames() {
                2024-01-01 09:00:00 ERROR     at connect (net.js:92:28)\n\
                2024-01-01 09:00:00 ERROR     at Socket._handle.open (net.js:35:10)\n\
                2024-01-01 09:00:00 ERROR     at Object.exports.connect (app.js:15:15)\n";
-    let config = ReduceConfig { budget_tokens: 4000, ..Default::default() };
+    let config = ReduceConfig {
+        budget_tokens: 4000,
+        ..Default::default()
+    };
     let out = reduce(&config, log);
     // net.js and app.js are different files => distinct templates => both kept
     assert!(out.body.contains("net.js"), "net.js frame must be kept");

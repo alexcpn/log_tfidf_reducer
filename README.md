@@ -206,3 +206,52 @@ That integration is the next feature. The reduction is already fast enough that 
 ---
 
 *The implementation is written in Rust using `tiktoken-rs` for token counting, `regex` and `once_cell` for compile-once masking patterns, and `rayon` for parallel processing of the masking stage across all available cores. The blended score weights (rarity 0.4, severity 0.5, burst 0.1) are configurable via `--weights`.*
+
+---
+
+## Build & develop
+
+**Requirements**: Rust stable toolchain (`rustup`). Python 3.11+ for the optional LLM layer.
+
+```bash
+# Build
+cargo build --release          # → ./target/release/logreduce
+
+# Quality gates (all must pass)
+cargo fmt --check
+cargo clippy -- -D warnings
+cargo test                     # 13 tests: golden-file, crash-loop, masking ablation, redaction, determinism
+cargo bench                    # criterion: MB/s & lines/s (SC-004)
+
+# Reduce a log (default 8k-token budget)
+./target/release/logreduce app.log
+
+# Options
+./target/release/logreduce app.log \
+  --budget 16000 \             # token ceiling
+  --context 3 \                # ±N context lines around each kept line
+  --stats \                    # print reduction stats to stderr
+  -o reduced.log               # write to file instead of stdout
+
+# Disable secret redaction (redaction is ON by default)
+./target/release/logreduce app.log --no-redact
+
+# From a pipe
+kubectl logs my-pod | ./target/release/logreduce --budget 4000 > incident.log
+
+# Optional: ask Claude about the reduced log
+pip install -r python/requirements.txt
+export ANTHROPIC_API_KEY=sk-ant-...
+python python/analyze.py reduced.log --question "What caused the errors?"
+```
+
+### Verify success criteria
+
+| Criterion | How to check |
+|---|---|
+| SC-001 token ratio ≤10% | `--stats` shows input vs output tokens on a noisy log |
+| SC-002/003 fidelity | Run on `sample_logs/crash_loop.log` — every ERROR appears; each template has ≥1 rep |
+| SC-004 throughput | `cargo bench` on 1M-line synthetic log completes in ~2.3 s on 16 cores |
+| SC-005 determinism | Run twice, `diff` outputs — must be identical |
+| SC-006 recall | `python eval/logdx_eval.py /tmp/LogDx/cases --budget 8000` → 99% on 35 CI cases |
+| SC-007 redaction | Run on `sample_logs/secrets.log` — all known patterns appear as `<REDACTED:…>` |

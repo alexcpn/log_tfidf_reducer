@@ -48,13 +48,37 @@ def iter_cases(cases_root: Path, split: str):
                     yield f'{split}/{entry.name}', sub.name, r
 
 
-def run_logreduce(binary: str, raw_log: Path, budget: int) -> tuple[str, int]:
-    """Run logreduce and return (output_text, exit_code)."""
+def run_logreduce(binary: str, raw_log: Path, budget: int,
+                  max_bytes: int = 200_000) -> tuple[str, int]:
+    """Run logreduce and return (output_text, exit_code).
+
+    If the output exceeds max_bytes, tail-truncate to the last portion —
+    CI log failures almost always appear near the end of the log.
+    """
     result = subprocess.run(
         [binary, str(raw_log), '--budget', str(budget)],
         capture_output=True, text=True, timeout=120,
     )
-    return result.stdout, result.returncode
+    text = result.stdout
+    if len(text.encode('utf-8')) > max_bytes:
+        # Keep header lines (#) + tail of body
+        lines = text.splitlines(keepends=True)
+        header = [l for l in lines if l.startswith('#')]
+        body = [l for l in lines if not l.startswith('#')]
+        # Estimate how many body lines fit in max_bytes minus header
+        header_bytes = sum(len(l.encode()) for l in header)
+        remaining = max_bytes - header_bytes
+        tail_lines = []
+        for line in reversed(body):
+            lb = len(line.encode())
+            if lb > remaining:
+                break
+            tail_lines.insert(0, line)
+            remaining -= lb
+        skipped = len(body) - len(tail_lines)
+        truncation_note = f'… {skipped} lines truncated (context too large for LLM) …\n'
+        text = ''.join(header) + truncation_note + ''.join(tail_lines)
+    return text, result.returncode
 
 
 def count_lines(text: str) -> int:
