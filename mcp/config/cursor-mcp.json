@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "logreduce": {
+      "command": "npx",
+      "args": ["logreduce-mcp"]
+    }
+  }
+}
