@@ -1,0 +1,48 @@
+{
+  "name": "logreduce-mcp",
+  "version": "0.1.0",
+  "description": "MCP server wrapping logreduce for Claude Code, Cursor, and GitHub Copilot",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "logreduce-mcp": "dist/cli.js"
+  },
+  "main": "dist/server.js",
+  "files": [
+    "dist/",
+    "src/hook.js",
+    "config/"
+  ],
+  "scripts": {
+    "build": "tsc && cp src/hook.js dist/hook.js",
+    "start": "node dist/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  },
+  "keywords": [
+    "mcp",
+    "logreduce",
+    "claude",
+    "cursor",
+    "copilot",
+    "log"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexcpn/log_tfidf_reducer.git"
+  }
+}
