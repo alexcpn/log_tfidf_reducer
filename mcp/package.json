@@ -16,7 +16,7 @@
     "config/"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp src/hook.js dist/hook.js",
     "start": "node dist/cli.js",
     "test": "vitest run",
     "test:watch": "vitest",

@@ -27,7 +27,11 @@ describe("install — claude-code", () => {
     );
     expect(settings.hooks?.UserPromptSubmit).toBeDefined();
     expect(Array.isArray(settings.hooks.UserPromptSubmit)).toBe(true);
-    expect(settings.hooks.UserPromptSubmit[0].command).toContain("UserPromptSubmit.js");
+    // New format: { matcher, hooks: [{ type, command }] }
+    const entry = settings.hooks.UserPromptSubmit[0];
+    expect(entry.matcher).toBeDefined();
+    expect(Array.isArray(entry.hooks)).toBe(true);
+    expect(entry.hooks[0].command).toContain("UserPromptSubmit.js");
   });
 
   it("creates .claude/settings.json with MCP server entry", () => {

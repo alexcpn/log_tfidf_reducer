@@ -33,17 +33,20 @@ function installClaudeCode(projectRoot: string): void {
   const settingsPath = join(projectRoot, ".claude", "settings.json");
   const hookDest = join(hooksDir, "UserPromptSubmit.js");
 
-  // Find hook source — it lives next to this file (or in src/ during dev)
+  // Find hook source — in dist/ after build (both local and npm-installed)
   const hookSrc = resolve(__dirname, "hook.js");
-  if (!existsSync(hookSrc)) {
-    throw new Error(`Hook source not found at ${hookSrc}`);
+  // Fallback: src/hook.js for cases where build didn't copy it
+  const hookSrcFallback = resolve(__dirname, "../src/hook.js");
+  const resolvedHookSrc = existsSync(hookSrc) ? hookSrc : hookSrcFallback;
+  if (!existsSync(resolvedHookSrc)) {
+    throw new Error(`Hook source not found at ${hookSrc} or ${hookSrcFallback}`);
   }
 
   // Create .claude/hooks/ if needed
   mkdirSync(hooksDir, { recursive: true });
 
   // Copy hook script (always overwrite to stay current)
-  copyFileSync(hookSrc, hookDest);
+  copyFileSync(resolvedHookSrc, hookDest);
   console.log(`✓ Hook written: ${hookDest}`);
 
   // Merge settings.json
@@ -56,15 +59,27 @@ function installClaudeCode(projectRoot: string): void {
     }
   }
 
-  // Deep-merge hook entry
+  // Deep-merge hook entry (Claude Code ≥2.x format: matcher + hooks array)
   const hooks = (settings.hooks as Record<string, unknown>) ?? {};
   const existing = (hooks["UserPromptSubmit"] as unknown[]) ?? [];
-  const hookEntry = { type: "command", command: `node .claude/hooks/UserPromptSubmit.js` };
+  const hookCommand = "node .claude/hooks/UserPromptSubmit.js";
+  const hookEntry = {
+    matcher: "",
+    hooks: [{ type: "command", command: hookCommand }],
+  };
 
-  // Idempotent: only add if not already present
-  const alreadyPresent = existing.some(
-    (e) => typeof e === "object" && e !== null && (e as Record<string, unknown>).command === hookEntry.command
-  );
+  // Idempotent: only add if no entry already references our command
+  const alreadyPresent = existing.some((e) => {
+    if (typeof e !== "object" || e === null) return false;
+    const entry = e as Record<string, unknown>;
+    // Old format (command at top level)
+    if (entry.command === hookCommand) return true;
+    // New format (command nested in hooks array)
+    const nested = entry.hooks as unknown[] | undefined;
+    return Array.isArray(nested) &&
+      nested.some((h) => typeof h === "object" && h !== null &&
+        (h as Record<string, unknown>).command === hookCommand);
+  });
   if (!alreadyPresent) {
     hooks["UserPromptSubmit"] = [...existing, hookEntry];
   }
