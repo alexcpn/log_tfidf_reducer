@@ -1,23 +1,41 @@
 # logreduce-mcp
 
-Stop paying $38 to ask Claude about a log file.
+[![npm version](https://img.shields.io/npm/v/logreduce-mcp.svg)](https://www.npmjs.com/package/logreduce-mcp)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](../LICENSE)
 
-`logreduce-mcp` is an MCP server that automatically compresses large log files before they reach any AI model — reducing token usage by up to 99.9% while keeping every error and unique event.
+**Stop paying $38 to ask an AI about a log file.**
+
+`logreduce-mcp` is an MCP server that compresses large log files before they reach any AI model — reducing token usage by up to 99.9% while keeping every error, warning, and unique event.
+
+```
+Before:  1,000,000 lines  →  12,803,209 tokens  →  ~$38/question
+After:         374 lines  →       7,504 tokens  →  ~$0.02/question
+```
+
+Works with **Claude Code**, **Cursor**, and **GitHub Copilot**.
+
+---
 
 ## Prerequisites
 
-**Step 1 — install the `logreduce` binary:**
+### 1. Install `logreduce` (the Rust binary)
 
 ```bash
 cargo install logreduce
 ```
 
-> Requires Rust. Install Rust at https://rustup.rs  
-> After installing, make sure `~/.cargo/bin` is on your PATH.
+> Don't have Rust? Install it from https://rustup.rs — takes about 2 minutes.
+
+After installing, make sure `~/.cargo/bin` is on your PATH:
+
+```bash
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc  # or ~/.zshrc
+source ~/.bashrc
+```
 
 Verify: `logreduce --version`
 
-**Step 2 — install the MCP server:**
+### 2. Install this MCP server
 
 ```bash
 npm install -g logreduce-mcp
@@ -27,46 +45,89 @@ Verify: `logreduce-mcp --version`
 
 ---
 
-## Claude Code (automatic — zero extra steps after setup)
+## Integration: Claude Code
 
-The Claude Code integration intercepts large logs *before the model sees them*. You just paste a log path or content and ask your question normally.
+Claude Code supports a `UserPromptSubmit` hook that rewrites your prompt *before the model sees it*. This means you just ask your question normally — the log is compressed automatically, invisibly.
 
-**Run the installer:**
+### Setup (one time, per project)
 
 ```bash
-# In your project root
+cd your-project/
 npx logreduce-mcp --install
 ```
 
-This writes two things:
-- `.claude/hooks/UserPromptSubmit.js` — the interception hook
-- `.claude/settings.json` — registers the hook and MCP server
-
-**That's it.** Start a new Claude Code session. Paste a log file path in any prompt:
+This creates two files:
 
 ```
-What caused the errors in /var/log/app.log?
+your-project/
+└── .claude/
+    ├── settings.json          ← registers the MCP server and hook
+    └── hooks/
+        └── UserPromptSubmit.js  ← intercepts prompts containing logs
 ```
 
-The log is silently reduced (e.g. 50,000 lines → 300 lines) before Claude reads it.
+**Start a new Claude Code session** in that folder to activate.
 
-**What gets reduced automatically:**
-- Any file path in the prompt pointing to a file with ≥ 500 lines
-- Any inline log block of ≥ 500 lines pasted directly in the prompt
+### How it works
 
-**Verify it's working:**
+```
+You type:    "What caused the errors in /var/log/app.log?"
+                              ↓  hook fires
+Hook reads:  /var/log/app.log  (50,000 lines)
+Hook runs:   logreduce → 312 lines, 7,800 tokens
+Claude sees: "What caused the errors in [# LOG SUMMARY | 50,000 → 312 kept ...]"
+```
+
+The hook triggers automatically when your prompt contains:
+- A path to a file with **≥ 500 lines**
+- An inline log block of **≥ 500 lines** pasted directly
+
+For smaller logs it passes through unchanged (zero overhead).
+
+### Verify it's working
 
 ```bash
+cd your-project/
+
+# Simulate a prompt — should return a rewritten prompt with # LOG SUMMARY
 echo '{"session_id":"test","prompt":"check /var/log/syslog"}' \
   | node .claude/hooks/UserPromptSubmit.js
-# → {"prompt":"check \n--- LOG (reduced ...) ---\n# LOG SUMMARY..."} 
+
+# Expected output:
+# {"prompt":"check \n--- LOG (reduced from ... lines) ---\n# LOG SUMMARY..."}
+
+# If the file has < 500 lines or logreduce is not on PATH, returns:
+# {}   ← pass-through, no change
+```
+
+### Usage
+
+Just ask questions normally. No special syntax needed:
+
+```
+What caused the spike in errors at 09:00?
+Summarise /var/log/nginx/error.log
+Why is my service crashing? Here is the log: [paste 2000 lines]
 ```
 
 ---
 
-## Cursor
+## Integration: Cursor
 
-**Step 1 — add to `.cursor/mcp.json`** in your project root (create if it doesn't exist):
+Cursor supports MCP servers natively. The `reduce_log` tool appears in the agent's tool list and can be called automatically via a workspace rule.
+
+### Setup
+
+**Option A — run the installer:**
+
+```bash
+cd your-project/
+npx logreduce-mcp --install --editor=cursor
+```
+
+This creates `.cursor/mcp.json` in your project.
+
+**Option B — add manually.** Create or edit `.cursor/mcp.json`:
 
 ```json
 {
@@ -79,34 +140,56 @@ echo '{"session_id":"test","prompt":"check /var/log/syslog"}' \
 }
 ```
 
-Or run the installer:
+**Reload Cursor** after saving. The `reduce_log` tool should appear in the MCP panel.
 
-```bash
-npx logreduce-mcp --install --editor=cursor
-```
+### Make it automatic
 
-**Step 2 — reload Cursor.** The `reduce_log` tool appears in the MCP tool list.
-
-**Step 3 — add a workspace rule** so Cursor calls it automatically.  
-Create or edit `.cursorrules` (or your system prompt):
+Create a `.cursorrules` file (or add to your existing system prompt):
 
 ```
-When asked to analyse a log file or log content, first call the reduce_log 
-tool to compress it to an 8000-token budget before proceeding.
+When asked to analyse a log file or log content, always call the reduce_log
+tool first to compress the log to an 8000-token budget. Use the result for
+your analysis. Report the reduction ratio if it is significant.
 ```
 
-**Usage:** In a Cursor agent chat, either ask about a log directly and let Cursor call `reduce_log` automatically, or invoke it explicitly:
+### Verify it's working
+
+In a Cursor agent chat, type:
+```
+List your available MCP tools
+```
+You should see `reduce_log` in the list.
+
+### Usage
+
+With the workspace rule in place, just ask normally:
 
 ```
-Use reduce_log on /var/log/nginx/error.log with budget 16000
+What's wrong in /var/log/app.log?
+```
+
+Cursor will call `reduce_log` first, then answer based on the compressed output.
+
+Or call it explicitly:
+
+```
+Use reduce_log on /var/log/nginx/error.log with budget=16000
 ```
 
 ---
 
-## GitHub Copilot (VS Code)
+## Integration: GitHub Copilot (VS Code)
 
-**Step 1 — open the MCP config:**  
-Command Palette → `MCP: Open User Configuration`
+GitHub Copilot supports MCP servers in **Agent mode** (not standard chat). Once configured, Copilot calls `reduce_log` automatically before analysing log content.
+
+### Setup
+
+**Step 1 — open the MCP configuration file.**
+
+Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run:
+```
+MCP: Open User Configuration
+```
 
 **Step 2 — add the server:**
 
@@ -121,71 +204,117 @@ Command Palette → `MCP: Open User Configuration`
 }
 ```
 
-**Step 3 — add a workspace instruction.**  
-Create `.github/copilot-instructions.md` in your repo:
+Save the file. VS Code will start the MCP server in the background.
+
+**Step 3 — add a workspace instruction.**
+
+Create `.github/copilot-instructions.md` in your repository:
 
 ```markdown
-When a user asks about a log file or shares log content, 
-call the reduce_log MCP tool first to compress the log 
-before analysing it.
+## Log analysis
+
+When a user asks about a log file or shares log content (more than a
+few lines), always call the `reduce_log` MCP tool first to compress
+the log to an 8000-token budget. Use `result.text` for your analysis
+and mention the reduction ratio from `result.stats`.
 ```
 
-**Step 4 — switch to Agent mode** in Copilot Chat (MCP tools only work in Agent mode).
+### Verify it's working
 
-**Usage:** Ask Copilot about a log in Agent mode. It will call `reduce_log` before responding.
+Switch to **Agent mode** in the Copilot Chat panel (the dropdown next to the send button). Type:
+
+```
+@workspace what tools do you have available?
+```
+
+You should see `reduce_log` listed.
+
+### Usage
+
+In Agent mode, ask about a log file:
+
+```
+What is causing the failures in /var/log/app.log?
+```
+
+Copilot will call `reduce_log`, then use the compressed output for its response.
+
+> **Note:** MCP tools only work in **Agent mode**. They are not available in standard Copilot Chat.
 
 ---
 
-## The `reduce_log` tool (manual use)
+## The `reduce_log` tool — manual use
 
-In any MCP-enabled agent session you can also call the tool directly:
+You can also call the tool directly in any agent session:
 
 ```
 Use reduce_log with path=/var/log/app.log
-Use reduce_log with path=/var/log/app.log budget=32000
-Use reduce_log with text="<paste log here>"
+Use reduce_log with path=/var/log/app.log and budget=32000
+Use reduce_log with text="[paste log content here]"
 ```
 
-**Parameters:**
+**All parameters:**
 
-| Parameter | Default | Description |
-|---|---|---|
-| `path` | — | Absolute path to a local log file |
-| `text` | — | Raw log content (alternative to path) |
-| `budget` | `8000` | Token budget (100–200,000) |
-| `context` | `2` | Context lines around each kept line |
-| `no_redact` | `false` | Disable secret/PII redaction |
-| `format` | `auto` | Force format: `json \| logfmt \| syslog \| klog \| plain` |
+| Parameter  | Default | Description |
+|------------|---------|-------------|
+| `path`     | —       | Absolute path to a local log file |
+| `text`     | —       | Raw log content as a string (alternative to `path`) |
+| `budget`   | `8000`  | Maximum output tokens (100 – 200,000) |
+| `context`  | `2`     | Lines of context to keep around each kept line |
+| `no_redact`| `false` | Disable automatic secret/PII redaction |
+| `format`   | `auto`  | Force format detection: `json` \| `logfmt` \| `syslog` \| `klog` \| `plain` |
 
-**Response:** `{ "text": "<reduced log>", "stats": { "input_lines": N, "kept_lines": M, "input_tokens": N, "output_tokens": M } }`
+**Response format:**
+
+```json
+{
+  "text": "# LOG SUMMARY  |  50000 lines → 312 kept (0%)\n...",
+  "stats": {
+    "input_lines": 50000,
+    "kept_lines": 312,
+    "input_tokens": 640000,
+    "output_tokens": 7800
+  }
+}
+```
 
 ---
 
 ## How it works
 
-`logreduce` ranks log lines using TF-IDF over masked templates, blended with severity weighting. It guarantees:
+`logreduce` uses TF-IDF over masked log templates, blended with severity weighting:
 
-- Every distinct message type gets at least one representative
-- All ERROR/FATAL lines are surfaced (crash-loop errors are never silently dropped)
-- Repeated lines are collapsed with a count annotation: `(×500)`
-- Secrets and PII are redacted before the log reaches the model
+1. **Parse** — detects format (JSON, logfmt, syslog, klog, plain text)
+2. **Redact** — removes secrets and PII before any scoring
+3. **Mask** — replaces timestamps/UUIDs/IPs/numbers with placeholders so identical events share one template
+4. **Score** — ranks templates by rarity × severity; crash-loop errors (common but high-severity) are never dropped
+5. **Select** — admits lines greedily until the token budget is used; every distinct template gets at least one representative
+6. **Render** — re-sorts chronologically, annotates repeats (`×500`), marks gaps (`… 48,000 lines omitted …`)
 
-See the [main repo README](../README.md) for the full technical write-up.
+For the full technical write-up and benchmark results, see the [main repo README](../README.md).
 
 ---
 
 ## Troubleshooting
 
 **`logreduce: command not found`**  
-Add `~/.cargo/bin` to your PATH: `export PATH="$HOME/.cargo/bin:$PATH"`  
-Add this line to your `~/.bashrc` or `~/.zshrc` to make it permanent.
+Run `which logreduce`. If nothing, add `~/.cargo/bin` to your PATH permanently:
+```bash
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+```
 
-**Hook not triggering in Claude Code**  
-Ensure `.claude/settings.json` exists with a `hooks.UserPromptSubmit` entry.  
-Re-run `npx logreduce-mcp --install` to fix it.
+**Claude Code: settings error on startup**  
+Re-run the installer — it uses the correct hook format for your Claude Code version:
+```bash
+npx logreduce-mcp --install
+```
 
-**Cursor doesn't show the reduce_log tool**  
-Check `.cursor/mcp.json` exists and reload Cursor. Cursor requires the MCP server to start successfully — run `npx logreduce-mcp` manually to check for errors.
+**Claude Code: hook not triggering**  
+The hook only fires for logs ≥ 500 lines. For smaller logs, call `reduce_log` manually.  
+Check `~/.claude/settings.json` (user-level) or `.claude/settings.json` (project-level) for a `hooks.UserPromptSubmit` entry.
 
-**Log not being detected by the hook**  
-The hook triggers for files ≥ 500 lines or inline blocks ≥ 500 lines. For smaller logs, call `reduce_log` manually.
+**Cursor: `reduce_log` not in tool list**  
+Check `.cursor/mcp.json` exists and is valid JSON. Run `npx logreduce-mcp` in a terminal to see if the server starts without errors, then reload Cursor.
+
+**Copilot: tool not available**  
+Make sure you are in **Agent mode** (not standard chat). MCP tools are not available in standard Copilot Chat.
