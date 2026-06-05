@@ -26,8 +26,8 @@ jobs:
             target: aarch64-apple-darwin
             artifact: logreduce-darwin-arm64
 
-          - name: macOS Intel
-            os: macos-13
+          - name: macOS Intel (cross-compiled)
+            os: macos-latest
             target: x86_64-apple-darwin
             artifact: logreduce-darwin-x64
 
