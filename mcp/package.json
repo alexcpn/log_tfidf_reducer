@@ -32,10 +32,17 @@
     "typescript": "^5.4.0",
     "vitest": "^1.6.0"
   },
-  "keywords": ["mcp", "logreduce", "claude", "cursor", "copilot", "log"],
+  "keywords": [
+    "mcp",
+    "logreduce",
+    "claude",
+    "cursor",
+    "copilot",
+    "log"
+  ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexcpn/log_tfidf_reducer"
+    "url": "git+https://github.com/alexcpn/log_tfidf_reducer.git"
   }
 }
