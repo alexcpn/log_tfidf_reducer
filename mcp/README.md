@@ -16,13 +16,28 @@ Works with **Claude Code**, **Cursor**, and **GitHub Copilot**.
 
 ---
 
-## Prerequisites
+## Installation
 
-### 1. Install `logreduce` (the Rust binary)
+```bash
+npm install -g logreduce-mcp
+```
 
-**Option A — Download a pre-built binary (no Rust required):**
+That's all. The postinstall script automatically downloads the `logreduce` binary for your platform (Linux x64, macOS ARM/Intel, Windows x64) — **no Rust required**.
 
-Go to the [latest release](https://github.com/alexcpn/log_tfidf_reducer/releases/latest) and download the binary for your platform:
+You will see output like:
+```
+[logreduce-mcp] Downloading logreduce for linux-x64...
+[logreduce-mcp] Saved to: ~/.logreduce/bin/logreduce
+[logreduce-mcp] Add to PATH: export PATH="~/.logreduce/bin:$PATH"
+```
+
+Add the shown line to your `~/.bashrc` / `~/.zshrc` (Linux/macOS) or System Environment Variables (Windows), then open a new terminal.
+
+Verify: `logreduce --version`
+
+### Manual binary install (alternative)
+
+If the auto-download fails, download from the [releases page](https://github.com/alexcpn/log_tfidf_reducer/releases/latest):
 
 | Platform | File |
 |---|---|
@@ -31,38 +46,7 @@ Go to the [latest release](https://github.com/alexcpn/log_tfidf_reducer/releases
 | macOS Intel | `logreduce-darwin-x64` |
 | Windows x64 | `logreduce-win32-x64.exe` |
 
-**Linux / macOS** — save to somewhere on your PATH and make it executable:
-
-```bash
-# Example for Linux x64
-curl -L https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-linux-x64 \
-  -o /usr/local/bin/logreduce
-chmod +x /usr/local/bin/logreduce
-```
-
-**Windows** — download `logreduce-win32-x64.exe`, rename it to `logreduce.exe`, and place it in a folder on your `PATH` (e.g. `C:\tools\`):
-
-```powershell
-Invoke-WebRequest -Uri "https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-win32-x64.exe" `
-  -OutFile "C:\tools\logreduce.exe"
-```
-
-**Option B — Build from source (requires Rust):**
-
-```bash
-cargo install logreduce
-# Make sure ~/.cargo/bin is on your PATH
-```
-
-Verify: `logreduce --version`
-
-### 2. Install this MCP server
-
-```bash
-npm install -g logreduce-mcp
-```
-
-Verify: `logreduce-mcp --version`
+Or build from source: `cargo install logreduce` (requires [Rust](https://rustup.rs))
 
 ---
 
@@ -319,10 +303,11 @@ For the full technical write-up and benchmark results, see the [main repo README
 ## Troubleshooting
 
 **`logreduce: command not found`**  
-Run `which logreduce`. If nothing, add `~/.cargo/bin` to your PATH permanently:
+The postinstall script downloads the binary to `~/.logreduce/bin/` but it may not be on your PATH yet. Add it:
 ```bash
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+echo 'export PATH="$HOME/.logreduce/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
 ```
+Or re-run the install to trigger the download again: `npm install -g logreduce-mcp`
 
 **Claude Code: settings error on startup**  
 Re-run the installer — it uses the correct hook format for your Claude Code version:

@@ -175,37 +175,102 @@ The current implementation has two remaining limitations.
 
 ## Using it
 
+### CLI — direct use
+
 ```bash
-# Build
-cargo build --release
+# Install (pre-built binary, no Rust required)
+# Download from: https://github.com/alexcpn/log_tfidf_reducer/releases/latest
+
+# Or build from source
+cargo build --release          # → ./target/release/logreduce
 
 # Reduce a log to an 8k-token budget (default)
-./target/release/logreduce app.log > reduced.log
+logreduce app.log
 
-# Larger budget, context window, show stats
-./target/release/logreduce app.log --budget 32000 --context 3 --stats > reduced.log
+# Larger budget, more context lines, show stats
+logreduce app.log --budget 32000 --context 3 --stats
 
 # Pipe from kubectl
 kubectl logs my-pod | logreduce --budget 8000 > incident.log
 
-# Optional: ask Claude about it
-export ANTHROPIC_API_KEY=sk-...
-python python/analyze.py incident.log --question "What caused the errors at 09:01?"
+# Ask Claude about the reduced log (optional Python layer)
+export ANTHROPIC_API_KEY=sk-ant-...
+python python/analyze.py reduced.log --question "What caused the errors at 09:01?"
 ```
 
-The binary is at https://github.com/alexcpn/aiops_logreduction (original repo) with the new implementation on the `001-tfidf-log-reduction` branch.
+---
+
+### Editor integration — Claude Code, Cursor, GitHub Copilot
+
+The MCP server [`logreduce-mcp`](https://www.npmjs.com/package/logreduce-mcp) wraps the binary so AI coding assistants can reduce logs automatically. Install once, works across all three editors.
+
+**Step 1 — install the MCP server** (also downloads the `logreduce` binary automatically):
+
+```bash
+npm install -g logreduce-mcp
+```
+
+**Step 2 — set up your editor:**
+
+#### Claude Code (automatic — zero extra steps after setup)
+
+```bash
+cd your-project/
+npx logreduce-mcp --install
+```
+
+That's it. Restart Claude Code. From now on, any prompt containing a log file path or large inline log block is silently reduced before Claude reads it:
+
+```
+You:    "What caused the errors in /var/log/app.log?"
+          ↓ hook intercepts
+Claude: [sees 312-line summary instead of 50,000-line raw log]
+```
+
+#### Cursor
+
+```bash
+npx logreduce-mcp --install --editor=cursor
+```
+
+Then add a workspace rule in `.cursorrules`:
+
+```
+When asked to analyse a log file or log content, first call the
+reduce_log tool to compress it to an 8000-token budget.
+```
+
+Reload Cursor. The `reduce_log` tool appears in the agent's tool list.
+
+#### GitHub Copilot (VS Code)
+
+Open Command Palette → **MCP: Open User Configuration** and add:
+
+```json
+{
+  "servers": {
+    "logreduce": {
+      "command": "npx",
+      "args": ["logreduce-mcp"]
+    }
+  }
+}
+```
+
+Create `.github/copilot-instructions.md`:
+
+```markdown
+When asked about a log file or log content, call the reduce_log MCP
+tool first to compress the log before analysing it.
+```
+
+Switch to **Agent mode** in Copilot Chat. Done.
+
+> Full documentation: [`mcp/README.md`](mcp/README.md)
 
 ---
 
-## What comes next
-
-The natural next step is embedding this reduction transparently into the tools where developers already ask questions about logs: Claude Code, Cursor, and GitHub Copilot. All three support MCP servers. A thin MCP wrapper around the `logreduce` binary would expose a `reduce_log` tool the model can call automatically when it detects a large log in the prompt. In Claude Code specifically, a `UserPromptSubmit` hook can intercept the prompt before the model sees it and substitute the reduced version — making the compression completely transparent to the developer. They paste a log, the model sees the signal.
-
-That integration is the next feature. The reduction is already fast enough that adding it to the prompt path costs about two seconds on a million-line log. For the token savings it enables, that seems like a reasonable trade.
-
----
-
-*The implementation is written in Rust using `tiktoken-rs` for token counting, `regex` and `once_cell` for compile-once masking patterns, and `rayon` for parallel processing of the masking stage across all available cores. The blended score weights (rarity 0.4, severity 0.5, burst 0.1) are configurable via `--weights`.*
+*The Rust reducer uses `tiktoken-rs` for token counting, `regex` + `once_cell` for compile-once masking patterns, and `rayon` for parallel processing. The blended score weights (rarity 0.4, severity 0.5, burst 0.1) are configurable via `--weights`. The MCP server is Node.js/TypeScript using `@modelcontextprotocol/sdk`.*
 
 ---
 
