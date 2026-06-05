@@ -74,22 +74,31 @@ function fetchRedirect(url) {
 function download(url, dest) {
   return new Promise((resolve, reject) => {
     const tmp = dest + ".tmp";
-    const file = fs.createWriteStream(tmp);
 
-    const get = (u) => {
+    // Clean up any leftover .tmp from a previous failed attempt
+    try { fs.unlinkSync(tmp); } catch { /* ignore */ }
+
+    // Follow all redirects first, then stream the final 200 response to disk.
+    // GitHub releases always redirect: releases/latest/download → CDN URL.
+    // Creating the write stream *after* all redirects avoids the bug where
+    // closing and re-using the same stream on redirect produces a 0-byte file.
+    const follow = (u, depth) => {
+      if (depth > 10) return reject(new Error("Too many redirects"));
       https.get(u, { headers: { "User-Agent": "logreduce-mcp-installer" } }, (res) => {
         if (res.statusCode === 301 || res.statusCode === 302) {
-          file.close();
-          return get(res.headers.location);
+          res.resume(); // drain and discard redirect body
+          return follow(res.headers.location, depth + 1);
         }
         if (res.statusCode !== 200) {
-          file.close();
-          fs.unlink(tmp, () => {});
+          res.resume();
           return reject(new Error(`HTTP ${res.statusCode}`));
         }
+
         const total = parseInt(res.headers["content-length"] || "0", 10);
         let received = 0;
         let lastPct = -1;
+        const file = fs.createWriteStream(tmp);
+
         res.on("data", (chunk) => {
           received += chunk.length;
           if (total > 0) {
@@ -100,7 +109,9 @@ function download(url, dest) {
             }
           }
         });
+
         res.pipe(file);
+
         file.on("finish", () => {
           process.stdout.write("\n");
           file.close(() => {
@@ -109,14 +120,13 @@ function download(url, dest) {
             });
           });
         });
-      }).on("error", (e) => {
-        file.close();
-        fs.unlink(tmp, () => {});
-        reject(e);
-      });
+
+        file.on("error", (e) => { fs.unlink(tmp, () => {}); reject(e); });
+        res.on("error",  (e) => { file.destroy(); fs.unlink(tmp, () => {}); reject(e); });
+      }).on("error", (e) => { fs.unlink(tmp, () => {}); reject(e); });
     };
 
-    get(url);
+    follow(url, 0);
   });
 }
 

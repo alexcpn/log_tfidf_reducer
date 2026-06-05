@@ -1,6 +1,6 @@
 {
   "name": "logreduce-mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MCP server wrapping logreduce for Claude Code, Cursor, and GitHub Copilot",
   "type": "module",
   "engines": {
