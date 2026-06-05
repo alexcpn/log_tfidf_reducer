@@ -1,0 +1,130 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux x64
+            os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            artifact: logreduce-linux-x64
+
+          - name: macOS ARM (Apple Silicon)
+            os: macos-latest
+            target: aarch64-apple-darwin
+            artifact: logreduce-darwin-arm64
+
+          - name: macOS Intel
+            os: macos-13
+            target: x86_64-apple-darwin
+            artifact: logreduce-darwin-x64
+
+          - name: Windows x64
+            os: windows-latest
+            target: x86_64-pc-windows-msvc
+            artifact: logreduce-win32-x64.exe
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.target }}
+
+      - name: Build
+        run: cargo build --release --target ${{ matrix.target }}
+
+      - name: Rename binary (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          cp target/${{ matrix.target }}/release/logreduce ${{ matrix.artifact }}
+
+      - name: Rename binary (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          copy target\${{ matrix.target }}\release\logreduce.exe ${{ matrix.artifact }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}
+          retention-days: 1
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/**/*
+          generate_release_notes: true
+          body: |
+            ## Installation
+
+            ### Quick install (any platform — no Rust required)
+
+            Download the binary for your platform below and add it to your PATH:
+
+            | Platform | File |
+            |---|---|
+            | Linux x64 | `logreduce-linux-x64` |
+            | macOS Apple Silicon | `logreduce-darwin-arm64` |
+            | macOS Intel | `logreduce-darwin-x64` |
+            | Windows x64 | `logreduce-win32-x64.exe` |
+
+            **Linux / macOS:**
+            ```bash
+            # Example for Linux x64 — adjust filename for your platform
+            curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/logreduce-linux-x64 \
+              -o /usr/local/bin/logreduce
+            chmod +x /usr/local/bin/logreduce
+            logreduce --version
+            ```
+
+            **Windows (PowerShell):**
+            ```powershell
+            # Download to a folder on your PATH, e.g. C:\tools\
+            Invoke-WebRequest -Uri "https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/logreduce-win32-x64.exe" `
+              -OutFile "C:\tools\logreduce.exe"
+            logreduce --version
+            ```
+
+            ### Build from source (requires Rust)
+            ```bash
+            cargo install logreduce
+            ```
+
+            ### MCP server for Claude Code / Cursor / Copilot
+            ```bash
+            npx logreduce-mcp --install
+            ```
