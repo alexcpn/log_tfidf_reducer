@@ -202,47 +202,67 @@ python python/analyze.py reduced.log --question "What caused the errors at 09:01
 
 ### Editor integration — Claude Code, Cursor, GitHub Copilot
 
-The MCP server [`logreduce-mcp`](https://www.npmjs.com/package/logreduce-mcp) wraps the binary so AI coding assistants can reduce logs automatically. Install once, works across all three editors.
+The MCP server [`logreduce-mcp`](https://www.npmjs.com/package/logreduce-mcp) wraps the binary so AI coding assistants can reduce logs automatically.
 
-**Step 1 — install the MCP server** (also downloads the `logreduce` binary automatically):
+#### Installation scope
+
+| Step | Where | Frequency |
+|---|---|---|
+| `npm install -g logreduce-mcp` | Machine-wide | **Once per machine** — installs MCP server + downloads `logreduce` binary |
+| `npx logreduce-mcp --install` | Per project | **Once per repo** — writes `.claude/settings.json` and hook; commit to git so teammates get it automatically |
+
+#### Step 1 — machine-wide install (do this once)
 
 ```bash
 npm install -g logreduce-mcp
 ```
 
-**Step 2 — set up your editor:**
+The postinstall script downloads the `logreduce` binary for your platform automatically — **no Rust required**. Then add it to your PATH:
 
-#### Claude Code (automatic — zero extra steps after setup)
+```bash
+# Linux / macOS — add to ~/.bashrc or ~/.zshrc
+echo 'export PATH="$HOME/.logreduce/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+
+# Windows — the installer prints the path to add via System → Environment Variables
+```
+
+Verify: `logreduce --version`
+
+#### Step 2 — per-project setup
+
+Run once in each repo, then commit the generated files so teammates don't need to repeat it:
+
+**Claude Code** (automatic log interception — no extra steps after setup):
 
 ```bash
 cd your-project/
 npx logreduce-mcp --install
+git add .claude/ && git commit -m "chore: add logreduce-mcp hook for Claude Code"
 ```
 
-That's it. Restart Claude Code. From now on, any prompt containing a log file path or large inline log block is silently reduced before Claude reads it:
+Any prompt containing a log file path or large inline log is silently reduced before Claude reads it:
 
 ```
 You:    "What caused the errors in /var/log/app.log?"
-          ↓ hook intercepts
+          ↓ hook intercepts automatically
 Claude: [sees 312-line summary instead of 50,000-line raw log]
 ```
 
-#### Cursor
+**Cursor:**
 
 ```bash
 npx logreduce-mcp --install --editor=cursor
+git add .cursor/ && git commit -m "chore: add logreduce-mcp for Cursor"
 ```
 
-Then add a workspace rule in `.cursorrules`:
+Add a workspace rule in `.cursorrules` so Cursor calls it automatically:
 
 ```
 When asked to analyse a log file or log content, first call the
 reduce_log tool to compress it to an 8000-token budget.
 ```
 
-Reload Cursor. The `reduce_log` tool appears in the agent's tool list.
-
-#### GitHub Copilot (VS Code)
+**GitHub Copilot (VS Code)** — user-level config (not per project):
 
 Open Command Palette → **MCP: Open User Configuration** and add:
 
@@ -257,16 +277,16 @@ Open Command Palette → **MCP: Open User Configuration** and add:
 }
 ```
 
-Create `.github/copilot-instructions.md`:
+Create `.github/copilot-instructions.md` in your repo:
 
 ```markdown
 When asked about a log file or log content, call the reduce_log MCP
 tool first to compress the log before analysing it.
 ```
 
-Switch to **Agent mode** in Copilot Chat. Done.
+Switch to **Agent mode** in Copilot Chat to use MCP tools.
 
-> Full documentation: [`mcp/README.md`](mcp/README.md)
+> Full per-editor documentation with troubleshooting: [`mcp/README.md`](mcp/README.md)
 
 ---
 
