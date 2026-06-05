@@ -143,6 +143,11 @@ function main() {
 
   const binary = findBinary();
   if (!binary) {
+    // logreduce not on PATH — fail open, log hint to stderr
+    process.stderr.write(
+      "logreduce-mcp hook: logreduce binary not found on PATH.\n" +
+      "Download from: https://github.com/alexcpn/log_tfidf_reducer/releases/latest\n"
+    );
     process.stdout.write("{}");
     return;
   }

@@ -26,9 +26,13 @@ export function findBinary(): string {
       // fall through
     }
     throw new Error(
-      "logreduce not found on PATH.\n" +
-        "Install with: cargo install logreduce\n" +
-        "Then ensure ~/.cargo/bin is on your PATH."
+      "logreduce not found on PATH.\n\n" +
+        "Option 1 — Download a pre-built binary (no Rust required):\n" +
+        "  https://github.com/alexcpn/log_tfidf_reducer/releases/latest\n" +
+        "  Pick the binary for your platform and add it to your PATH.\n\n" +
+        "Option 2 — Build from source (requires Rust):\n" +
+        "  cargo install logreduce\n" +
+        "  (install Rust at https://rustup.rs)"
     );
   }
 }

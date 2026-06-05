@@ -20,17 +20,38 @@ Works with **Claude Code**, **Cursor**, and **GitHub Copilot**.
 
 ### 1. Install `logreduce` (the Rust binary)
 
+**Option A — Download a pre-built binary (no Rust required):**
+
+Go to the [latest release](https://github.com/alexcpn/log_tfidf_reducer/releases/latest) and download the binary for your platform:
+
+| Platform | File |
+|---|---|
+| Linux x64 | `logreduce-linux-x64` |
+| macOS Apple Silicon | `logreduce-darwin-arm64` |
+| macOS Intel | `logreduce-darwin-x64` |
+| Windows x64 | `logreduce-win32-x64.exe` |
+
+**Linux / macOS** — save to somewhere on your PATH and make it executable:
+
 ```bash
-cargo install logreduce
+# Example for Linux x64
+curl -L https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-linux-x64 \
+  -o /usr/local/bin/logreduce
+chmod +x /usr/local/bin/logreduce
 ```
 
-> Don't have Rust? Install it from https://rustup.rs — takes about 2 minutes.
+**Windows** — download `logreduce-win32-x64.exe`, rename it to `logreduce.exe`, and place it in a folder on your `PATH` (e.g. `C:\tools\`):
 
-After installing, make sure `~/.cargo/bin` is on your PATH:
+```powershell
+Invoke-WebRequest -Uri "https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-win32-x64.exe" `
+  -OutFile "C:\tools\logreduce.exe"
+```
+
+**Option B — Build from source (requires Rust):**
 
 ```bash
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc  # or ~/.zshrc
-source ~/.bashrc
+cargo install logreduce
+# Make sure ~/.cargo/bin is on your PATH
 ```
 
 Verify: `logreduce --version`
