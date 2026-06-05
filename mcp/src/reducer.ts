@@ -1,40 +1,43 @@
 import { execFile, execFileSync } from "child_process";
+import { existsSync } from "fs";
+import { join } from "path";
+import { homedir } from "os";
 import { promisify } from "util";
 
 const execFileAsync = promisify(execFile);
 
-/** Locate the logreduce binary on PATH. Throws with install instructions if not found. */
+const IS_WIN = process.platform === "win32";
+const BIN_NAME = IS_WIN ? "logreduce.exe" : "logreduce";
+/** Location where the postinstall script saves the downloaded binary. */
+const DOWNLOADED_BIN = join(homedir(), ".logreduce", "bin", BIN_NAME);
+
+/** Locate the logreduce binary — checks PATH first, then ~/.logreduce/bin/. */
 export function findBinary(): string {
+  // 1. Check PATH
   try {
-    const result = execFileSync("which", ["logreduce"], {
+    const result = execFileSync(IS_WIN ? "where" : "which", ["logreduce"], {
       encoding: "utf8",
       stdio: ["pipe", "pipe", "pipe"],
-    }).trim();
-    if (!result) throw new Error("empty");
-    return result;
+    }).trim().split(/\r?\n/)[0];
+    if (result) return result;
   } catch {
-    // On Windows, try 'where'
-    try {
-      const result = execFileSync("where", ["logreduce"], {
-        encoding: "utf8",
-        stdio: ["pipe", "pipe", "pipe"],
-      })
-        .trim()
-        .split(/\r?\n/)[0];
-      if (result) return result;
-    } catch {
-      // fall through
-    }
-    throw new Error(
-      "logreduce not found on PATH.\n\n" +
-        "Option 1 — Download a pre-built binary (no Rust required):\n" +
-        "  https://github.com/alexcpn/log_tfidf_reducer/releases/latest\n" +
-        "  Pick the binary for your platform and add it to your PATH.\n\n" +
-        "Option 2 — Build from source (requires Rust):\n" +
-        "  cargo install logreduce\n" +
-        "  (install Rust at https://rustup.rs)"
-    );
+    // not on PATH
   }
+
+  // 2. Check postinstall download location (~/.logreduce/bin/)
+  if (existsSync(DOWNLOADED_BIN)) {
+    return DOWNLOADED_BIN;
+  }
+
+  throw new Error(
+    "logreduce not found on PATH or ~/.logreduce/bin/.\n\n" +
+      "Option 1 — Re-run npm install to auto-download:\n" +
+      "  npm install -g logreduce-mcp\n\n" +
+      "Option 2 — Download a pre-built binary manually:\n" +
+      "  https://github.com/alexcpn/log_tfidf_reducer/releases/latest\n\n" +
+      "Option 3 — Build from source (requires Rust):\n" +
+      "  cargo install logreduce"
+  );
 }
 
 export interface InvokeResult {

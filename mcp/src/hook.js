@@ -12,6 +12,8 @@
 
 import { execFileSync } from "child_process";
 import { existsSync, readFileSync } from "fs";
+import { join } from "path";
+import { homedir } from "os";
 
 const TIMEOUT_MS = 5000;
 const MIN_LINES = 500;
@@ -19,18 +21,25 @@ const LOG_LINE_RE =
   /\d{2}[:/]\d{2}|^\d{4}-\d{2}-\d{2}|\b(ERROR|WARN|INFO|DEBUG|FATAL|CRITICAL)\b/im;
 const FILE_PATH_RE = /(?:^|\s)((?:\/|\.\.?\/|~\/)[^\s'"]+)/gm;
 
+const IS_WIN = process.platform === "win32";
+const DOWNLOADED_BIN = join(
+  homedir(), ".logreduce", "bin",
+  IS_WIN ? "logreduce.exe" : "logreduce"
+);
+
 function findBinary() {
+  // 1. Check PATH
   try {
-    return execFileSync("which", ["logreduce"], { encoding: "utf8" }).trim();
-  } catch {
-    try {
-      return execFileSync("where", ["logreduce"], { encoding: "utf8" })
-        .trim()
-        .split(/\r?\n/)[0];
-    } catch {
-      return null;
-    }
-  }
+    const result = execFileSync(IS_WIN ? "where" : "which", ["logreduce"], {
+      encoding: "utf8", stdio: ["pipe", "pipe", "pipe"],
+    }).trim().split(/\r?\n/)[0];
+    if (result) return result;
+  } catch { /* not on PATH */ }
+
+  // 2. Check postinstall download location
+  if (existsSync(DOWNLOADED_BIN)) return DOWNLOADED_BIN;
+
+  return null;
 }
 
 function detectFilePath(prompt) {
