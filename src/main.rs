@@ -126,12 +126,79 @@ fn parse_format(s: &str) -> LogFormat {
     }
 }
 
+/// Flags that consume the following token as their value (when not given as
+/// `--flag=value`). Needed so unquoted-path recovery doesn't swallow flag
+/// values into the joined path.
+const VALUE_FLAGS: &[&str] = &[
+    "-o",
+    "--out",
+    "-b",
+    "--budget",
+    "--max-lines",
+    "-c",
+    "--context",
+    "--format",
+    "--weights",
+];
+
+/// Agents (and shells with careless quoting) sometimes pass a path containing
+/// spaces as several bare arguments, e.g. `logreduce logs/foo 12:30:00.log`
+/// instead of `logreduce "logs/foo 12:30:00.log"`. clap then rejects the
+/// extra positional as `unexpected argument`. Recover by joining each run of
+/// consecutive non-flag tokens with spaces and using it as a single argument
+/// if — and only if — that joined string is an existing path; this can't
+/// misfire on legitimate multi-positional usage since the CLI has exactly one
+/// positional argument.
+fn recover_unquoted_input_path(args: Vec<String>) -> Vec<String> {
+    let mut result = Vec::with_capacity(args.len());
+    result.push(args[0].clone());
+
+    let mut run_start: Option<usize> = None;
+    let mut i = 1;
+    while i < args.len() {
+        let arg = &args[i];
+        if arg.starts_with('-') {
+            if let Some(start) = run_start.take() {
+                join_run_if_existing_path(&mut result, start);
+            }
+            result.push(arg.clone());
+            if VALUE_FLAGS.contains(&arg.as_str()) && !arg.contains('=') {
+                i += 1;
+                if i < args.len() {
+                    result.push(args[i].clone());
+                }
+            }
+        } else {
+            if run_start.is_none() {
+                run_start = Some(result.len());
+            }
+            result.push(arg.clone());
+        }
+        i += 1;
+    }
+    if let Some(start) = run_start {
+        join_run_if_existing_path(&mut result, start);
+    }
+    result
+}
+
+fn join_run_if_existing_path(result: &mut Vec<String>, start: usize) {
+    if result.len() - start < 2 {
+        return;
+    }
+    let joined = result[start..].join(" ");
+    if std::path::Path::new(&joined).exists() {
+        result.truncate(start);
+        result.push(joined);
+    }
+}
+
 fn main() {
     if dispatch_subcommand() {
         return;
     }
 
-    let cli = Cli::parse();
+    let cli = Cli::parse_from(recover_unquoted_input_path(std::env::args().collect()));
 
     let weights = match parse_weights(&cli.weights) {
         Ok(w) => w,
@@ -204,5 +271,61 @@ fn main() {
             },
         );
         eprintln!("[logreduce] Note: token counts use tiktoken cl100k_base — slightly conservative for Claude.");
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn temp_file_with_space(name: &str) -> std::path::PathBuf {
+        let path = std::env::temp_dir().join(name);
+        std::fs::write(&path, "log content").unwrap();
+        path
+    }
+
+    #[test]
+    fn joins_unquoted_path_with_spaces_when_it_exists() {
+        let name = format!("logreduce-recover-test-{} 12:30:00.log", std::process::id());
+        let path = temp_file_with_space(&name);
+        let dir = path.parent().unwrap().display().to_string();
+        let stem = format!("logreduce-recover-test-{} 12:30:00.log", std::process::id());
+
+        let args: Vec<String> = vec!["logreduce".into(), format!("{dir}/{stem}")]
+            .iter()
+            .flat_map(|s| s.split(' ').map(String::from))
+            .collect();
+        assert!(args.len() > 2, "test setup must produce a split path");
+
+        let recovered = recover_unquoted_input_path(args);
+        assert_eq!(recovered.len(), 2);
+        assert_eq!(recovered[1], format!("{dir}/{stem}"));
+
+        std::fs::remove_file(&path).ok();
+    }
+
+    #[test]
+    fn leaves_args_untouched_when_joined_path_does_not_exist() {
+        let args: Vec<String> = vec![
+            "logreduce".to_string(),
+            "no".to_string(),
+            "such".to_string(),
+            "file.log".to_string(),
+        ];
+        let recovered = recover_unquoted_input_path(args.clone());
+        assert_eq!(recovered, args);
+    }
+
+    #[test]
+    fn does_not_swallow_flag_values_into_joined_path() {
+        let args: Vec<String> = vec![
+            "logreduce".to_string(),
+            "app.log".to_string(),
+            "--budget".to_string(),
+            "32000".to_string(),
+            "--stats".to_string(),
+        ];
+        let recovered = recover_unquoted_input_path(args.clone());
+        assert_eq!(recovered, args);
     }
 }
