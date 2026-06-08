@@ -29,9 +29,14 @@ chmod +x /usr/local/bin/logreduce
 
 ```powershell
 # Windows (PowerShell) — works even on locked-down corporate machines with no npm
+# Uses your user profile's bin folder — no admin rights needed
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\bin" | Out-Null
 Invoke-WebRequest -Uri "https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-win32-x64.exe" `
-  -OutFile "C:\tools\logreduce.exe"
-C:\tools\logreduce.exe --version   # add C:\tools to PATH
+  -OutFile "$env:USERPROFILE\bin\logreduce.exe"
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+[Environment]::SetEnvironmentVariable("Path", "$userPath;$env:USERPROFILE\bin", "User")
+# Open a new terminal, then:
+logreduce --version
 ```
 
 **Or build from source** (requires Rust): `cargo install logreduce`
