@@ -11,6 +11,7 @@ use std::path::Path;
 const HOOK_COMMAND: &str = "logreduce hook";
 const CURSOR_RULES_TEMPLATE: &str = include_str!("../templates/cursor-rules.mdc");
 const COPILOT_INSTRUCTIONS_TEMPLATE: &str = include_str!("../templates/copilot-instructions.md");
+const CLAUDE_SKILL_TEMPLATE: &str = include_str!("../templates/claude-skill.md");
 
 pub fn run(editor: &str, project_root: &Path) -> io::Result<()> {
     match editor {
@@ -57,8 +58,16 @@ fn install_claude_code(project_root: &Path) -> io::Result<()> {
 
     write_json(&settings_path, &serde_json::Value::Object(settings))?;
     println!("✓ Settings merged: {}", settings_path.display());
+
+    let skill_dir = claude_dir.join("skills").join("logreduce");
+    fs::create_dir_all(&skill_dir)?;
+    let skill_path = skill_dir.join("SKILL.md");
+    fs::write(&skill_path, CLAUDE_SKILL_TEMPLATE)?;
+    println!("✓ Skill written: {}", skill_path.display());
+
     println!("\nClaude Code integration installed. Start a new session to activate.");
-    println!("Any prompt with a log path or large inline log is now silently reduced before Claude reads it.");
+    println!("Any prompt with a log path or large inline log is now silently reduced before Claude reads it (hook),");
+    println!("and logs Claude discovers itself mid-session are covered by the `logreduce` skill.");
     Ok(())
 }
 
@@ -168,6 +177,18 @@ mod tests {
         let entries = settings["hooks"]["UserPromptSubmit"].as_array().unwrap();
         assert_eq!(entries.len(), 1);
         assert_eq!(entries[0]["hooks"][0]["command"], HOOK_COMMAND);
+
+        fs::remove_dir_all(&dir).ok();
+    }
+
+    #[test]
+    fn claude_code_install_writes_skill_file() {
+        let dir = temp_project_dir();
+        install_claude_code(&dir).unwrap();
+
+        let content = fs::read_to_string(dir.join(".claude/skills/logreduce/SKILL.md")).unwrap();
+        assert!(content.starts_with("---\nname: logreduce"));
+        assert!(content.contains("logreduce <path-to-file>"));
 
         fs::remove_dir_all(&dir).ok();
     }

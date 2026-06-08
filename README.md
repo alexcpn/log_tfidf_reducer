@@ -52,18 +52,22 @@ Run one command per editor from your project root:
 ```bash
 cd your-project/
 
-logreduce install --editor=claude-code   # writes .claude/settings.json (hook entry)
+logreduce install --editor=claude-code   # writes .claude/settings.json (hook) + .claude/skills/logreduce/
 logreduce install --editor=cursor        # writes .cursor/rules/logreduce.mdc
 logreduce install --editor=copilot       # writes .github/copilot-instructions.md
 
 git add .claude/ .cursor/ .github/ && git commit -m "chore: add logreduce editor integration"
 ```
 
-**Claude Code** — automatic interception, zero extra steps after setup: the
-installed hook (`logreduce hook`, the same binary in hook mode) intercepts
-every prompt and silently reduces any log path or large inline log block
-before Claude reads it — deterministic, not dependent on the model
-remembering to do it.
+**Claude Code** — two complementary layers:
+- a **hook** (`logreduce hook`, the same binary in hook mode) deterministically
+  intercepts every prompt and silently reduces any log path or large inline
+  log block *named or pasted in your prompt* before Claude reads it — not
+  dependent on the model remembering to do it;
+- a **skill** (`.claude/skills/logreduce/`) covers what the hook can't see —
+  logs Claude *discovers itself* mid-session (via `find`, `grep`, command
+  output, etc.) — telling it to run `logreduce <path>` instead of reading
+  large logs directly.
 
 **Cursor** — installs a [project rule](.cursor/rules) that tells the agent to
 run `logreduce <path>` itself in the terminal before reading large logs. Reload
