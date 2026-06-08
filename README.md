@@ -15,7 +15,7 @@ Works standalone as a CLI, or transparently inside **Claude Code**, **Cursor**, 
 
 ### 1. Install
 
-`logreduce` is a single static binary — no Rust, Node, or npm required to run it.
+`logreduce` is a single static binary —  Rust based code for performance.
 
 **Quick install (any platform)** — download the binary for your OS from
 [Releases](https://github.com/alexcpn/log_tfidf_reducer/releases) and put it on PATH:
