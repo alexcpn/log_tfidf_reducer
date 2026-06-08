@@ -1,8 +1,0 @@
-{
-  "servers": {
-    "logreduce": {
-      "command": "npx",
-      "args": ["logreduce-mcp"]
-    }
-  }
-}

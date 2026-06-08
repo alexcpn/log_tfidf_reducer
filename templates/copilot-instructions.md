@@ -1,7 +1,4 @@
----
-description: Reduce large log files with logreduce before reading them
-alwaysApply: true
----
+## Reducing large log files with logreduce
 
 When asked to read, view, analyze, debug, or summarize a log file — or any
 file that looks like one (`.log`, console/CI output, `kubectl logs` /
@@ -19,5 +16,5 @@ longer, do NOT read it directly. Instead:
 Files under ~500 lines are small enough to read directly — skip logreduce
 for those.
 
-Requires the `logreduce` binary on PATH (no Node/npm needed — see the
-project README for install instructions).
+Requires the `logreduce` binary on PATH and **Agent mode** in Copilot Chat
+(custom instructions and terminal commands aren't available in standard chat).

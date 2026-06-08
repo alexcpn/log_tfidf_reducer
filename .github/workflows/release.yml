@@ -127,7 +127,7 @@ jobs:
             cargo install logreduce
             ```
 
-            ### MCP server for Claude Code / Cursor / Copilot
+            ### Editor integration (Claude Code / Cursor / Copilot — no Node/npm)
             ```bash
-            npx logreduce-mcp --install
+            logreduce install --editor=claude-code   # or cursor / copilot
             ```

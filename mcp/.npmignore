@@ -1,8 +1,0 @@
-node_modules/
-tests/
-*.test.ts
-tsconfig.json
-vitest.config.ts
-*.tsbuildinfo
-coverage/
-*.map

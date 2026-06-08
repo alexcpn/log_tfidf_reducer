@@ -7,7 +7,7 @@ Before:  1,000,000 lines  →  12,803,209 tokens  →  ~$38/question
 After:         374 lines  →       7,504 tokens  →  ~$0.02/question
 ```
 
-Works standalone as a CLI, or transparently inside **Claude Code**, **Cursor**, and **GitHub Copilot** via MCP.
+Works standalone as a CLI, or transparently inside **Claude Code**, **Cursor**, and **GitHub Copilot** — one static binary, no Node/npm required anywhere.
 
 ---
 
@@ -15,24 +15,26 @@ Works standalone as a CLI, or transparently inside **Claude Code**, **Cursor**, 
 
 ### 1. Install
 
-```bash
-# MCP server + binary (no Rust required — binary auto-downloaded)
-npm install -g logreduce-mcp
-echo 'export PATH="$HOME/.logreduce/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+`logreduce` is a single static binary — no Rust, Node, or npm required to run it.
 
-# Or build from source
-cargo install logreduce
+**Quick install (any platform)** — download the binary for your OS from
+[Releases](https://github.com/alexcpn/log_tfidf_reducer/releases) and put it on PATH:
+
+```bash
+# Linux / macOS — adjust filename for your platform
+curl -L https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-linux-x64 \
+  -o /usr/local/bin/logreduce
+chmod +x /usr/local/bin/logreduce
 ```
 
-No npm/Node/Rust available (e.g. locked-down corporate Windows)? Grab the standalone CLI binary directly from [Releases](https://github.com/alexcpn/log_tfidf_reducer/releases) — no install step needed:
-
 ```powershell
+# Windows (PowerShell) — works even on locked-down corporate machines with no npm
 Invoke-WebRequest -Uri "https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-win32-x64.exe" `
   -OutFile "C:\tools\logreduce.exe"
 C:\tools\logreduce.exe --version   # add C:\tools to PATH
 ```
 
-This gets you the full `logreduce` CLI; only the editor auto-integration (MCP) requires Node/npm.
+**Or build from source** (requires Rust): `cargo install logreduce`
 
 ### 2. Reduce a log
 
@@ -44,42 +46,36 @@ kubectl logs my-pod | logreduce > incident.log         # pipe from kubectl
 
 ### 3. Editor integration (once per machine + once per repo)
 
-**Claude Code** — automatic interception, zero extra steps after setup:
+The binary installs its own integration files — no MCP server, no Node, no npm.
+Run one command per editor from your project root:
+
 ```bash
 cd your-project/
-npx logreduce-mcp --install
-git add .claude/ && git commit -m "chore: add logreduce-mcp"
+
+logreduce install --editor=claude-code   # writes .claude/settings.json (hook entry)
+logreduce install --editor=cursor        # writes .cursor/rules/logreduce.mdc
+logreduce install --editor=copilot       # writes .github/copilot-instructions.md
+
+git add .claude/ .cursor/ .github/ && git commit -m "chore: add logreduce editor integration"
 ```
-Any prompt with a log path or large inline log is silently reduced before Claude reads it.
 
-**Cursor — via MCP (needs Node/npm):**
-```bash
-npx logreduce-mcp --install --editor=cursor
-git add .cursor/ && git commit -m "chore: add logreduce-mcp"
-```
-Add to `.cursorrules`: *"When asked to analyse log content, first call the reduce_log tool."*
+**Claude Code** — automatic interception, zero extra steps after setup: the
+installed hook (`logreduce hook`, the same binary in hook mode) intercepts
+every prompt and silently reduces any log path or large inline log block
+before Claude reads it — deterministic, not dependent on the model
+remembering to do it.
 
-**Cursor — via rules, no Node/npm (works the same on Linux & Windows):**
-Skip the MCP server entirely — just put the standalone `logreduce` binary
-on PATH (see [step 1](#1-install)) and drop a rules file in your project
-telling the agent to shell out to it directly:
-```bash
-mkdir -p .cursor/rules
-curl -L https://raw.githubusercontent.com/alexcpn/log_tfidf_reducer/main/mcp/config/cursor-rules.mdc \
-  -o .cursor/rules/logreduce.mdc
-git add .cursor/rules/logreduce.mdc && git commit -m "chore: add logreduce cursor rule"
-```
-On Windows (PowerShell): `Invoke-WebRequest -Uri "https://raw.githubusercontent.com/alexcpn/log_tfidf_reducer/main/mcp/config/cursor-rules.mdc" -OutFile ".cursor\rules\logreduce.mdc"`
+**Cursor** — installs a [project rule](.cursor/rules) that tells the agent to
+run `logreduce <path>` itself in the terminal before reading large logs. Reload
+Cursor after installing.
 
-Reload Cursor — the agent now runs `logreduce <file>` itself before reading large logs, no MCP server, Node, or npm required.
+**GitHub Copilot (VS Code)** — installs `.github/copilot-instructions.md` with
+the same instruction. Requires **Agent mode** in Copilot Chat (custom
+instructions and terminal commands aren't available in standard chat).
 
-**GitHub Copilot (VS Code)** — Command Palette → **MCP: Open User Configuration**:
-```json
-{ "servers": { "logreduce": { "command": "npx", "args": ["logreduce-mcp"] } } }
-```
-Then switch to **Agent mode** in Copilot Chat.
-
-> Full setup guide, troubleshooting, and all parameters: [`mcp/README.md`](mcp/README.md)
+All three approaches rely on the agent shelling out to `logreduce` directly —
+see [`templates/`](templates/) for the exact rule/instruction text each
+installer writes.
 
 ---
 
@@ -124,10 +120,8 @@ On a 1M-line synthetic log (16-core machine):
 cargo build --release    # Rust binary → target/release/logreduce
 cargo fmt --check
 cargo clippy -- -D warnings
-cargo test               # 13 tests
+cargo test               # pipeline + hook + install tests
 cargo bench              # throughput: MB/s & lines/s
-
-cd mcp && npm install && npm test   # MCP server: 35 vitest tests
 ```
 
 ---
@@ -140,4 +134,4 @@ cd mcp && npm install && npm test   # MCP server: 35 vitest tests
 
 ---
 
-*Rust reducer: `tiktoken-rs`, `regex`, `once_cell`, `rayon`. MCP server: Node.js/TypeScript, `@modelcontextprotocol/sdk`. Blended score weights (rarity 0.4, severity 0.5, burst 0.1) configurable via `--weights`.*
+*Single Rust binary: `tiktoken-rs`, `regex`, `once_cell`, `rayon`, `clap`, `serde`. Editor integration (`logreduce hook` / `logreduce install`) ships in the same binary — no separate runtime. Blended score weights (rarity 0.4, severity 0.5, burst 0.1) configurable via `--weights`.*

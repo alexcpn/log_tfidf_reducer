@@ -1,11 +1,68 @@
 use clap::Parser;
-use logreduce::{reduce, BlendWeights, LogFormat, ReduceConfig};
+use logreduce::{hook, install, reduce, BlendWeights, LogFormat, ReduceConfig};
 use std::io::{self, Read};
 use std::path::PathBuf;
 use std::process;
 
+/// Dispatches `hook` and `install` subcommands before falling through to the
+/// default `reduce` behavior — kept outside clap's derive so that a log file
+/// literally named `hook` or `install` still works as a positional `input`.
+fn dispatch_subcommand() -> bool {
+    let args: Vec<String> = std::env::args().collect();
+    match args.get(1).map(String::as_str) {
+        Some("hook") => {
+            hook::run();
+            true
+        }
+        Some("install") => {
+            run_install(&args[2..]);
+            true
+        }
+        _ => false,
+    }
+}
+
+fn run_install(args: &[String]) {
+    let mut editor: Option<String> = None;
+    let mut i = 0;
+    while i < args.len() {
+        let arg = &args[i];
+        if let Some(value) = arg.strip_prefix("--editor=") {
+            editor = Some(value.to_string());
+        } else if arg == "--editor" {
+            i += 1;
+            editor = args.get(i).cloned();
+        } else {
+            eprintln!("Error: unknown argument to `install`: {arg}");
+            process::exit(1);
+        }
+        i += 1;
+    }
+
+    let Some(editor) = editor else {
+        eprintln!("Error: `install` requires --editor=<claude-code|cursor|copilot>");
+        process::exit(1);
+    };
+
+    let project_root = std::env::current_dir().unwrap_or_else(|e| {
+        eprintln!("Error: cannot determine current directory: {e}");
+        process::exit(2);
+    });
+
+    if let Err(e) = install::run(&editor, &project_root) {
+        eprintln!("Error: {e}");
+        process::exit(2);
+    }
+}
+
 #[derive(Parser)]
-#[command(name = "logreduce", about = "Reduce noisy logs to an LLM-ready file")]
+#[command(
+    name = "logreduce",
+    about = "Reduce noisy logs to an LLM-ready file",
+    after_help = "Editor integration (no Node/npm — single static binary):\n  \
+                  logreduce hook                                 Claude Code UserPromptSubmit hook (reads/writes JSON on stdio)\n  \
+                  logreduce install --editor=<claude-code|cursor|copilot>   Write the integration files for an editor"
+)]
 struct Cli {
     /// Input log file (omit or use - for stdin)
     input: Option<PathBuf>,
@@ -69,6 +126,10 @@ fn parse_format(s: &str) -> LogFormat {
 }
 
 fn main() {
+    if dispatch_subcommand() {
+        return;
+    }
+
     let cli = Cli::parse();
 
     let weights = match parse_weights(&cli.weights) {
