@@ -58,6 +58,7 @@ fn run_install(args: &[String]) {
 #[derive(Parser)]
 #[command(
     name = "logreduce",
+    version,
     about = "Reduce noisy logs to an LLM-ready file",
     after_help = "Editor integration (no Node/npm — single static binary):\n  \
                   logreduce hook                                 Claude Code UserPromptSubmit hook (reads/writes JSON on stdio)\n  \
