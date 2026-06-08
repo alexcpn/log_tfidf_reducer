@@ -16,5 +16,7 @@ longer, do NOT read it directly. Instead:
 Files under ~500 lines are small enough to read directly — skip logreduce
 for those.
 
-Requires the `logreduce` binary on PATH and **Agent mode** in Copilot Chat
-(custom instructions and terminal commands aren't available in standard chat).
+Requires the `logreduce` binary on PATH — download from
+https://github.com/alexcpn/log_tfidf_reducer/releases for your OS platform —
+and **Agent mode** in Copilot Chat (custom instructions and terminal commands
+aren't available in standard chat).

@@ -19,5 +19,5 @@ longer, do NOT read it directly. Instead:
 Files under ~500 lines are small enough to read directly — skip logreduce
 for those.
 
-Requires the `logreduce` binary on PATH — see the project README for install
-instructions (a single static binary, no Node/npm required).
+Requires the `logreduce` binary on PATH — download from
+https://github.com/alexcpn/log_tfidf_reducer/releases for your OS platform.

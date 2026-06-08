@@ -23,5 +23,5 @@ this project's `.claude/settings.json`, which deterministically reduces logs
 *named or pasted directly in your prompt*. This skill covers the case the
 hook can't see: logs you discover yourself mid-session.
 
-Requires the `logreduce` binary on PATH — see the project README for install
-instructions (a single static binary, no Node/npm required).
+Requires the `logreduce` binary on PATH — download from
+https://github.com/alexcpn/log_tfidf_reducer/releases for your OS platform.
