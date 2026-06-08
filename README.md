@@ -24,6 +24,16 @@ echo 'export PATH="$HOME/.logreduce/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
 cargo install logreduce
 ```
 
+No npm/Node/Rust available (e.g. locked-down corporate Windows)? Grab the standalone CLI binary directly from [Releases](https://github.com/alexcpn/log_tfidf_reducer/releases) — no install step needed:
+
+```powershell
+Invoke-WebRequest -Uri "https://github.com/alexcpn/log_tfidf_reducer/releases/latest/download/logreduce-win32-x64.exe" `
+  -OutFile "C:\tools\logreduce.exe"
+C:\tools\logreduce.exe --version   # add C:\tools to PATH
+```
+
+This gets you the full `logreduce` CLI; only the editor auto-integration (MCP) requires Node/npm.
+
 ### 2. Reduce a log
 
 ```bash
@@ -42,12 +52,26 @@ git add .claude/ && git commit -m "chore: add logreduce-mcp"
 ```
 Any prompt with a log path or large inline log is silently reduced before Claude reads it.
 
-**Cursor:**
+**Cursor — via MCP (needs Node/npm):**
 ```bash
 npx logreduce-mcp --install --editor=cursor
 git add .cursor/ && git commit -m "chore: add logreduce-mcp"
 ```
 Add to `.cursorrules`: *"When asked to analyse log content, first call the reduce_log tool."*
+
+**Cursor — via rules, no Node/npm (works the same on Linux & Windows):**
+Skip the MCP server entirely — just put the standalone `logreduce` binary
+on PATH (see [step 1](#1-install)) and drop a rules file in your project
+telling the agent to shell out to it directly:
+```bash
+mkdir -p .cursor/rules
+curl -L https://raw.githubusercontent.com/alexcpn/log_tfidf_reducer/main/mcp/config/cursor-rules.mdc \
+  -o .cursor/rules/logreduce.mdc
+git add .cursor/rules/logreduce.mdc && git commit -m "chore: add logreduce cursor rule"
+```
+On Windows (PowerShell): `Invoke-WebRequest -Uri "https://raw.githubusercontent.com/alexcpn/log_tfidf_reducer/main/mcp/config/cursor-rules.mdc" -OutFile ".cursor\rules\logreduce.mdc"`
+
+Reload Cursor — the agent now runs `logreduce <file>` itself before reading large logs, no MCP server, Node, or npm required.
 
 **GitHub Copilot (VS Code)** — Command Palette → **MCP: Open User Configuration**:
 ```json

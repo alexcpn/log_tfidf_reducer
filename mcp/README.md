@@ -121,6 +121,8 @@ Why is my service crashing? Here is the log: [paste 2000 lines]
 
 Cursor supports MCP servers natively. The `reduce_log` tool appears in the agent's tool list and can be called automatically via a workspace rule.
 
+> **No Node/npm available?** Skip MCP entirely — see [Cursor without Node/npm (rules-based)](#cursor-without-nodenpm-rules-based) below. It works identically on Linux and Windows and needs only the standalone `logreduce` binary.
+
 ### Setup
 
 **Option A — run the installer:**
@@ -164,6 +166,28 @@ In a Cursor agent chat, type:
 List your available MCP tools
 ```
 You should see `reduce_log` in the list.
+
+### Cursor without Node/npm (rules-based)
+
+If `npx` is unavailable or broken (common on locked-down corporate Windows —
+see [Troubleshooting](#troubleshooting)), don't use MCP at all. Cursor's agent
+can run shell commands directly, so a project rule that tells it to shell out
+to the standalone `logreduce` binary works just as well — and needs no Node,
+npm, or MCP server. This works identically on Linux and Windows.
+
+1. Get the `logreduce` binary onto PATH — no Rust/npm required (see the
+   [main README](../README.md#1-install) for the direct-download links for
+   Linux/macOS/Windows).
+2. Add the rule file:
+   ```bash
+   mkdir -p .cursor/rules
+   curl -L https://raw.githubusercontent.com/alexcpn/log_tfidf_reducer/main/mcp/config/cursor-rules.mdc \
+     -o .cursor/rules/logreduce.mdc
+   ```
+   (Windows PowerShell: `Invoke-WebRequest -Uri "https://raw.githubusercontent.com/alexcpn/log_tfidf_reducer/main/mcp/config/cursor-rules.mdc" -OutFile ".cursor\rules\logreduce.mdc"`)
+3. Reload Cursor. The agent now runs `logreduce <file>` itself in the
+   terminal before reading large logs — see [`config/cursor-rules.mdc`](config/cursor-rules.mdc)
+   for the exact instructions it follows.
 
 ### Usage
 
@@ -318,6 +342,22 @@ npx logreduce-mcp --install
 **Claude Code: hook not triggering**  
 The hook only fires for logs ≥ 500 lines. For smaller logs, call `reduce_log` manually.  
 Check `~/.claude/settings.json` (user-level) or `.claude/settings.json` (project-level) for a `hooks.UserPromptSubmit` entry.
+
+**Windows: `npx logreduce-mcp ...` just opens the `.js` file in a text editor**  
+Some corporate Windows machines reassign the `.js` file association away from
+Node/Windows Script Host to a text editor (a common security hardening step),
+so `npx` ends up "opening" the resolved script instead of running it with
+`node`. Workarounds:
+- Install globally and run the generated shim directly (it explicitly wraps
+  the call with `node.exe`, bypassing the file association):
+  ```powershell
+  npm install -g logreduce-mcp
+  logreduce-mcp --install --editor=cursor
+  ```
+- If the same problem prevents the editor from *launching* the MCP server at
+  runtime (config uses `"command": "npx"`), skip MCP altogether and use the
+  [rules-based Cursor integration](#cursor-without-nodenpm-rules-based) instead
+  — it only needs the standalone `logreduce` binary, no Node/npm at all.
 
 **Cursor: `reduce_log` not in tool list**  
 Check `.cursor/mcp.json` exists and is valid JSON. Run `npx logreduce-mcp` in a terminal to see if the server starts without errors, then reload Cursor.
