@@ -2,6 +2,7 @@
 name = "logreduce"
 version = "0.2.2"
 edition = "2021"
+license = "Apache-2.0"
 
 [[bin]]
 name = "logreduce"
