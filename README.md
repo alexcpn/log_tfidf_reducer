@@ -7,7 +7,9 @@ Before:  1,000,000 lines  →  12,803,209 tokens  →  ~$38/question
 After:         374 lines  →       7,504 tokens  →  ~$0.02/question
 ```
 
-Works standalone as a CLI, or transparently inside **Claude Code**, **Cursor**, and **GitHub Copilot** — one static binary, no Node/npm required anywhere.
+Works standalone as a CLI, or transparently inside **Claude Code**, **Codex**, **Cursor**, and **GitHub Copilot** — one static binary, no Node/npm required anywhere.
+
+This project grew out of [aiops_logreduction](https://github.com/alexcpn/aiops_logreduction), an earlier experiment in suppressing periodically repeating logs and surfacing the rare ones with TF-IDF ranking and time-series fitting.
 
 ---
 
