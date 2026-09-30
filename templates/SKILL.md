@@ -5,7 +5,7 @@ description: Reduce large log files with logreduce before reading them. Use when
 
 When you encounter a log file — whether the user names it, you find it via
 `find`/`grep`/`ls`, or it appears in command output — that is roughly 500
-lines or longer, do NOT read it directly with `Read` or `cat`. Instead:
+lines or longer, do NOT read it directly (file-read tool, `cat`, etc.). Instead:
 
 1. Run `logreduce <path-to-file>` in the terminal first.
 2. Read the reduced output. It keeps every error, warning, and unique event
@@ -15,13 +15,11 @@ lines or longer, do NOT read it directly with `Read` or `cat`. Instead:
    `logreduce <path-to-file> --context 5` or a larger `--budget` (e.g.
    `--budget 32000`).
 
+If a hook already injected a reduced log for a file (a block starting
+`logreduce hook:`), use that — don't reduce the same file again.
+
 Files under ~500 lines are small enough to read directly — skip logreduce
 for those.
-
-This complements the `logreduce hook` (UserPromptSubmit) already installed in
-this project's `.claude/settings.json`, which deterministically reduces logs
-*named or pasted directly in your prompt*. This skill covers the case the
-hook can't see: logs you discover yourself mid-session.
 
 Requires the `logreduce` binary on PATH — download from
 https://github.com/alexcpn/log_tfidf_reducer/releases for your OS platform.

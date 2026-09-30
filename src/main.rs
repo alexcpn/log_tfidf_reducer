@@ -40,7 +40,7 @@ fn run_install(args: &[String]) {
     }
 
     let Some(editor) = editor else {
-        eprintln!("Error: `install` requires --editor=<claude-code|cursor|copilot>");
+        eprintln!("Error: `install` requires --editor=<{}>", install::EDITORS);
         process::exit(1);
     };
 
@@ -61,8 +61,8 @@ fn run_install(args: &[String]) {
     version,
     about = "Reduce noisy logs to an LLM-ready file",
     after_help = "Editor integration (no Node/npm — single static binary):\n  \
-                  logreduce hook                                 Claude Code UserPromptSubmit hook (reads/writes JSON on stdio)\n  \
-                  logreduce install --editor=<claude-code|cursor|copilot>   Write the integration files for an editor"
+                  logreduce hook                        UserPromptSubmit hook for Claude Code / Codex / Copilot (JSON on stdio)\n  \
+                  logreduce install --editor=<claude-code|codex|cursor|copilot|all>   Write the integration files"
 )]
 struct Cli {
     /// Input log file (omit or use - for stdin)

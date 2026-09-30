@@ -1,36 +1,138 @@
-//! Writes editor-integration files for Claude Code, Cursor, and GitHub
-//! Copilot — a deterministic hook entry for Claude Code (this binary doubles
-//! as the hook via `logreduce hook`), and static rule/instruction files for
-//! Cursor and Copilot that tell the agent to shell out to `logreduce`
-//! directly. No servers, no Node, no npm.
+//! Writes editor-integration files for Claude Code, Codex, Cursor, and GitHub
+//! Copilot. Every editor gets the same portable `SKILL.md` (agentskills.io
+//! format) telling the agent to shell out to `logreduce`; editors whose
+//! `UserPromptSubmit` hook can inject context (Claude Code, Codex, VS Code
+//! Copilot) also get a deterministic hook entry — this binary doubles as the
+//! hook via `logreduce hook`. No servers, no Node, no npm.
+//!
+//! Skill locations: Claude Code reads `.claude/skills/`; Codex, Cursor, and
+//! VS Code Copilot all read `.agents/skills/`. Codex, Cursor, and Copilot
+//! also read `AGENTS.md`, which gets a one-line pointer to the skill.
 
 use std::fs;
 use std::io;
 use std::path::Path;
 
 const HOOK_COMMAND: &str = "logreduce hook";
-const CURSOR_RULES_TEMPLATE: &str = include_str!("../templates/cursor-rules.mdc");
-const COPILOT_INSTRUCTIONS_TEMPLATE: &str = include_str!("../templates/copilot-instructions.md");
-const CLAUDE_SKILL_TEMPLATE: &str = include_str!("../templates/claude-skill.md");
+const SKILL_TEMPLATE: &str = include_str!("../templates/SKILL.md");
+const AGENTS_MD_TEMPLATE: &str = include_str!("../templates/agents-md.md");
+const AGENTS_MD_MARKER: &str = "Reducing large log files with logreduce";
+
+pub const EDITORS: &str = "claude-code | codex | cursor | copilot | all";
 
 pub fn run(editor: &str, project_root: &Path) -> io::Result<()> {
     match editor {
         "claude-code" => install_claude_code(project_root),
+        "codex" => install_codex(project_root),
         "cursor" => install_cursor(project_root),
         "copilot" => install_copilot(project_root),
+        "all" => {
+            install_claude_code(project_root)?;
+            install_codex(project_root)?;
+            install_cursor(project_root)?;
+            install_copilot(project_root)
+        }
         other => {
-            eprintln!("Error: unknown editor '{other}' (expected: claude-code | cursor | copilot)");
+            eprintln!("Error: unknown editor '{other}' (expected: {EDITORS})");
             std::process::exit(1);
         }
     }
 }
 
 fn install_claude_code(project_root: &Path) -> io::Result<()> {
-    let claude_dir = project_root.join(".claude");
-    let settings_path = claude_dir.join("settings.json");
-    fs::create_dir_all(&claude_dir)?;
+    let settings_path = project_root.join(".claude").join("settings.json");
+    merge_nested_hook(&settings_path)?;
+    println!("✓ Hook merged: {}", settings_path.display());
+    write_skill(&project_root.join(".claude"))?;
 
-    let mut settings = read_json_object(&settings_path);
+    println!("Claude Code: start a new session to activate. Log paths in your prompt are reduced");
+    println!("by the hook; logs Claude discovers mid-session are covered by the skill.\n");
+    Ok(())
+}
+
+fn install_codex(project_root: &Path) -> io::Result<()> {
+    let hooks_path = project_root.join(".codex").join("hooks.json");
+    merge_nested_hook(&hooks_path)?;
+    println!("✓ Hook merged: {}", hooks_path.display());
+    write_skill(&project_root.join(".agents"))?;
+    write_agents_md(project_root)?;
+
+    println!("Codex: run `/hooks` once to review and trust the logreduce hook.\n");
+    Ok(())
+}
+
+fn install_cursor(project_root: &Path) -> io::Result<()> {
+    write_skill(&project_root.join(".agents"))?;
+    write_agents_md(project_root)?;
+
+    // Cursor's `beforeSubmitPrompt` hook can only allow or block a prompt,
+    // not add context, so Cursor gets the skill alone.
+    println!(
+        "Cursor: reload to pick up the skill (Cursor has no context-injecting prompt hook).\n"
+    );
+    Ok(())
+}
+
+fn install_copilot(project_root: &Path) -> io::Result<()> {
+    let hooks_dir = project_root.join(".github").join("hooks");
+    fs::create_dir_all(&hooks_dir)?;
+    let hooks_path = hooks_dir.join("logreduce.json");
+    write_json(
+        &hooks_path,
+        &serde_json::json!({
+            "hooks": {
+                "UserPromptSubmit": [{ "type": "command", "command": HOOK_COMMAND }]
+            }
+        }),
+    )?;
+    println!("✓ Hook written: {}", hooks_path.display());
+    write_skill(&project_root.join(".agents"))?;
+    write_agents_md(project_root)?;
+
+    println!("Copilot: use Agent mode in VS Code Copilot Chat.\n");
+    Ok(())
+}
+
+/// Writes `<base>/skills/logreduce/SKILL.md`.
+fn write_skill(base: &Path) -> io::Result<()> {
+    let skill_dir = base.join("skills").join("logreduce");
+    fs::create_dir_all(&skill_dir)?;
+    let skill_path = skill_dir.join("SKILL.md");
+    fs::write(&skill_path, SKILL_TEMPLATE)?;
+    println!("✓ Skill written: {}", skill_path.display());
+    Ok(())
+}
+
+/// Appends the logreduce pointer section to `AGENTS.md` unless present.
+fn write_agents_md(project_root: &Path) -> io::Result<()> {
+    let dest = project_root.join("AGENTS.md");
+    let mut content = String::new();
+    if dest.exists() {
+        content = fs::read_to_string(&dest)?;
+        if content.contains(AGENTS_MD_MARKER) {
+            println!("✓ AGENTS.md pointer already present: {}", dest.display());
+            return Ok(());
+        }
+        if !content.ends_with('\n') {
+            content.push('\n');
+        }
+        content.push('\n');
+    }
+    content.push_str(AGENTS_MD_TEMPLATE);
+    fs::write(&dest, content)?;
+    println!("✓ AGENTS.md pointer written: {}", dest.display());
+    Ok(())
+}
+
+/// Merges our `UserPromptSubmit` entry into a Claude-Code-style hooks file
+/// (`{ "hooks": { "UserPromptSubmit": [{ "matcher", "hooks": [...] }] } }`),
+/// the format shared by `.claude/settings.json` and `.codex/hooks.json`.
+/// Preserves every other key and entry; idempotent.
+fn merge_nested_hook(path: &Path) -> io::Result<()> {
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent)?;
+    }
+    let mut settings = read_json_object(path);
 
     let hooks = settings
         .entry("hooks".to_string())
@@ -48,27 +150,14 @@ fn install_claude_code(project_root: &Path) -> io::Result<()> {
     }
     let entries_arr = entries.as_array_mut().unwrap();
 
-    let already_present = entries_arr.iter().any(hook_entry_matches);
-    if !already_present {
+    if !entries_arr.iter().any(hook_entry_matches) {
         entries_arr.push(serde_json::json!({
             "matcher": "",
             "hooks": [{ "type": "command", "command": HOOK_COMMAND }],
         }));
     }
 
-    write_json(&settings_path, &serde_json::Value::Object(settings))?;
-    println!("✓ Settings merged: {}", settings_path.display());
-
-    let skill_dir = claude_dir.join("skills").join("logreduce");
-    fs::create_dir_all(&skill_dir)?;
-    let skill_path = skill_dir.join("SKILL.md");
-    fs::write(&skill_path, CLAUDE_SKILL_TEMPLATE)?;
-    println!("✓ Skill written: {}", skill_path.display());
-
-    println!("\nClaude Code integration installed. Start a new session to activate.");
-    println!("Any prompt with a log path or large inline log is now silently reduced before Claude reads it (hook),");
-    println!("and logs Claude discovers itself mid-session are covered by the `logreduce` skill.");
-    Ok(())
+    write_json(path, &serde_json::Value::Object(settings))
 }
 
 /// Matches an existing hook entry that already references our command, in
@@ -86,42 +175,6 @@ fn hook_entry_matches(entry: &serde_json::Value) -> bool {
                 .any(|h| h.get("command").and_then(|c| c.as_str()) == Some(HOOK_COMMAND))
         })
         .unwrap_or(false)
-}
-
-fn install_cursor(project_root: &Path) -> io::Result<()> {
-    let rules_dir = project_root.join(".cursor").join("rules");
-    fs::create_dir_all(&rules_dir)?;
-    let dest = rules_dir.join("logreduce.mdc");
-    fs::write(&dest, CURSOR_RULES_TEMPLATE)?;
-    println!("✓ Cursor rule written: {}", dest.display());
-    println!("Reload Cursor — the agent will run `logreduce` on large logs before reading them.");
-    Ok(())
-}
-
-fn install_copilot(project_root: &Path) -> io::Result<()> {
-    let github_dir = project_root.join(".github");
-    fs::create_dir_all(&github_dir)?;
-    let dest = github_dir.join("copilot-instructions.md");
-
-    let mut content = String::new();
-    if dest.exists() {
-        content = fs::read_to_string(&dest)?;
-        if content.contains("Reducing large log files with logreduce") {
-            println!("✓ Copilot instructions already present: {}", dest.display());
-            println!("Switch to Agent mode in Copilot Chat to use it.");
-            return Ok(());
-        }
-        if !content.ends_with('\n') {
-            content.push('\n');
-        }
-        content.push('\n');
-    }
-    content.push_str(COPILOT_INSTRUCTIONS_TEMPLATE);
-    fs::write(&dest, content)?;
-
-    println!("✓ Copilot instructions written: {}", dest.display());
-    println!("Switch to Agent mode in Copilot Chat to use it.");
-    Ok(())
 }
 
 /// Reads a JSON object from `path`, returning an empty object if the file is
@@ -166,14 +219,22 @@ mod tests {
         dir
     }
 
+    fn read_json(path: &Path) -> serde_json::Value {
+        serde_json::from_str(&fs::read_to_string(path).unwrap()).unwrap()
+    }
+
+    fn assert_skill(path: &Path) {
+        let content = fs::read_to_string(path).unwrap();
+        assert!(content.starts_with("---\nname: logreduce"));
+        assert!(content.contains("logreduce <path-to-file>"));
+    }
+
     #[test]
     fn claude_code_install_creates_hook_entry() {
         let dir = temp_project_dir();
         install_claude_code(&dir).unwrap();
 
-        let settings: serde_json::Value =
-            serde_json::from_str(&fs::read_to_string(dir.join(".claude/settings.json")).unwrap())
-                .unwrap();
+        let settings = read_json(&dir.join(".claude/settings.json"));
         let entries = settings["hooks"]["UserPromptSubmit"].as_array().unwrap();
         assert_eq!(entries.len(), 1);
         assert_eq!(entries[0]["hooks"][0]["command"], HOOK_COMMAND);
@@ -185,11 +246,7 @@ mod tests {
     fn claude_code_install_writes_skill_file() {
         let dir = temp_project_dir();
         install_claude_code(&dir).unwrap();
-
-        let content = fs::read_to_string(dir.join(".claude/skills/logreduce/SKILL.md")).unwrap();
-        assert!(content.starts_with("---\nname: logreduce"));
-        assert!(content.contains("logreduce <path-to-file>"));
-
+        assert_skill(&dir.join(".claude/skills/logreduce/SKILL.md"));
         fs::remove_dir_all(&dir).ok();
     }
 
@@ -199,9 +256,7 @@ mod tests {
         install_claude_code(&dir).unwrap();
         install_claude_code(&dir).unwrap();
 
-        let settings: serde_json::Value =
-            serde_json::from_str(&fs::read_to_string(dir.join(".claude/settings.json")).unwrap())
-                .unwrap();
+        let settings = read_json(&dir.join(".claude/settings.json"));
         let entries = settings["hooks"]["UserPromptSubmit"].as_array().unwrap();
         assert_eq!(
             entries.len(),
@@ -225,9 +280,7 @@ mod tests {
 
         install_claude_code(&dir).unwrap();
 
-        let settings: serde_json::Value =
-            serde_json::from_str(&fs::read_to_string(claude_dir.join("settings.json")).unwrap())
-                .unwrap();
+        let settings = read_json(&claude_dir.join("settings.json"));
         assert_eq!(settings["otherSetting"], "keepme");
         let entries = settings["hooks"]["UserPromptSubmit"].as_array().unwrap();
         assert_eq!(
@@ -240,33 +293,59 @@ mod tests {
     }
 
     #[test]
-    fn cursor_install_writes_rules_file() {
+    fn codex_install_writes_hook_skill_and_agents_md() {
         let dir = temp_project_dir();
-        install_cursor(&dir).unwrap();
+        install_codex(&dir).unwrap();
+        install_codex(&dir).unwrap();
 
-        let content = fs::read_to_string(dir.join(".cursor/rules/logreduce.mdc")).unwrap();
-        assert!(content.contains("logreduce <path-to-file>"));
+        let hooks = read_json(&dir.join(".codex/hooks.json"));
+        let entries = hooks["hooks"]["UserPromptSubmit"].as_array().unwrap();
+        assert_eq!(entries.len(), 1);
+        assert_eq!(entries[0]["hooks"][0]["command"], HOOK_COMMAND);
+        assert_skill(&dir.join(".agents/skills/logreduce/SKILL.md"));
+        assert!(fs::read_to_string(dir.join("AGENTS.md"))
+            .unwrap()
+            .contains(AGENTS_MD_MARKER));
 
         fs::remove_dir_all(&dir).ok();
     }
 
     #[test]
-    fn copilot_install_writes_instructions_file() {
+    fn cursor_install_writes_skill_without_hook() {
+        let dir = temp_project_dir();
+        install_cursor(&dir).unwrap();
+
+        assert_skill(&dir.join(".agents/skills/logreduce/SKILL.md"));
+        assert!(!dir.join(".cursor").exists());
+
+        fs::remove_dir_all(&dir).ok();
+    }
+
+    #[test]
+    fn copilot_install_writes_flat_hook_file() {
         let dir = temp_project_dir();
         install_copilot(&dir).unwrap();
 
-        let content = fs::read_to_string(dir.join(".github/copilot-instructions.md")).unwrap();
-        assert!(content.contains("Reducing large log files with logreduce"));
-
-        // Re-running must not duplicate the section.
-        install_copilot(&dir).unwrap();
-        let content2 = fs::read_to_string(dir.join(".github/copilot-instructions.md")).unwrap();
+        let hooks = read_json(&dir.join(".github/hooks/logreduce.json"));
         assert_eq!(
-            content2
-                .matches("Reducing large log files with logreduce")
-                .count(),
-            1
+            hooks["hooks"]["UserPromptSubmit"][0]["command"],
+            HOOK_COMMAND
         );
+        assert_skill(&dir.join(".agents/skills/logreduce/SKILL.md"));
+
+        fs::remove_dir_all(&dir).ok();
+    }
+
+    #[test]
+    fn agents_md_pointer_is_appended_once() {
+        let dir = temp_project_dir();
+        fs::write(dir.join("AGENTS.md"), "# Existing\nkeep me").unwrap();
+
+        run("all", &dir).unwrap();
+
+        let content = fs::read_to_string(dir.join("AGENTS.md")).unwrap();
+        assert!(content.starts_with("# Existing\nkeep me\n\n"));
+        assert_eq!(content.matches(AGENTS_MD_MARKER).count(), 1);
 
         fs::remove_dir_all(&dir).ok();
     }

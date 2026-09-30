@@ -1,5 +1,13 @@
 # Contract: Claude Code UserPromptSubmit Hook
 
+> **Superseded (2026-09-30).** The shipped hook is `logreduce hook` (Rust, no
+> Node). `UserPromptSubmit` cannot rewrite the prompt in Claude Code, Codex, or
+> VS Code Copilot — the `{"prompt": ...}` output below was silently ignored. The
+> hook now emits `{"hookSpecificOutput": {"hookEventName": "UserPromptSubmit",
+> "additionalContext": "<reduced log>"}}` for file paths only; inline pasted
+> logs are passed through, since a reduced copy alongside them would only add
+> tokens. See `src/hook.rs`.
+
 ## Hook Registration
 
 **Event**: `UserPromptSubmit`

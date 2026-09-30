@@ -52,39 +52,41 @@ kubectl logs my-pod | logreduce > incident.log         # pipe from kubectl
 ### 3. Editor integration (once per machine + once per repo)
 
 The binary installs its own integration files — no MCP server, no Node, no npm.
-Run one command per editor from your project root:
+Run from your project root:
 
 ```bash
 cd your-project/
 
-logreduce install --editor=claude-code   # writes .claude/settings.json (hook) + .claude/skills/logreduce/
-logreduce install --editor=cursor        # writes .cursor/rules/logreduce.mdc
-logreduce install --editor=copilot       # writes .github/copilot-instructions.md
+logreduce install --editor=all           # every editor below
+# or one at a time:
+logreduce install --editor=claude-code   # .claude/settings.json (hook) + .claude/skills/logreduce/
+logreduce install --editor=codex         # .codex/hooks.json (hook) + .agents/skills/logreduce/ + AGENTS.md
+logreduce install --editor=copilot       # .github/hooks/logreduce.json (hook) + .agents/skills/logreduce/ + AGENTS.md
+logreduce install --editor=cursor        # .agents/skills/logreduce/ + AGENTS.md
 
-git add .claude/ .cursor/ .github/ && git commit -m "chore: add logreduce editor integration"
+git add .claude/ .codex/ .agents/ .github/ AGENTS.md && git commit -m "chore: add logreduce editor integration"
 ```
 
-**Claude Code** — two complementary layers:
-- a **hook** (`logreduce hook`, the same binary in hook mode) deterministically
-  intercepts every prompt and silently reduces any log path or large inline
-  log block *named or pasted in your prompt* before Claude reads it — not
-  dependent on the model remembering to do it;
-- a **skill** (`.claude/skills/logreduce/`) covers what the hook can't see —
-  logs Claude *discovers itself* mid-session (via `find`, `grep`, command
-  output, etc.) — telling it to run `logreduce <path>` instead of reading
-  large logs directly.
+Every editor gets the same portable [`SKILL.md`](templates/SKILL.md)
+([Agent Skills](https://agentskills.io) format): it tells the agent to run
+`logreduce <path>` instead of reading a large log directly, covering logs the
+agent *discovers itself* mid-session. Claude Code reads it from
+`.claude/skills/`; Codex, Cursor and VS Code Copilot read `.agents/skills/`.
+`AGENTS.md` gets a one-line pointer to the skill.
 
-**Cursor** — installs a [project rule](.cursor/rules) that tells the agent to
-run `logreduce <path>` itself in the terminal before reading large logs. Reload
-Cursor after installing.
+Where the editor supports it, a **hook** (`logreduce hook`, the same binary in
+hook mode) runs on every prompt: if the prompt names a log file of 500+ lines,
+the reduced log is injected as context before the model starts — deterministic,
+not dependent on the model remembering the skill. Hooks can add context but not
+rewrite the prompt, so logs *pasted inline* are left as-is — save them to a file
+and pass the path instead.
 
-**GitHub Copilot (VS Code)** — installs `.github/copilot-instructions.md` with
-the same instruction. Requires **Agent mode** in Copilot Chat (custom
-instructions and terminal commands aren't available in standard chat).
-
-All three approaches rely on the agent shelling out to `logreduce` directly —
-see [`templates/`](templates/) for the exact rule/instruction text each
-installer writes.
+| Editor | Skill | Prompt hook | Notes |
+|---|---|---|---|
+| Claude Code | ✓ | ✓ | Start a new session after installing |
+| Codex | ✓ | ✓ | Run `/hooks` once to trust the hook |
+| GitHub Copilot (VS Code) | ✓ | ✓ | Agent mode only |
+| Cursor | ✓ | — | Cursor's `beforeSubmitPrompt` can only allow/block, not add context |
 
 ---
 
