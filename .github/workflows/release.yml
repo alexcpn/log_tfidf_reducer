@@ -84,7 +84,9 @@ jobs:
           path: artifacts/
 
       - name: Package Spec Kit extension
-        run: cd speckit && zip -r ../artifacts/logreduce-speckit.zip .
+        run: |
+          cp LICENSE speckit/LICENSE
+          cd speckit && zip -r ../artifacts/logreduce-speckit.zip .
 
       - name: Create release
         uses: softprops/action-gh-release@v2
