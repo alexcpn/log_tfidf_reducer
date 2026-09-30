@@ -88,6 +88,13 @@ and pass the path instead.
 | GitHub Copilot (VS Code) | ✓ | ✓ | Agent mode only |
 | Cursor | ✓ | — | Cursor's `beforeSubmitPrompt` can only allow/block, not add context |
 
+### 4. Spec Kit bug workflow (optional)
+
+[`speckit/`](speckit/) is a [Spec Kit](https://github.com/github/spec-kit)
+extension that adds a log-intake step to the bundled `bug` triage workflow:
+`/speckit.logreduce.intake` reduces the logs attached to a bug report into
+`.specify/bugs/<slug>/evidence.md` for `/speckit.bug.assess` to work from.
+
 ---
 
 ## How it works

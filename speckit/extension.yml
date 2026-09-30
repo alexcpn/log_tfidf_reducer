@@ -1,0 +1,40 @@
+schema_version: "1.0"
+
+extension:
+  id: logreduce
+  name: "Log Intake (logreduce)"
+  version: "0.1.0"
+  description: "Reduce large logs attached to a bug report into .specify/bugs/<slug>/evidence.md before assessment"
+  author: "Alex Punnen"
+  repository: https://github.com/alexcpn/log_tfidf_reducer
+  homepage: https://github.com/alexcpn/log_tfidf_reducer/tree/main/speckit
+  license: Apache-2.0
+
+requires:
+  speckit_version: ">=0.9.0"
+  tools:
+    - name: logreduce
+      version: ">=0.2.0"
+      required: true
+
+provides:
+  commands:
+    - name: speckit.logreduce.intake
+      file: commands/speckit.logreduce.intake.md
+      description: "Reduce the log files in a bug report with logreduce and save them as BUG_DIR/evidence.md"
+
+hooks:
+  # Fires once the bundled `bug` extension emits this event (proposed
+  # upstream); until then, run /speckit.logreduce.intake before
+  # /speckit.bug.assess.
+  before_bug_assess:
+    command: speckit.logreduce.intake
+    optional: true
+    prompt: "Reduce attached logs with logreduce before assessing?"
+    description: "Condense large logs into BUG_DIR/evidence.md"
+
+tags:
+  - "bug"
+  - "logs"
+  - "triage"
+  - "debugging"

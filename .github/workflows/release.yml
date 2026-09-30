@@ -83,6 +83,9 @@ jobs:
         with:
           path: artifacts/
 
+      - name: Package Spec Kit extension
+        run: cd speckit && zip -r ../artifacts/logreduce-speckit.zip .
+
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
@@ -127,7 +130,12 @@ jobs:
             cargo install logreduce
             ```
 
-            ### Editor integration (Claude Code / Cursor / Copilot — no Node/npm)
+            ### Editor integration (Claude Code / Codex / Cursor / Copilot — no Node/npm)
             ```bash
-            logreduce install --editor=claude-code   # or cursor / copilot
+            logreduce install --editor=all   # or claude-code / codex / cursor / copilot
+            ```
+
+            ### Spec Kit extension
+            ```bash
+            specify extension add logreduce --from https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/logreduce-speckit.zip
             ```
