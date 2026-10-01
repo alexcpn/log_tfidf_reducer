@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: logreduce
   name: "Log Intake (logreduce)"
-  version: "0.3.0"
+  version: "0.3.1"
   description: "Reduce large logs attached to a bug report into .specify/bugs/<slug>/evidence.md before assessment"
   author: "Alex Punnen"
   repository: https://github.com/alexcpn/log_tfidf_reducer
@@ -14,7 +14,7 @@ requires:
   speckit_version: ">=0.9.0"
   tools:
     - name: logreduce
-      version: ">=0.2.0"
+      version: ">=0.3.1"
       required: true
 
 provides:
