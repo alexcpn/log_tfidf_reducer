@@ -1,0 +1,660 @@
+# LOG SUMMARY  |  719 lines → 596 kept (82%)
+# levels: FATAL 69  ERROR 11  WARN 17  INFO 0  OTHER 622
+# top templates: "[<TS>] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@39ee94de to Target : CLASS {<REDACTED:hi>;} {} {V}" ×18 ; "[<TS>] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate" ×10 ; "[<TS>] [main/DEBUG] [ne.mi.co.tr.CoreModBaseTransformer/COREMOD]: Transforming <REDACTED:hi>" ×6 ; "/****************************************************************************************************************************************************************************************************************/" ×6 ; "[<TS>] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file mixinextras-forge-0.3.6.jar with {mixinextras} mods - versions {0.3.6}" ×4
+# Note: token counts use tiktoken cl100k_base — slightly conservative for Claude.
+
+"C:\Program Files\Java\jdk-17\bin\java.exe" -Dmixin.env.remapRefMap=true -DignoreList=bootstraplauncher,securejarhandler,asm-commons,asm-util,asm-analysis,asm-tree,asm,JarJarFileSystems,client-extra,fmlcore,javafmllanguage,lowcodelanguage,mclanguage,forge- -Dforge.enabledGameTestNamespaces=arrzenhanced -Dforge.logging.console.level=debug -Dmixin.dumpTargetOnFailure=true -Dforge.logging.markers=REGISTRIES -DlegacyClassPath.file=F:\Git\Arrz\build\classpath\runClient_minecraftClasspath.txt -Dmixin.env.refMapRemappingFile=F:\Git\Arrz/build/createSrgToMcp/output.srg -Dnet.minecraftforge.gradle.GradleStart.srg.srg-mcp=F:\Git\Arrz\build\createSrgToMcp\output.srg -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Dforge.enableGameTest=true -Dmixin.debug.verbose=true -Dmixin.debug.export=true -Djava.net.preferIPv6Addresses=system -p C:\Users\Luke\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\1.1.2\c546e00443d8432cda6baa1c860346980742628\bootstraplauncher-1.1.2.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\2.1.10\51e6a22c6c716beb11e244bf5b8be480f51dd6b5\securejarhandler-2.1.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.8\36e4d212970388e5bd2c5180292012502df461bb\asm-commons-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.8\395f1c1f035258511f27bc9b2583d76e4b143f59\asm-util-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.8\b9747a320844b6cb1eacd90d8ecfd260a16c01d3\asm-analysis-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.8\18419ca5b77a2f81097c741e7872e6ab8d2f40d\asm-tree-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.8\dc19ecb3f7889b7860697215cae99c0f9b6f6b4b\asm-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarFileSystems\0.3.19\2464eb7d6b9ddb9db36a82cf8a95193e5c6fe020\JarJarFileSystems-0.3.19.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.2\lib\idea_rt.jar=52465:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.2\bin" -Dfile.encoding=UTF-8 -classpath F:\Git\Arrz\build\classes\java\main;F:\Git\Arrz\build\resources\main;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\latvian\mods\kubejs-forge\2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1\kubejs-forge-2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\latvian\mods\rhino-forge\2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1\rhino-forge-2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\architectury\architectury-forge\9.1.13_mapped_parchment_2023.09.03-1.20.1\architectury-forge-9.1.13_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\io\github\llamalad7\mixinextras-common\0.2.1_mapped_parchment_2023.09.03-1.20.1\mixinextras-common-0.2.1_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1\forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar;C:\Users\Luke\.gradle\caches\forge_gradle\minecraft_repo\versions\1.20.1\client-extra.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlloader\1.20.1-47.4.10\55c46d27e7cfc8b829af8a28e562a7d290fa38b6\fmlloader-1.20.1-47.4.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarSelector\0.3.19\376cc9c8ea60720cf027c01fc033de915699801c\JarJarSelector-0.3.19.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarMetadata\0.3.19\83feaa9b770e6ac0e96ee4fc23fa89325c5fe2\JarJarMetadata-0.3.19.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\ca.weblite\java-objc-bridge\1.1\1227f9e0666314f9de41477e3ec277e542ed7f7b\java-objc-bridge-1.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\forgespi\7.0.1\3b4972a0cdb135853dba219be61a79b22cff1309\forgespi-7.0.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mergetool\1.1.5\f3da18e12c696d35a47c82cbb2cc8b5aa15e1154\mergetool-1.1.5-api.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\24.0.1\13c5c75c4206580aa4d683bffee658caae6c9f43\annotations-24.0.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\2.1.10\51e6a22c6c716beb11e244bf5b8be480f51dd6b5\securejarhandler-2.1.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\coremods\5.2.4\e30bab269d896613e38396274711410b3a0e4b87\coremods-5.2.4.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\cpw.mods\modlauncher\10.0.9\6d9443f56f50bb85cea383686ff9c867391458b\modlauncher-10.0.9.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.openjdk.nashorn\nashorn-core\15.4\f67f5ffaa5f5130cf6fb9b133da00c7df3b532a5\nashorn-core-15.4.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.8\36e4d212970388e5bd2c5180292012502df461bb\asm-commons-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.8\395f1c1f035258511f27bc9b2583d76e4b143f59\asm-util-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.8\b9747a320844b6cb1eacd90d8ecfd260a16c01d3\asm-analysis-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.8\18419ca5b77a2f81097c741e7872e6ab8d2f40d\asm-tree-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.8\dc19ecb3f7889b7860697215cae99c0f9b6f6b4b\asm-9.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\accesstransformers\8.0.4\272d240aa73f42195b2a68e2ebd8b701ecf41f63\accesstransformers-8.0.4.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4-runtime\4.9.1\428664f05d2b7f7b7610204b5aa7c1763f62011a\antlr4-runtime-4.9.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.10\94dae566be650566ea9115a1414ab76bfcf5a804\fmlcore-1.20.1-47.4.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\eventbus\6.0.5\699143dd438431d06b57416944f7cedbe52e1475\eventbus-6.0.5.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\unsafe\0.2.0\54d7a0a5e8fdb71b973025caa46f341ae5904f39\unsafe-0.2.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\toml\3.6.4\51d6cefb2b55ee55ee26b16391212fb2c7dfb4f4\toml-3.6.4.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\core\3.6.4\510f174abbf1c947494db50ef2445683bd52c230\core-3.6.4.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.maven\maven-artifact\3.8.5\4433f50c07debefaed0553bd0068f4f48d449313\maven-artifact-3.8.5.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.jodah\typetools\0.6.3\a01aaa6ddaea9ec07ec4f209487b7a46a526283a\typetools-0.6.3.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecrell\terminalconsoleappender\1.2.0\96d02cd3b384ff015a8fef4223bcb4ccf1717c95\terminalconsoleappender-1.2.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.jline\jline-reader\3.12.1\4382ab1382c7b6f379377ed5f665dc2f6e1218bc\jline-reader-3.12.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.jline\jline-terminal\3.12.1\c777448314e050d980a6b697c140f3bfe9eb7416\jline-terminal-3.12.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.spongepowered\mixin\0.8.5\9d1c0c3a304ae6697ecd477218fa61b850bf57fc\mixin-0.8.5.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\1.1.2\c546e00443d8432cda6baa1c860346980742628\bootstraplauncher-1.1.2.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarFileSystems\0.3.19\2464eb7d6b9ddb9db36a82cf8a95193e5c6fe020\JarJarFileSystems-0.3.19.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlearlydisplay\1.20.1-47.4.10\a262fa19e65f643aae210b4275b53bee053aa765\fmlearlydisplay-1.20.1-47.4.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.10\ccc533c7dd67e0983217197d7549c8b49e7ab453\javafmllanguage-1.20.1-47.4.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.10\e9a2879fe3612ea34b9728ec2633304a1e67d480\lowcodelanguage-1.20.1-47.4.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.10\ec5cefbbc65c67302b8fac317010faab85fa14b9\mclanguage-1.20.1-47.4.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.mojang\datafixerupper\6.0.8\3ba4a30557a9b057760af4011f909ba619fc5125\datafixerupper-6.0.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\31.1-jre\60458f877d055d0c9114d9e1a2efb737b4bc282c\guava-31.1-jre.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.github.oshi\oshi-core\6.2.2\54f5efc19bca95d709d9a37d19ffcbba3d21c1a6\oshi-core-6.2.2.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.10\dd9b193aef96e973d5a11ab13cd17430c2e4306b\gson-2.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j\71.1\9e7d3304c23f9ba5cb71915f7cce23231a57a445\icu4j-71.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\4.0.43\2ff9d747a77570a07a60d32ac77eb6162ad2a2d9\authlib-4.0.43.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.mojang\blocklist\1.0.10\5c685c5ffa94c4cd39496c7184c1d122e515ecef\blocklist-1.0.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.mojang\brigadier\1.1.8\5244ce82c3337bba4a196a3ce858bfaecc74404a\brigadier-1.1.8.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.mojang\logging\1.1.1\832b8e6674a9b325a5175a3a6267dfaf34c85139\logging-1.1.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.mojang\patchy\2.2.10\da05971b07cbb379d002cf7eaec6a2048211fefc\patchy-2.2.10.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.mojang\text2speech\1.17.9\3cad216e3a7f0c19b4b394388bc9ffc446f13b14\text2speech-1.17.9.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.5.13\e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada\httpclient-4.5.13.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.15\49d94806b6e3dc933dacbd8acb0fdbab8ebd1e5d\commons-codec-1.15.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.11.0\a2503f302b11ebde7ebc3df41daebe0e4eea3689\commons-io-2.11.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.2\4bfc12adfe4842bf07b657f0369c4cb522955686\commons-logging-1.2.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-handler\4.1.82.Final\644041d1fa96a5d3130a29e8978630d716d76e38\netty-handler-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-codec\4.1.82.Final\b77200379acb345a9ffdece1c605e591ac3e4e0a\netty-codec-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-classes-epoll\4.1.82.Final\e7c7dd18deac93105797f30057c912651ea76521\netty-transport-classes-epoll-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-unix-common\4.1.82.Final\3e895b35ca1b8a0eca56cacff4c2dde5d2c6abce\netty-transport-native-unix-common-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport\4.1.82.Final\e431a218d91acb6476ccad5f5aafde50aa3945ca\netty-transport-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-buffer\4.1.82.Final\a544270cf1ae8b8077082f5036436a9a9971ea71\netty-buffer-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-resolver\4.1.82.Final\38f665ae8dcd29032eea31245ba7806bed2e0fa8\netty-resolver-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\io.netty\netty-common\4.1.82.Final\22d148e85c3f5ebdacc0ce1f5aabb1d420f73f3\netty-common-4.1.82.Final.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\it.unimi.dsi\fastutil\8.5.9\bb7ea75ecdb216654237830b3a96d87ad91f8cc5\fastutil-8.5.9.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna-platform\5.12.1\97406a297c852f4a41e688a176ec675f72e8329\jna-platform-5.12.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna\5.12.1\b1e93a735caea94f503e95e6fe79bf9cdc1e985d\jna-5.12.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\5.0.4\4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c\jopt-simple-5.0.4.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.21\4ec95b60d4e86b5c95a0e919cb172a0af98011ef\commons-compress-1.21.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.12.0\c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e\commons-lang3-3.12.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.4.15\7f2e0c573eaa7a74bac2e89b359e1f73d92a0a1d\httpcore-4.4.15.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.19.0\3b6eeb4de4c49c0fe38a4ee27188ff5fee44d0bb\log4j-core-2.19.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-slf4j2-impl\2.19.0\5c04bfdd63ce9dceb2e284b81e96b6a70010ee10\log4j-slf4j2-impl-2.19.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.19.0\ea1b37f38c327596b216542bc636cfdc0b8036fa\log4j-api-2.19.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.joml\joml\1.10.5\22566d58af70ad3d72308bab63b8339906deb649\joml-1.10.5.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\cbac1b8d30cb4795149c1ef540f912671a8616d0\lwjgl-glfw-3.3.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\ed892f945cf7e79c8756796f32d00fa4ceaf573b\lwjgl-glfw-3.3.1-natives-windows.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\beda65ee503443e60aa196d58ed31f8d001dc22a\lwjgl-glfw-3.3.1-natives-windows-arm64.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\b997e3391d6ce8f05487e7335d95c606043884a1\lwjgl-glfw-3.3.1-natives-windows-x86.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\a817bcf213db49f710603677457567c37d53e103\lwjgl-jemalloc-3.3.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\948a89b76a16aa324b046ae9308891216ffce5f9\lwjgl-jemalloc-3.3.1-natives-windows.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\cae85c4edb219c88b6a0c26a87955ad98dc9519d\lwjgl-jemalloc-3.3.1-natives-windows-arm64.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\fb476c8ec110e1c137ad3ce8a7f7bfe6b11c6324\lwjgl-jemalloc-3.3.1-natives-windows-x86.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\2623a6b8ae1dfcd880738656a9f0243d2e6840bd\lwjgl-openal-3.3.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\30a474d0e57193d7bc128849a3ab66bc9316fdb1\lwjgl-openal-3.3.1-natives-windows.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\40d65f1a7368a2aa47336f9cb69f5a190cf9975a\lwjgl-openal-3.3.1-natives-windows-arm64.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\888349f7b1be6fbae58bf8edfb9ef12def04c4e3\lwjgl-openal-3.3.1-natives-windows-x86.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\831a5533a21a5f4f81bbc51bb13e9899319b5411\lwjgl-opengl-3.3.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\c1807e9bd571402787d7e37e3029776ae2513bb8\lwjgl-opengl-3.3.1-natives-windows.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\527d78f1e9056aff3ed02ce93019c73c5e8f1721\lwjgl-opengl-3.3.1-natives-windows-arm64.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\deef3eb9b178ff2ff3ce893cc72ae741c3a17974\lwjgl-opengl-3.3.1-natives-windows-x86.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\b119297cf8ed01f247abe8685857f8e7fcf5980f\lwjgl-stb-3.3.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\86315914ac119efdb02dc9e8e978ade84f1702af\lwjgl-stb-3.3.1-natives-windows.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\fde63cdd2605c00636721a6c8b961e41d1f6b247\lwjgl-stb-3.3.1-natives-windows-arm64.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\a8d41f419eecb430b7c91ea2ce2c5c451cae2091\lwjgl-stb-3.3.1-natives-windows-x86.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\a5d830475ec0958d9fdba1559efa99aef211e6ff\lwjgl-tinyfd-3.3.1-natives-windows.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\83a5e780df610829ff3a737822b4f931cffecd91\lwjgl-tinyfd-3.3.1-natives-windows-arm64.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\842eedd876fae354abc308c98a263f6bbc9e8a4d\lwjgl-tinyfd-3.3.1-natives-windows-x86.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\36c37f16ab611b3aa11f3bcf80b1d509b4ce6b\lwjgl-3.3.1-natives-windows.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\f46cadcf95675908fd3a550d63d9d709cb68998\lwjgl-3.3.1-natives-windows-arm64.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\3b14f4beae9dd39791ec9e12190a9380cd8a3ce6\lwjgl-3.3.1-natives-windows-x86.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.1\f48d81adce2abf5ad3cfe463df517952749e03bc\slf4j-api-2.0.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.machinezoo.noexception\noexception\1.7.1\b65330c98e38a1f915fa54a6e5eca496505e3f0a\noexception-1.7.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4\4.9.1\e92af8ab33e428461927b484e90bb155a4f3a052\antlr4-4.9.1.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.codehaus.plexus\plexus-utils\3.3.0\cf43b5391de623b36fe066a21127baef82c64022\plexus-utils-3.3.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\b421526c5f297295adef1c886e5246c39d4ac629\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-qual\3.12.0\d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5\checker-qual-3.12.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.11.0\c5a0ace696d3f8b1c1d8cc036d8c03cc0cbe6b69\error_prone_annotations-2.11.0.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.3\ba035118bc8bac37d7eff77700720999acd9986d\j2objc-annotations-1.3.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.antlr\ST4\4.3\92f2c1ad8d84abcbeead6cf7f2c53a04166293c2\ST4-4.3.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.antlr\antlr-runtime\3.5.2\cd9cd41361c155f3af0f653009dcecb08d8b4afd\antlr-runtime-3.5.2.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.abego.treelayout\org.abego.treelayout.core\1.0.3\457216e8e6578099ae63667bb1e4439235892028\org.abego.treelayout.core-1.0.3.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.glassfish\javax.json\1.0.4\3178f73569fd7a1e5ffc464e680f7a8cc784b85a\javax.json-1.0.4.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\maven\modrinth\threetag-palladium\4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1\threetag-palladium-4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\net\threetag\palladiumcore-forge\1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1\palladiumcore-forge-1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1-forge.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\kosmx\player-anim\player-animation-lib-forge\1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1\player-animation-lib-forge-1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.20.1\4.8.2_mapped_parchment_2023.09.03-1.20.1\geckolib-forge-1.20.1-4.8.2_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\top\theillusivec4\curios\curios-forge\5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1\curios-forge-5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\com\github\Virtuoel\Pehkui\3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1\Pehkui-3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar;C:\Users\Luke\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.20.1\2023.09.03\parchment-1.20.1-2023.09.03.zip;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-simple\1.7.30\e606eac955f55ecf1d8edcccba04eb8ac98088dd\slf4j-simple-1.7.30.jar;C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\srgutils\0.4.11\fbad1341ffdb47d276bbdc40ecb06da49e053e74\srgutils-0.4.11.jar cpw.mods.bootstraplauncher.BootstrapLauncher --launchTarget forgeclientuserdev --version MOD_DEV --assetIndex 5 --assetsDir C:\Users\Luke\.gradle\caches\forge_gradle\assets --gameDir . --fml.forgeVersion 47.4.10 --fml.mcVersion 1.20.1 --fml.forgeGroup net.minecraftforge --fml.mcpVersion 20230612.114412 --username Player### --mixin.config arrzenhanced.mixins.json
+2025-11-29 13:51:27,101 main WARN Advanced terminal features are not available in this environment
+[13:51:27] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, C:\Users\Luke\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.10, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --username, Player###, --mixin.config, arrzenhanced.mixins.json]
+[13:51:27] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.12 by Oracle Corporation; OS Windows 10 arch amd64 version 10.0
+[13:51:27] [main/DEBUG] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Found launch services [fmlclientdev,forgeclient,minecraft,forgegametestserverdev,fmlserveruserdev,fmlclient,fmldatauserdev,forgeserverdev,forgeserveruserdev,forgeclientdev,forgeclientuserdev,forgeserver,forgedatadev,fmlserver,fmlclientuserdev,fmlserverdev,forgedatauserdev,testharness,forgegametestserveruserdev]
+[13:51:27] [main/DEBUG] [cp.mo.mo.NameMappingServiceHandler/MODLAUNCHER]: Found naming services : [srgtomcp]
+[13:51:27] [main/DEBUG] [cp.mo.mo.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [mixin,eventbus,slf4jfixer,object_holder_definalize,runtime_enum_extender,capability_token_subclass,accesstransformer,runtimedistcleaner]
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLPaths/CORE]: Path GAMEDIR is F:\Git\Arrz\run   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLPaths/CORE]: Path MODSDIR is F:\Git\Arrz\run\mods   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLPaths/CORE]: Path CONFIGDIR is F:\Git\Arrz\run\config   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLPaths/CORE]: Path FMLCONFIG is F:\Git\Arrz\run\config\fml.toml   (×2)
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services:
+[13:51:27] [main/INFO] [ne.mi.fm.lo.ImmediateWindowHandler/]: Loading <REDACTED:hi> fmlearlywindow
+[13:51:27] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[13:51:27] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Found transformer services : [mixin,fml]
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Loading service mixin
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Loaded service mixin
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Loading service fml
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.LauncherVersion/CORE]: Found FMLLauncher version 1.0
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: FML 1.0 loading
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: FML found ModLauncher version : 10.0.9+10.0.9+main.dcd20f30
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: Requesting CoreMods to not apply the fix for ASMAPI.findFirstInstructionBefore by default
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: FML found AccessTransformer version : 8.0.4+66+master.c09db6d7
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: FML found EventBus version : 6.0.5+6.0.5+master.eb8e549b
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: Found Runtime Dist Cleaner
+[13:51:27] [main/DEBUG] [ne.mi.co.CoreModEngine/]: CoreMods will preserve legacy behavior of ASMAPI.findFirstInstructionBefore for <REDACTED:hi>
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: FML found CoreMod version : 5.2.4
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: Found ForgeSPI package implementation version 7.0.1+7.0.1+master.d2b38bf6
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: Found ForgeSPI package specification 5
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Loaded service fml
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Configuring option handling for services
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Transformation services initializing
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service mixin
+[13:51:27] [main/DEBUG] [mixin/]: MixinService [ModLauncher] was successfully booted in cpw.mods.cl.ModuleClassLoader@9353778
+[13:51:27] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Luke/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23132!/ Service=ModLauncher Env=CLIENT
+/****************************************************************************************************************************************************************************************************************/   (×6)
+/* SpongePowered MIXIN (Verbose debugging enabled) */
+… 1 lines omitted (from line 40) …
+/* Code source : union:/C:/Users/Luke/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23132!/ */
+/* Internal Version : 0.8.5 */
+/* Java Version : 17.0 (supports compatibility 6-17) */
+/* Default Compatibility Level : JAVA_16 */
+/* Detected ASM Version : ASM 9.8 (ASM10_EXPERIMENTAL) */
+/* Detected ASM Supports Java : Up to Java 25 (class file version 69.0) */
+… 1 lines omitted (from line 47) …
+/* Service Name : ModLauncher */
+/* Mixin Service Class : org.spongepowered.asm.service.modlauncher.MixinServiceModLauncher */
+/* Global Property Service Class : org.spongepowered.asm.service.modlauncher.Blackboard */
+/* Logger Adapter Type : Log4j2 (via ModLauncher) */
+… 1 lines omitted (from line 52) …
+/* mixin.debug : <false> */
+/* mixin.debug.export : - <true> */
+/* mixin.debug.export.filter : - - <null> */
+/* mixin.debug.export.decompile : - - <true> */
+/* mixin.debug.export.decompile.async : - - - <true> */
+/* mixin.debug.export.decompile.mergeGenericSignatures : - - - <true> */
+/* mixin.debug.verify : - <false> */
+/* mixin.debug.verbose : - <true> */
+/* mixin.debug.countInjections : - <false> */
+/* mixin.debug.strict : - <false> */
+/* mixin.debug.strict.unique : - - <false> */
+/* mixin.debug.strict.targets : - - <false> */
+/* mixin.debug.profiler : - <false> */
+/* mixin.dumpTargetOnFailure : <true> */
+/* mixin.checks : <false> */
+/* mixin.checks.interfaces : - <false> */
+/* mixin.checks.interfaces.strict : - - <false> */
+/* mixin.ignoreConstraints : <false> */
+/* mixin.hotSwap : <false> */
+/* mixin.env : <false> */
+/* mixin.env.obf : - <false> */
+/* mixin.env.disableRefMap : - <false> */
+/* mixin.env.remapRefMap : - <true> */
+/* mixin.env.refMapRemappingFile : - <F:\Git\Arrz/build/createSrgToMcp/output.srg> */
+/* mixin.env.refMapRemappingEnv : - <searge> */
+/* mixin.env.allowPermissiveMatch : - <false> */
+/* mixin.env.ignoreRequired : - <false> */
+/* mixin.env.compatLevel : - <false> */
+/* mixin.env.shiftByViolation : - <warn> */
+/* mixin.initialiserInjectionMode : <default> */
+… 1 lines omitted (from line 83) …
+/* Detected Side : CLIENT */
+… 1 lines omitted (from line 85) …
+[13:51:27] [main/DEBUG] [mixin/]: Initialising Mixin Platform Manager
+[13:51:27] [main/DEBUG] [mixin/]: Adding mixin platform agents for container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[13:51:27] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for ModLauncher Root Container(ModLauncher:4f56a0a2)   (×2)
+[13:51:27] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container ModLauncher Root Container(ModLauncher:4f56a0a2)
+… 1 lines omitted (from line 90) …
+[13:51:27] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service mixin
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service fml
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLServiceProvider/CORE]: Setting up basic FML game directories
+… 4 lines omitted (from line 95) …
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLServiceProvider/CORE]: Loading configuration
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLServiceProvider/CORE]: Preparing ModFile
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLServiceProvider/CORE]: Preparing launch handler
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: Using forgeclientuserdev as launch service
+[13:51:27] [<REDACTED:hi>] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 3070/PCIe/SSE2 GL version 4.6.0 NVIDIA 572.83, NVIDIA Corporation
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLLoader/CORE]: Received command line version data : VersionInfo[forgeVersion=47.4.10, mcVersion=1.20.1, mcpVersion=20230612.114412, forgeGroup=net.minecraftforge]
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service fml
+[13:51:27] [main/DEBUG] [cp.mo.mo.NameMappingServiceHandler/MODLAUNCHER]: Current naming domain is 'mcp'
+[13:51:27] [main/DEBUG] [cp.mo.mo.NameMappingServiceHandler/MODLAUNCHER]: Identified name mapping providers {srg=srgtomcp:1234}
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Transformation services begin scanning
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service mixin
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service mixin
+[13:51:27] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service fml
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.FMLServiceProvider/CORE]: Initiating mod scan
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModListHandler/CORE]: Found mod coordinates from lists: []
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModDiscoverer/CORE]: Found Mod Locators : (mods folder:null),(maven libs:null),(exploded directory:null),(minecraft:null),(userdev classpath:null)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModDiscoverer/CORE]: Found Dependency Locators : (JarInJar:null)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.ta.CommonLaunchHandler/CORE]: Got mod coordinates arrzenhanced%%F:/Git/Arrz\build\resources\main;arrzenhanced%%F:/Git/Arrz\build\classes\java\main from env
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.ta.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{arrzenhanced=[F:\Git\Arrz\build\resources\main, F:\Git\Arrz\build\classes\java\main]}]
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar with {minecraft} mods - versions {1.20.1}   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.10\ccc533c7dd67e0983217197d7549c8b49e7ab453\javafmllanguage-1.20.1-47.4.10.jar
+[13:51:27] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.10\ccc533c7dd67e0983217197d7549c8b49e7ab453\javafmllanguage-1.20.1-47.4.10.jar is missing mods.toml file
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.10\e9a2879fe3612ea34b9728ec2633304a1e67d480\lowcodelanguage-1.20.1-47.4.10.jar
+[13:51:27] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.10\e9a2879fe3612ea34b9728ec2633304a1e67d480\lowcodelanguage-1.20.1-47.4.10.jar is missing mods.toml file
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.10\ec5cefbbc65c67302b8fac317010faab85fa14b9\mclanguage-1.20.1-47.4.10.jar
+[13:51:27] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.10\ec5cefbbc65c67302b8fac317010faab85fa14b9\mclanguage-1.20.1-47.4.10.jar is missing mods.toml file
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.10\94dae566be650566ea9115a1414ab76bfcf5a804\fmlcore-1.20.1-47.4.10.jar
+[13:51:27] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file C:\Users\Luke\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.10\94dae566be650566ea9115a1414ab76bfcf5a804\fmlcore-1.20.1-47.4.10.jar is missing mods.toml file
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate F:\Git\Arrz\build\resources\main   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file main with {arrzenhanced} mods - versions {2.0.0}   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate /   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file with {forge} mods - versions {47.4.10}   (×2)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\latvian\mods\kubejs-forge\2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1\kubejs-forge-2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file kubejs-forge-2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1.jar with {kubejs} mods - versions {2001.6.5-build.16}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\latvian\mods\rhino-forge\2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1\rhino-forge-2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file rhino-forge-2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1.jar with {rhino} mods - versions {2001.2.3-build.10}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\architectury\architectury-forge\9.1.13_mapped_parchment_2023.09.03-1.20.1\architectury-forge-9.1.13_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file architectury-forge-9.1.13_mapped_parchment_2023.09.03-1.20.1.jar with {architectury} mods - versions {9.1.13}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\maven\modrinth\threetag-palladium\4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1\threetag-palladium-4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file threetag-palladium-4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar with {palladium} mods - versions {4.4.2}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\net\threetag\palladiumcore-forge\1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1\palladiumcore-forge-1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1-forge.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file palladiumcore-forge-1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1-forge.jar with {palladiumcore} mods - versions {1.0.1}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\kosmx\player-anim\player-animation-lib-forge\1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1\player-animation-lib-forge-1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file player-animation-lib-forge-1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1.jar with {playeranimator} mods - versions {1.0.2-rc1+1.20}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.20.1\4.8.2_mapped_parchment_2023.09.03-1.20.1\geckolib-forge-1.20.1-4.8.2_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file geckolib-forge-1.20.1-4.8.2_mapped_parchment_2023.09.03-1.20.1.jar with {geckolib} mods - versions {4.8.2}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\top\theillusivec4\curios\curios-forge\5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1\curios-forge-5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file curios-forge-5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1.jar with {curios} mods - versions {5.14.1+1.20.1}   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\com\github\Virtuoel\Pehkui\3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1\Pehkui-3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar   (×3)
+[13:51:27] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file Pehkui-3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar with {pehkui} mods - versions {3.8.2+1.20.1-forge}   (×3)
+… 18 lines omitted (from line 149) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid pehkui, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file Pehkui-3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar for modid pehkui with version 3.8.2+1.20.1-forge
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid rhino, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file rhino-forge-2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1.jar for modid rhino with version 2001.2.3-build.10
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid kubejs, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file kubejs-forge-2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1.jar for modid kubejs with version 2001.6.5-build.16
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid curios, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file curios-forge-5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1.jar for modid curios with version 5.14.1+1.20.1
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid palladium, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file threetag-palladium-4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar for modid palladium with version 4.4.2
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid geckolib, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file geckolib-forge-1.20.1-4.8.2_mapped_parchment_2023.09.03-1.20.1.jar for modid geckolib with version 4.8.2
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid architectury, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file architectury-forge-9.1.13_mapped_parchment_2023.09.03-1.20.1.jar for modid architectury with version 9.1.13
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid playeranimator, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file player-animation-lib-forge-1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1.jar for modid playeranimator with version 1.0.2-rc1+1.20
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid palladiumcore, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file palladiumcore-forge-1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1-forge.jar for modid palladiumcore with version 1.0.1
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from main, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from rhino-forge-2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from , it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from curios-forge-5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from architectury-forge-9.1.13_mapped_parchment_2023.09.03-1.20.1.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from player-animation-lib-forge-1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from palladiumcore-forge-1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1-forge.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mclanguage-1.20.1-47.4.10.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from javafmllanguage-1.20.1-47.4.10.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from fmlcore-1.20.1-47.4.10.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from lowcodelanguage-1.20.1-47.4.10.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Considering mod file candidate   (×10)
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file mixinextras-forge-0.2.0-rc.2.jar with {mixinextras} mods - versions {0.2.0-rc.2}
+… 1 lines omitted (from line 199) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file player-animation-lib-forge-1.0.2-rc1+1.20.jar with {playeranimator} mods - versions {1.0.2-rc1+1.20}   (×2)
+… 1 lines omitted (from line 201) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file palladiumcore-forge-1.0.1+1.20.1-forge.jar with {palladiumcore} mods - versions {1.0.1}   (×2)
+… 1 lines omitted (from line 203) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file mixinextras-forge-0.2.0.jar with {mixinextras} mods - versions {0.2.0}
+… 1 lines omitted (from line 205) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file mixinextras-forge-0.3.6.jar with {mixinextras} mods - versions {0.3.6}   (×4)
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mclib-20.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from player-animation-lib-forge-1.0.2-rc1+1.20.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from palladiumcore-forge-1.0.1+1.20.1-forge.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from MixinExtras-0.2.0-rc.2.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from MixinExtras-0.2.0.jar, it does not contain dependency information.
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from MixinExtras-0.3.6.jar, it does not contain dependency information.
+… 6 lines omitted (from line 213) …
+[13:51:28] [main/WARN] [ne.mi.ja.se.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: playeranimator. Using Mod File: C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\kosmx\player-anim\player-animation-lib-forge\1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1\player-animation-lib-forge-1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1.jar
+[13:51:28] [main/WARN] [ne.mi.ja.se.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: palladiumcore. Using Mod File: C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\net\threetag\palladiumcore-forge\1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1\palladiumcore-forge-1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1-forge.jar
+[13:51:28] [main/INFO] [ne.mi.fm.lo.mo.JarInJarDependencyLocator/]: Found 3 dependencies adding them to mods collection
+… 1 lines omitted (from line 222) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1\forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar with languages [LanguageSpec[languageName=minecraft, acceptedVersions=1]]
+… 2 lines omitted (from line 224) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\latvian\mods\kubejs-forge\2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1\kubejs-forge-2001.6.5-build.16_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+… 2 lines omitted (from line 227) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\latvian\mods\rhino-forge\2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1\rhino-forge-2001.2.3-build.10_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[38,)]]
+… 2 lines omitted (from line 230) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.20.1\4.8.2_mapped_parchment_2023.09.03-1.20.1\geckolib-forge-1.20.1-4.8.2_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+… 2 lines omitted (from line 233) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\architectury\architectury-forge\9.1.13_mapped_parchment_2023.09.03-1.20.1\architectury-forge-9.1.13_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[46,)]]
+… 2 lines omitted (from line 236) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\dev\kosmx\player-anim\player-animation-lib-forge\1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1\player-animation-lib-forge-1.0.2-rc1+1.20_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[46.0.0,)]]
+… 2 lines omitted (from line 239) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\net\threetag\palladiumcore-forge\1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1\palladiumcore-forge-1.0.1+1.20.1_mapped_parchment_2023.09.03-1.20.1-forge.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[46,)]]
+… 2 lines omitted (from line 242) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file F:\Git\Arrz\build\resources\main with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+… 2 lines omitted (from line 245) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\com\github\Virtuoel\Pehkui\3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1\Pehkui-3.8.2-1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[28,)]]
+… 2 lines omitted (from line 248) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file / with languages [LanguageSpec[languageName=javafml, acceptedVersions=[24,]]]
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Found coremod field_to_method with Javascript path coremods/field_to_method.js
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Found coremod field_to_instanceof with Javascript path coremods/field_to_instanceof.js
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Found coremod add_bouncer_method with Javascript path coremods/add_bouncer_method.js
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Found coremod method_redirector with Javascript path coremods/method_redirector.js
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Found coremod coremods/field_to_method.js
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Found coremod coremods/field_to_instanceof.js
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Found coremod coremods/add_bouncer_method.js
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Found coremod coremods/method_redirector.js
+… 2 lines omitted (from line 259) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\top\theillusivec4\curios\curios-forge\5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1\curios-forge-5.14.1+1.20.1_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[41,)]]
+… 2 lines omitted (from line 262) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file C:\Users\Luke\.gradle\caches\forge_gradle\deobf_dependencies\maven\modrinth\threetag-palladium\4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1\threetag-palladium-4.4.2+1.20.1-forge_mapped_parchment_2023.09.03-1.20.1.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[47,)]]
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file with languages []   (×4)
+… 2 lines omitted (from line 266) …
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.mo.ModFile/LOADING]: Loading mod file with languages [LanguageSpec[languageName=javafml, acceptedVersions=*]]   (×2)
+… 6 lines omitted (from line 269) …
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service fml
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.LanguageLoadingProvider/CORE]: Found 3 language providers
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.LanguageLoadingProvider/CORE]: Found language provider minecraft, version 1.0
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.LanguageLoadingProvider/CORE]: Found language provider lowcodefml, version 47
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.LanguageLoadingProvider/CORE]: Found language provider javafml, version 47
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid mclib, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file mclib-20.jar for modid mclib with version 0.0NONE
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid mixinextras, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file mixinextras-forge-0.3.6.jar for modid mixinextras with version 0.3.6
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Found 2 mods for first modid MixinExtras, selecting most recent based on version data
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.UniqueModListBuilder/]: Selected file MixinExtras-0.3.6.jar for modid MixinExtras with version 0.0NONE
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.ModSorter/]: Configured system mods: [minecraft, forge]
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.ModSorter/]: Found system mod: minecraft
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.ModSorter/]: Found system mod: forge
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.ModSorter/LOADING]: Found 19 mod requirements (17 mandatory, 2 optional)
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.ModSorter/LOADING]: Found 0 mod requirements missing (0 mandatory, 0 optional)
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.MCPNamingService/CORE]: Loaded 34318 method mappings from methods.csv
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.MCPNamingService/CORE]: Loaded 31014 field mappings from fields.csv
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading transformers
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service mixin
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service mixin
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service fml
+[13:51:28] [main/DEBUG] [ne.mi.fm.lo.FMLServiceProvider/CORE]: Loading coremod transformers
+[13:51:28] [main/DEBUG] [ne.mi.co.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_method.js
+[13:51:28] [main/DEBUG] [ne.mi.co.CoreModEngine/COREMOD]: CoreMod loaded successfully   (×4)
+[13:51:28] [main/DEBUG] [ne.mi.co.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_instanceof.js
+… 1 lines omitted (from line 301) …
+[13:51:28] [main/DEBUG] [ne.mi.co.CoreModEngine/COREMOD]: Loading CoreMod from coremods/add_bouncer_method.js
+… 1 lines omitted (from line 303) …
+[13:51:28] [main/DEBUG] [ne.mi.co.CoreModEngine/COREMOD]: Loading CoreMod from coremods/method_redirector.js
+… 1 lines omitted (from line 305) …
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@1e1eeedd to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@43c57161 to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@d902300 to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@2db33feb to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@30c3ae63 to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@58658f63 to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@54e12f4c to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@60990e5c to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@4d84049a to Target : CLASS {<REDACTED:hi>;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@39ee94de to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@39ee94de to Target : CLASS {<REDACTED:hi>;} {} {V}   (×18)
+… 13 lines omitted (from line 317) …
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@39ee94de to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/OceanRuinPieces$OceanRuinPiece;} {} {V}
+… 1 lines omitted (from line 331) …
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@39ee94de to Target : CLASS {Lnet/minecraft/world/entity/monster/Evoker$EvokerSummonSpellGoal;} {} {V}
+… 3 lines omitted (from line 333) …
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@39ee94de to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$OceanMonumentPiece;} {} {V}
+[13:51:28] [main/DEBUG] [cp.mo.mo.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service fml
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: arrzenhanced.mixins.json
+[13:51:29] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by arrzenhanced.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[13:51:29] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[13:51:29] [main/DEBUG] [mixin/]: Processing launch tasks for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(minecraft)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(minecraft)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(minecraft)
+… 1 lines omitted (from line 346) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(minecraft)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(mixinextras)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(mixinextras)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(mixinextras)
+… 1 lines omitted (from line 352) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(mixinextras)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mixinextras)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: mixinextras.init.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(rhino)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(rhino)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(rhino)
+… 1 lines omitted (from line 359) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(rhino)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(rhino)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: rhino-common.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(geckolib)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(geckolib)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(geckolib)
+… 1 lines omitted (from line 366) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(geckolib)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(geckolib)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: geckolib.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(architectury)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(architectury)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(architectury)
+… 1 lines omitted (from line 373) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(architectury)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(architectury)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: architectury.mixins.json
+[13:51:29] [main/WARN] [mixin/]: Compatibility level JAVA_16 specified by architectury.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: architectury-common.mixins.json
+[13:51:29] [main/WARN] [mixin/]: Compatibility level JAVA_16 specified by architectury-common.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(kubejs)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(kubejs)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(kubejs)
+… 1 lines omitted (from line 383) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(kubejs)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(kubejs)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: kubejs-forge.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: kubejs-common.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(playeranimator)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(playeranimator)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(playeranimator)
+… 1 lines omitted (from line 391) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(playeranimator)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(playeranimator)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: playerAnimator-common.mixins.json
+[13:51:29] [main/WARN] [mixin/]: Compatibility level JAVA_16 specified by playerAnimator-common.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(palladiumcore)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(palladiumcore)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(palladiumcore)
+… 1 lines omitted (from line 399) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(palladiumcore)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(palladiumcore)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: palladiumcore-common.mixins.json
+[13:51:29] [main/ERROR] [mixin/]: Mixin config palladiumcore-common.mixins.json does not specify "minVersion" property
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: palladiumcore.mixins.json
+[13:51:29] [main/ERROR] [mixin/]: Mixin config palladiumcore.mixins.json does not specify "minVersion" property
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(arrzenhanced)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(arrzenhanced)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(arrzenhanced)
+… 1 lines omitted (from line 409) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(arrzenhanced)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(arrzenhanced)]
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(pehkui)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(pehkui)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(pehkui)
+… 1 lines omitted (from line 415) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(pehkui)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(pehkui)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: pehkui.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(forge)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(forge)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(forge)
+… 1 lines omitted (from line 422) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(forge)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(curios)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(curios)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(curios)
+… 1 lines omitted (from line 428) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(curios)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(curios)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: curios.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(palladium)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(palladium)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(palladium)
+… 1 lines omitted (from line 435) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(palladium)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(palladium)]
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: palladium-common.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Registering mixin config: palladium.mixins.json
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(mclib)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(mclib)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(mclib)
+… 1 lines omitted (from line 443) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(mclib)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mclib)]
+[13:51:29] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(MixinExtras)
+[13:51:29] [main/DEBUG] [mixin/]: Instancing new <REDACTED:hi> for SecureJarResource(MixinExtras)   (×2)
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> rejected container SecureJarResource(MixinExtras)
+… 1 lines omitted (from line 449) …
+[13:51:29] [main/DEBUG] [mixin/]: <REDACTED:hi> accepted container SecureJarResource(MixinExtras)
+[13:51:29] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(MixinExtras)]
+[13:51:29] [main/DEBUG] [mixin/]: inject() running with 16 agents
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mixinextras)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(rhino)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(geckolib)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(architectury)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(kubejs)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(playeranimator)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(palladiumcore)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(arrzenhanced)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(pehkui)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(curios)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(palladium)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(mclib)]
+[13:51:29] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(MixinExtras)]
+[13:51:29] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Luke\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --username, Player###]
+[13:51:29] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
+[13:51:29] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. <REDACTED:hi>: <REDACTED:hi>
+[13:51:29] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[13:51:29] [main/INFO] [mixin/]: Selecting config arrzenhanced.mixins.json
+[13:51:29] [main/WARN] [mixin/]: Reference map 'mixins.arrzenhanced.refmap.json' for arrzenhanced.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:51:29] [main/INFO] [mixin/]: Selecting config mixinextras.init.mixins.json
+[13:51:29] [main/DEBUG] [MixinExtras|Service/]: com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.3.6) is taking over from null
+[13:51:29] [main/DEBUG] [mixin/]: Registering new injector for @Inject with org.spongepowered.asm.mixin.injection.struct.CallbackInjectionInfo
+[13:51:29] [main/DEBUG] [mixin/]: Registering new injector for @ModifyArg with org.spongepowered.asm.mixin.injection.struct.ModifyArgInjectionInfo
+[13:51:29] [main/DEBUG] [mixin/]: Registering new injector for @ModifyArgs with org.spongepowered.asm.mixin.injection.struct.ModifyArgsInjectionInfo
+[13:51:29] [main/DEBUG] [mixin/]: Registering new injector for @Redirect with org.spongepowered.asm.mixin.injection.struct.RedirectInjectionInfo
+[13:51:29] [main/DEBUG] [mixin/]: Registering new injector for @ModifyVariable with org.spongepowered.asm.mixin.injection.struct.ModifyVariableInjectionInfo
+[13:51:29] [main/DEBUG] [mixin/]: Registering new injector for @ModifyConstant with org.spongepowered.asm.mixin.injection.struct.ModifyConstantInjectionInfo
+[13:51:29] [main/INFO] [mixin/]: Selecting config rhino-common.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap rhino-common-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config geckolib.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config architectury.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap architectury-forge-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config architectury-common.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap architectury-common-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config kubejs-forge.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap kubejs-forge-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config kubejs-common.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap kubejs-common-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config playerAnimator-common.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap player-animation-lib-minecraft_common-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config palladiumcore-common.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap palladiumcore-common-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config palladiumcore.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap palladiumcore-forge-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config pehkui.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap Pehkui-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config curios.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config palladium-common.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap palladium-common-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Selecting config palladium.mixins.json
+[13:51:29] [main/INFO] [mixin/]: Remapping refMap palladium-forge-refmap.json using F:\Git\Arrz/build/createSrgToMcp/output.srg
+[13:51:29] [main/INFO] [mixin/]: Preparing arrzenhanced.mixins.json (1)
+[13:51:29] [main/INFO] [mixin/]: Preparing mixinextras.init.mixins.json (0)
+[13:51:29] [main/INFO] [mixin/]: Preparing rhino-common.mixins.json (8)
+[13:51:29] [main/INFO] [mixin/]: Preparing geckolib.mixins.json (1)
+[13:51:29] [main/INFO] [mixin/]: Preparing architectury.mixins.json (8)
+[13:51:29] [main/INFO] [mixin/]: Preparing architectury-common.mixins.json (10)
+[13:51:29] [main/DEBUG] [ne.mi.co.tr.CoreModBaseTransformer/COREMOD]: Transforming <REDACTED:hi>   (×6)
+… 2 lines omitted (from line 516) …
+[13:51:29] [main/INFO] [mixin/]: Preparing kubejs-forge.mixins.json (7)
+[13:51:29] [main/INFO] [mixin/]: Preparing kubejs-common.mixins.json (55)
+[13:51:30] [main/WARN] [mixin/]: @Mixin target net/minecraft/world/item/crafting/Ingredient$TagValue is public in kubejs-common.mixins.json:IngredientTagValueMixin and should be specified in value
+… 1 lines omitted (from line 521) …
+[13:51:30] [main/WARN] [mixin/]: Error loading class: <REDACTED:hi> (java.lang.ClassNotFoundException: mezz.modnametooltip.TooltipEventHandler)
+[13:51:30] [main/DEBUG] [mixin/]: Skipping virtual target <REDACTED:hi> for kubejs-common.mixins.json:mod.ModNameTooltipMixin
+[13:51:30] [main/WARN] [mixin/]: Error loading class: <REDACTED:hi> (java.lang.ClassNotFoundException: me.shedaniel.rei.impl.client.ClientHelperImpl)
+[13:51:30] [main/DEBUG] [mixin/]: Skipping virtual target <REDACTED:hi> for kubejs-common.mixins.json:mod.REITooltipMixin
+[13:51:30] [main/INFO] [mixin/]: Preparing playerAnimator-common.mixins.json (14)
+[13:51:30] [main/INFO] [mixin/]: Preparing palladiumcore-common.mixins.json (1)
+[13:51:30] [main/INFO] [mixin/]: Preparing palladiumcore.mixins.json (3)
+[13:51:30] [main/INFO] [mixin/]: Preparing pehkui.mixins.json (280)
+[13:51:30] [main/DEBUG] [ne.mi.ve.mc.MCPVersion/CORE]: MCP Version package package net.minecraftforge.versions.mcp, Minecraft, version 1.20.1 from cpw.mods.modlauncher.TransformingClassLoader@2c63762b
+[13:51:30] [main/DEBUG] [ne.mi.ve.mc.MCPVersion/CORE]: Found MC version information 1.20.1
+[13:51:30] [main/DEBUG] [ne.mi.ve.mc.MCPVersion/CORE]: Found MCP version information 20230612.114412
+[13:51:30] [main/DEBUG] [ne.mi.co.tr.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/entity/monster/Evoker$EvokerSummonSpellGoal
+… 2 lines omitted (from line 534) …
+[13:51:30] [main/INFO] [mixin/]: Preparing curios.mixins.json (13)
+[13:51:30] [main/INFO] [mixin/]: Preparing palladium-common.mixins.json (47)
+[13:51:30] [main/INFO] [mixin/]: Preparing palladium.mixins.json (6)
+[13:51:30] [main/DEBUG] [mixin/]: Inner class dev/latvian/mods/kubejs/core/mixin/common/GameRulesMixin$1 in <REDACTED:hi> on <REDACTED:hi> gets unique name net/minecraft/world/level/GameRules$Anonymous$299951c6da474b38a89fc6d8aa7cc904
+[13:51:30] [main/DEBUG] [mixin/]: Inner class net/threetag/palladium/mixin/AbstractContainerMenuMixin$1 in <REDACTED:hi> on <REDACTED:hi> gets unique name net/minecraft/world/inventory/AbstractContainerMenu$Anonymous$7ac47a9b69104aafa1904d74636a0a79
+[13:51:30] [main/INFO] [mixin/]: Prepared 316 mixins in 1.181 sec (3.7ms avg) (0ms load, 0ms transform, 0ms plugin)
+[13:51:30] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.3.6).
+[13:51:30] [main/DEBUG] [mixin/]: Registering new injector for @SugarWrapper with com.llamalad7.mixinextras.sugar.impl.SugarWrapperInjectionInfo
+[13:51:30] [main/DEBUG] [mixin/]: Registering new injector for @<REDACTED:hi> with com.llamalad7.mixinextras.wrapper.factory.FactoryRedirectWrapperInjectionInfo
+[13:51:30] [main/INFO] [mixin/]: Mixing LoadingOverlayMixin from kubejs-common.mixins.json into net.minecraft.client.gui.screens.LoadingOverlay
+[13:51:30] [main/INFO] [mixin/]: Mixing MixinMinecraft from architectury.mixins.json into net.minecraft.client.Minecraft
+[13:51:30] [main/INFO] [mixin/]: Mixing MinecraftClientMixin from kubejs-common.mixins.json into net.minecraft.client.Minecraft
+[13:51:30] [main/INFO] [mixin/]: Renaming synthetic method lambda$kjs$endResourceReload$1()V to md6d2bcc$lambda$kjs$endResourceReload$1$0 in kubejs-common.mixins.json:MinecraftClientMixin
+[13:51:30] [main/INFO] [mixin/]: Renaming synthetic method lambda$kjs$init$0()V to md6d2bcc$lambda$kjs$init$0$1 in kubejs-common.mixins.json:MinecraftClientMixin
+[13:51:30] [main/INFO] [mixin/]: Mixing client.MinecraftMixin from palladium-common.mixins.json into net.minecraft.client.Minecraft
+[13:51:31] [main/DEBUG] [io.ne.ut.in.lo.InternalLoggerFactory/]: Using SLF4J as the default logging framework
+[13:51:31] [main/DEBUG] [io.ne.ut.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
+[13:51:31] [main/DEBUG] [io.ne.ut.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
+[13:51:31] [main/INFO] [mixin/]: Mixing components.MutableComponentMixin from kubejs-common.mixins.json into net.minecraft.network.chat.MutableComponent
+[13:51:31] [main/INFO] [mixin/]: Mixing TextColorMixin from rhino-common.mixins.json into net.minecraft.network.chat.TextColor
+[13:51:31] [main/INFO] [mixin/]: Mixing ChatFormattingMixin from rhino-common.mixins.json into net.minecraft.ChatFormatting
+[13:51:31] [main/INFO] [mixin/]: Mixing <REDACTED:hi> from rhino-common.mixins.json into net.minecraft.resources.ResourceLocation
+[13:51:31] [main/INFO] [mixin/]: Mixing UtilMixin from kubejs-common.mixins.json into net.minecraft.Util
+[13:51:31] [main/DEBUG] [os.ut.FileUtil/]: No oshi.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@2c63762b
+[13:51:31] [main/DEBUG] [os.ut.FileUtil/]: No oshi.architecture.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@2c63762b
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing ResourceKeyMixin from rhino-common.mixins.json into net.minecraft.resources.ResourceKey
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing inject.MixinGameEvent from architectury-common.mixins.json into net.minecraft.world.level.gameevent.GameEvent
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing inject.MixinBlock from architectury-common.mixins.json into net.minecraft.world.level.block.Block
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing BlockMixin from kubejs-common.mixins.json into net.minecraft.world.level.block.Block
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing BlockBehaviourMixin from kubejs-common.mixins.json into net.minecraft.world.level.block.state.BlockBehaviour
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing LevelMixin from kubejs-common.mixins.json into net.minecraft.world.level.Level
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing <REDACTED:hi> from palladium.mixins.json into net.minecraftforge.common.capabilities.CapabilityProvider
+[13:51:31] [<REDACTED:hi>] [mixin/]: Renaming synthetic method lambda$getCapability$0(Lnet/threetag/palladium/energy/IEnergyStorage;)Lnet/minecraftforge/energy/IEnergyStorage; to md6d2bcc$lambda$getCapability$0$0 in palladium.mixins.json:CapabilityProviderMixin
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing ServerLevelMixin from kubejs-common.mixins.json into net.minecraft.server.level.ServerLevel
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing compat117plus.ServerWorldMixin from pehkui.mixins.json into net.minecraft.server.level.ServerLevel
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing BlockStateBaseMixin from kubejs-common.mixins.json into net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing compat116plus.AbstractBlockStateMixin from pehkui.mixins.json into net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing BlockBehaviourMixin from palladium-common.mixins.json into net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase
+[13:51:31] [<REDACTED:hi>] [mixin/]: Renaming synthetic method lambda$getCollisionShape$1(Ljava/lang/Integer;)Lnet/minecraft/world/phys/shapes/VoxelShape; to md6d2bcc$lambda$getCollisionShape$1$0 in palladium-common.mixins.json:BlockBehaviourMixin
+[13:51:31] [<REDACTED:hi>] [mixin/]: Renaming synthetic method lambda$getCollisionShape$0(Ljava/lang/Integer;)Lnet/minecraft/world/phys/shapes/VoxelShape; to md6d2bcc$lambda$getCollisionShape$0$1 in palladium-common.mixins.json:BlockBehaviourMixin
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing BlockStateBaseMixin from palladium-common.mixins.json into net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing EntityMixin from kubejs-forge.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing EntityMixin from kubejs-common.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing EntityMixin from pehkui.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing <REDACTED:hi> from pehkui.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing compat117plus.EntityCalculateDimensionsMixin from pehkui.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Renaming synthetic method lambda$pehkui$calculateDimensions$0(Lnet/minecraft/world/entity/Entity;DLnet/minecraft/world/phys/Vec3;)V to md6d2bcc$lambda$pehkui$calculateDimensions$0$0 in pehkui.mixins.json:compat117plus.EntityCalculateDimensionsMixin
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing compat117plus.EntityMixin from pehkui.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing compat1204minus.compat116plus.EntityMixin from pehkui.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing compat120plus.EntityMixin from pehkui.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing step_height.compat1194plus.EntityMixin from pehkui.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing AccessorEntity from curios.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing EntityMixin from palladium-common.mixins.json into net.minecraft.world.entity.Entity
+[13:51:31] [<REDACTED:hi>] [mixin/]: Mixing client.ClientEntityMixin from palladium-common.mixins.json into net.minecraft.world.entity.Entity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing step_height.IForgeEntityMixin from pehkui.mixins.json into net.minecraftforge.common.extensions.IForgeEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing LivingEntityMixin from kubejs-common.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing LivingEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Renaming synthetic method lambda$pehkui$tickMovement$minVelocity$0(I)Z to md6d2bcc$lambda$pehkui$tickMovement$minVelocity$0$0 in pehkui.mixins.json:LivingEntityMixin
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat117plus.LivingEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat1194plus.LivingEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat1204minus.LivingEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing MixinLivingEntity from curios.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing LivingEntityMixin from palladium-common.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat115plus.LivingEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.LivingEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing ItemEntityMixin from kubejs-common.mixins.json into net.minecraft.world.entity.item.ItemEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing client.compat116plus.ItemEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.item.ItemEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing ItemEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.item.ItemEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing reach.PlayerEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing PlayerEntityMixin from playerAnimator-common.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: playerAnimator-common.mixins.json:PlayerEntityMixin: Class version 61 required is higher than the class version supported by the current version of Mixin (JAVA_16 supports class version 60)
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing PlayerEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat117plus.PlayerEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat1194plus.PlayerEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat1201minus.EntityVehicleHeightOffsetMixin from pehkui.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat1204minus.PlayerEntityMixin from pehkui.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing PlayerMixin from palladium-common.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Renaming synthetic method lambda$palladium$hasCorrectToolForDrops$0(Lnet/minecraft/world/level/block/state/BlockState;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/threetag/palladium/power/ability/AbilityInstance;)V to md6d2bcc$lambda$palladium$hasCorrectToolForDrops$0$0 in palladium-common.mixins.json:PlayerMixin
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing PlayerMixin from kubejs-common.mixins.json into net.minecraft.world.entity.player.Player
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing reach.IForgePlayerMixin from pehkui.mixins.json into net.minecraftforge.common.extensions.IForgePlayer
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing inject.MixinFluid from architectury-common.mixins.json into net.minecraft.world.level.material.Fluid
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing inject.MixinItem from architectury-common.mixins.json into net.minecraft.world.item.Item
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing reach.compat1204minus.compat116plus.ItemMixin from pehkui.mixins.json into net.minecraft.world.item.Item
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing ItemMixin from palladium-common.mixins.json into net.minecraft.world.item.Item
+[13:51:32] [<REDACTED:hi>] [mixin/]: Renaming synthetic method lambda$appendHoverText$0(Ljava/util/List;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/crafting/Recipe;)V to md6d2bcc$lambda$appendHoverText$0$0 in palladium-common.mixins.json:ItemMixin
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing ItemMixin from kubejs-common.mixins.json into net.minecraft.world.item.Item
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing compat117plus.patchwork.compat.IForgeItemMixin from pehkui.mixins.json into net.minecraftforge.common.extensions.IForgeItem
+[13:51:32] [<REDACTED:hi>] [ne.mi.co.tr.CoreModBaseTransformer/COREMOD]: Transforming <REDACTED:hi>   (×4)
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing inject.MixinEntityType from architectury-common.mixins.json into net.minecraft.world.entity.EntityType
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing <REDACTED:hi> from kubejs-common.mixins.json into net.minecraft.world.item.CreativeModeTab
+[13:51:32] [<REDACTED:hi>] [mixin/]: Write access to @Mutable @Final field displayName:Lnet/minecraft/network/chat/Component; in kubejs-common.mixins.json:CreativeModeTabMixin::kjs$setDisplayName
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing DirectionMixin from rhino-common.mixins.json into net.minecraft.core.Direction
+… 1 lines omitted (from line 627) …
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing inject.MixinLiquidBlock from architectury-common.mixins.json into net.minecraft.world.level.block.LiquidBlock
+… 1 lines omitted (from line 629) …
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing PortalBlockMixin from pehkui.mixins.json into net.minecraft.world.level.block.NetherPortalBlock
+… 1 lines omitted (from line 631) …
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing <REDACTED:hi> from curios.mixins.json into net.minecraft.world.level.block.PowderSnowBlock
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing DyeColorMixin from rhino-common.mixins.json into net.minecraft.world.item.DyeColor
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing <REDACTED:hi> from architectury.mixins.json into net.minecraft.world.entity.item.FallingBlockEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing PreEntityTickMixin from pehkui.mixins.json into net.minecraft.world.entity.item.FallingBlockEntity
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing reach.compat1204minus.compat1194plus.InventoryMixin from pehkui.mixins.json into net.minecraft.world.Container
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing ContainerMixin from kubejs-common.mixins.json into net.minecraft.world.Container
+[13:51:32] [<REDACTED:hi>] [mixin/]: Mixing <REDACTED:hi> from palladium-common.mixins.json into net.minecraft.world.entity.ai.attributes.RangedAttribute
+[13:51:33] [<REDACTED:hi>] [mixin/]: Mixing PreEntityTickMixin from pehkui.mixins.json into net.minecraft.world.entity.item.PrimedTnt
+[13:51:33] [<REDACTED:hi>] [mixin/]: Mixing compat1204minus.ScreenHandlerMixin from pehkui.mixins.json into net.minecraft.world.inventory.AbstractContainerMenu
+[13:51:33] [<REDACTED:hi>] [mixin/]: Mixing reach.compat1204minus.ScreenHandlerMixin from pehkui.mixins.json into net.minecraft.world.inventory.AbstractContainerMenu
+[13:51:33] [<REDACTED:hi>] [mixin/]: Mixing <REDACTED:hi> from palladium-common.mixins.json into net.minecraft.world.inventory.AbstractContainerMenu
+[13:51:33] [<REDACTED:hi>] [mixin/]: @Shadow field palladium-common.mixins.json:AbstractContainerMenuMixin::remoteSlots is decorated with @Final but target is not final
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /***********************************************************************************************************************************************************************/   (×2)
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* Invalid Mixin */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/   (×4)
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* Action : APPLY */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* Mixin : virtuoel.pehkui.mixin.compat1204minus.ScreenHandlerMixin */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* Config : pehkui.mixins.json */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* Phase : DEFAULT */
+… 1 lines omitted (from line 651) …
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException */
+… 1 lines omitted (from line 653) …
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* @<REDACTED:hi> expression value modifier method net/minecraft/world/inventory/AbstractContainerMenu::pehkui$canUse$xOffset from */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* pehkui.mixins.json:compat1204minus.ScreenHandlerMixin has an invalid signature. Found unexpected argument type net.minecraft.world.level.block.Block at */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* index 1, expected net.minecraft.world.entity.player.Player. Handler signature: */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* (DLnet/minecraft/world/level/block/Block;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D Expected */   (×2)
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* signature: */   (×3)
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* (DLnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D [INJECT */   (×2)
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* Applicator Phase -> pehkui.mixins.json:compat1204minus.ScreenHandlerMixin -> Apply Injections -> -> Inject -> */   (×2)
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* pehkui.mixins.json:compat1204minus.ScreenHandlerMixin->@ModifyExpressionValue::pehkui$canUse$xOffset(DLnet/minecraft/world/level/block/Block;Lnet/minecraft/ */   (×2)
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* orld/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D] */   (×2)
+… 1 lines omitted (from line 663) …
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @<REDACTED:hi> expression value modifier method */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* net/minecraft/world/inventory/AbstractContainerMenu::pehkui$canUse$xOffset from pehkui.mixins.json:compat1204minus.ScreenHandlerMixin has an invalid */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* signature. Found unexpected argument type net.minecraft.world.level.block.Block at index 1, expected net.minecraft.world.entity.player.Player. Handler */
+… 7 lines omitted (from line 667) …
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.code.Injector.validateParams(Injector.java:597) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* TRANSFORMER/MixinExtras@0.3.6/com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.invokeHandler(ModifyExpressionValueInjector.java:72) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* TRANSFORMER/MixinExtras@0.3.6/com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.injectValueModifier(ModifyExpressionValueInjector.java:63) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* TRANSFORMER/MixinExtras@0.3.6/com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.inject(ModifyExpressionValueInjector.java:42) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.code.Injector.inject(Injector.java:276) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.struct.InjectionInfo.inject(InjectionInfo.java:445) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTargetContext.applyInjections(MixinTargetContext.java:1355) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyInjections(MixinApplicatorStandard.java:1051) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyMixin(MixinApplicatorStandard.java:400) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.apply(MixinApplicatorStandard.java:325) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.apply(TargetClassContext.java:383) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.applyMixins(TargetClassContext.java:365) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:363) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:250) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.service.modlauncher.MixinTransformationHandler.processClass(MixinTransformationHandler.java:131) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.launch.MixinLaunchPluginLegacy.processClass(MixinLaunchPluginLegacy.java:131) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.serviceapi.ILaunchPluginService.processClassWithFlags(ILaunchPluginService.java:156) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* TRANSFORMER/minecraft@1.20.1/net.minecraft.world.level.block.Blocks.<clinit>(Blocks.java:241) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* TRANSFORMER/minecraft@1.20.1/net.minecraft.world.level.block.FireBlock.bootStrap(FireBlock.java:310) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* TRANSFORMER/minecraft@1.20.1/net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:50) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* TRANSFORMER/minecraft@1.20.1/net.minecraft.client.main.Main.lambda$main$0(Main.java:151) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) */
+[13:51:33] [<REDACTED:hi>] [MixinProcessor/]: /* java.base/java.lang.Thread.run(Thread.java:842) */
+… 1 lines omitted (from line 709) …
+[13:51:33] [<REDACTED:hi>] [mixin/]: Mixin apply failed pehkui.mixins.json:compat1204minus.ScreenHandlerMixin -> net.minecraft.world.inventory.AbstractContainerMenu: org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException @<REDACTED:hi> expression value modifier method net/minecraft/world/inventory/AbstractContainerMenu::pehkui$canUse$xOffset from pehkui.mixins.json:compat1204minus.ScreenHandlerMixin has an invalid signature. Found unexpected argument type net.minecraft.world.level.block.Block at index 1, expected net.minecraft.world.entity.player.Player. Handler signature: (DLnet/minecraft/world/level/block/Block;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D Expected signature: (DLnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D [INJECT Applicator Phase -> pehkui.mixins.json:compat1204minus.ScreenHandlerMixin -> Apply Injections -> -> Inject -> pehkui.mixins.json:compat1204minus.ScreenHandlerMixin->@ModifyExpressionValue::pehkui$canUse$xOffset(DLnet/minecraft/world/level/block/Block;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D]
+org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @<REDACTED:hi> expression value modifier method net/minecraft/world/inventory/AbstractContainerMenu::pehkui$canUse$xOffset from pehkui.mixins.json:compat1204minus.ScreenHandlerMixin has an invalid signature. Found unexpected argument type net.minecraft.world.level.block.Block at index 1, expected net.minecraft.world.entity.player.Player. Handler signature: (DLnet/minecraft/world/level/block/Block;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D Expected signature: (DLnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D [INJECT Applicator Phase -> pehkui.mixins.json:compat1204minus.ScreenHandlerMixin -> Apply Injections -> -> Inject -> pehkui.mixins.json:compat1204minus.ScreenHandlerMixin->@ModifyExpressionValue::pehkui$canUse$xOffset(DLnet/minecraft/world/level/block/Block;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D] at org.spongepowered.asm.mixin.injection.code.Injector.validateParams(Injector.java:597) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.invokeHandler(ModifyExpressionValueInjector.java:72) ~[mixinextras-common-0.2.1_mapped_parchment_2023.09.03-1.20.1.jar:?] {re:classloading} at com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.injectValueModifier(ModifyExpressionValueInjector.java:63) ~[mixinextras-common-0.2.1_mapped_parchment_2023.09.03-1.20.1.jar:?] {re:classloading} at com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.inject(ModifyExpressionValueInjector.java:42) ~[mixinextras-common-0.2.1_mapped_parchment_2023.09.03-1.20.1.jar:?] {re:classloading} at org.spongepowered.asm.mixin.injection.code.Injector.inject(Injector.java:276) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.injection.struct.InjectionInfo.inject(InjectionInfo.java:445) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.MixinTargetContext.applyInjections(MixinTargetContext.java:1355) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyInjections(MixinApplicatorStandard.java:1051) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyMixin(MixinApplicatorStandard.java:400) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.apply(MixinApplicatorStandard.java:325) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.TargetClassContext.apply(TargetClassContext.java:383) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.TargetClassContext.applyMixins(TargetClassContext.java:365) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:363) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:250) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.service.modlauncher.MixinTransformationHandler.processClass(MixinTransformationHandler.java:131) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at org.spongepowered.asm.launch.MixinLaunchPluginLegacy.processClass(MixinLaunchPluginLegacy.java:131) ~[mixin-0.8.5.jar:0.8.5+Jenkins-b310.git-155314e6e91465dad727e621a569906a410cd6f4] {} at cpw.mods.modlauncher.serviceapi.ILaunchPluginService.processClassWithFlags(ILaunchPluginService.java:156) ~[modlauncher-10.0.9.jar:10.0.9+10.0.9+main.dcd20f30] {} at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar:?] {} at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar:?] {} at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar:?] {} at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?] {} at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?] {} at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?] {} at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?] {} at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?] {} at java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[?:?] {} at net.minecraft.world.level.block.Blocks.<clinit>(Blocks.java:241) ~[forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:object_holder_definalize:A} at net.minecraft.world.level.block.FireBlock.bootStrap(FireBlock.java:310) ~[forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B} at net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:50) ~[forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/:?] {re:classloading} at net.minecraft.client.main.Main.lambda$main$0(Main.java:151) ~[forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:runtimedistcleaner:A} at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) ~[?:?] {} at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[?:?] {} at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {} at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {} at java.lang.Thread.run(Thread.java:842) ~[?:?] {}
+Exception in thread "main" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:32) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.Launcher.run(Launcher.java:108) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.Launcher.main(Launcher.java:78) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) at cpw.mods.bootstraplauncher@1.1.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141)
+Caused by: java.lang.reflect.InvocationTargetException at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.base/java.lang.reflect.Method.invoke(Method.java:568) at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.devService(ForgeClientUserdevLaunchHandler.java:19) at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ... 7 more
+Caused by: java.lang.RuntimeException: org.spongepowered.asm.mixin.transformer.throwables.MixinTransformerError: An unexpected critical error was encountered at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.BackgroundWaiter.runAndTick(BackgroundWaiter.java:32) at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.main.Main.main(Main.java:151) ... 16 more
+Caused by: org.spongepowered.asm.mixin.transformer.throwables.MixinTransformerError: An unexpected critical error was encountered at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:392) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:250) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.service.modlauncher.MixinTransformationHandler.processClass(MixinTransformationHandler.java:131) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.launch.MixinLaunchPluginLegacy.processClass(MixinLaunchPluginLegacy.java:131) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.serviceapi.ILaunchPluginService.processClassWithFlags(ILaunchPluginService.java:156) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) at TRANSFORMER/minecraft@1.20.1/net.minecraft.world.level.block.Blocks.<clinit>(Blocks.java:241) at TRANSFORMER/minecraft@1.20.1/net.minecraft.world.level.block.FireBlock.bootStrap(FireBlock.java:310) at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.Bootstrap.bootStrap(Bootstrap.java:50) at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.main.Main.lambda$main$0(Main.java:151) at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: org.spongepowered.asm.mixin.throwables.MixinApplyError: Mixin [pehkui.mixins.json:compat1204minus.ScreenHandlerMixin] from phase [DEFAULT] in config [pehkui.mixins.json] FAILED during APPLY at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinError(MixinProcessor.java:636) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinApplyError(MixinProcessor.java:588) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:379) ... 22 more
+Caused by: org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @<REDACTED:hi> expression value modifier method net/minecraft/world/inventory/AbstractContainerMenu::pehkui$canUse$xOffset from pehkui.mixins.json:compat1204minus.ScreenHandlerMixin has an invalid signature. Found unexpected argument type net.minecraft.world.level.block.Block at index 1, expected net.minecraft.world.entity.player.Player. Handler signature: (DLnet/minecraft/world/level/block/Block;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D Expected signature: (DLnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D [INJECT Applicator Phase -> pehkui.mixins.json:compat1204minus.ScreenHandlerMixin -> Apply Injections -> -> Inject -> pehkui.mixins.json:compat1204minus.ScreenHandlerMixin->@ModifyExpressionValue::pehkui$canUse$xOffset(DLnet/minecraft/world/level/block/Block;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)D] at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.code.Injector.validateParams(Injector.java:597) at TRANSFORMER/MixinExtras@0.3.6/com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.invokeHandler(ModifyExpressionValueInjector.java:72) at TRANSFORMER/MixinExtras@0.3.6/com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.injectValueModifier(ModifyExpressionValueInjector.java:63) at TRANSFORMER/MixinExtras@0.3.6/com.llamalad7.mixinextras.injector.ModifyExpressionValueInjector.inject(ModifyExpressionValueInjector.java:42) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.code.Injector.inject(Injector.java:276) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.struct.InjectionInfo.inject(InjectionInfo.java:445) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTargetContext.applyInjections(MixinTargetContext.java:1355) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyInjections(MixinApplicatorStandard.java:1051) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyMixin(MixinApplicatorStandard.java:400) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.apply(MixinApplicatorStandard.java:325) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.apply(TargetClassContext.java:383) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.applyMixins(TargetClassContext.java:365) at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:363) ... 22 more
+Process finished with exit code 1

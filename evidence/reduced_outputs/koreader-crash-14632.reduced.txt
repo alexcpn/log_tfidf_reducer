@@ -1,0 +1,274 @@
+# LOG SUMMARY  |  1630 lines → 240 kept (14%)
+# levels: FATAL 0  ERROR 18  WARN 50  INFO 630  OTHER 932
+# top templates: "<NUM>/<NUM>/<NUM>-<TS> INFO Restoring user input handling" ×188 ; "<NUM>/<NUM>/<NUM>-<TS> INFO Inhibiting user input" ×188 ; "<NUM>/<NUM>/<NUM>-<TS> INFO Performing one-time migration for <NUM>" ×47 ; "<NUM>/<NUM>/<NUM>-<TS> INFO Kindle unscheduled wakeup" ×44 ; "<NUM>/<NUM>/<NUM>-<TS> INFO opening file /mnt/us/buks/The Way of Kings (Brandon Sanderson) (Z-Library).epub" ×37
+# Note: token counts use tiktoken cl100k_base — slightly conservative for Claude.
+
+--------------------------------------------- launching...   (×19)
+_ _____ ____ _   (×19)
+| |/ / _ \| _ \ ___ __ _ __| | ___ _ __   (×19)
+| ' / | | | |_) / _ \/ _` |/ _` |/ _ \ '__|   (×19)
+| . \ |_| | _ < __/ (_| | (_| | __/ |   (×19)
+|_|\_\___/|_| \_\___|\__,_|\__,_|\___|_|   (×19)
+It's a scroll... It's a codex... It's KOReader!   (×19)
+[*] Current time: 11/04/25-11:14:17   (×19)
+has monolibtic? no (libs/libkoreader-monolibtic.so: cannot open shared object file: No such file or directory)   (×19)
+lib_search_path: libs/?   (×19)
+lib_basic_format: lib%s.so   (×19)
+lib_version_format: lib%s.so.%s   (×19)
+[*] Version: v2025.10   (×19)
+ffi.load: rt.so.1 (RTLD_GLOBAL)   (×19)
+ffi.findlib: utf8proc [3]   (×19)
+ffi.load: libs/libutf8proc.so.3   (×19)
+ffi.findlib: blitbuffer   (×19)
+ffi.load: libs/libblitbuffer.so   (×19)
+ffi.findlib: archive [13]   (×19)
+ffi.load: libs/libarchive.so.13   (×19)
+ffi.findlib: sqlite3 [0]   (×19)
+ffi.load: libs/libsqlite3.so.0   (×19)
+ffi.findlib: fbink_input [1]   (×19)
+ffi.load: libs/libfbink_input.so.1   (×19)
+[FBInk] /dev/input/event0: `20cc000.snvs:snvs-powerkey` = KEY | POWER_BUTTON   (×19)
+[FBInk] /dev/input/event1: `bd71827-power` = KEY | POWER_BUTTON   (×19)
+[FBInk] /dev/input/event2: `cyttsp5_mt` = TOUCHSCREEN   (×19)
+[ko-input] Forked off fake event generator (pid: 7595)   (×19)
+11/04/25-11:14:18 INFO initializing for device KindleBasic3   (×19)
+11/04/25-11:14:18 INFO framebuffer resolution: {   (×19)
+h = 800,   (×19)
+w = 600   (×19)
+} --[[table: 0x76667240]]   (×19)
+ffi.findlib: wrap-mupdf   (×19)
+ffi.load: libs/libwrap-mupdf.so   (×19)
+11/04/25-11:14:18 INFO Performing one-time migration for 20200421   (×47)
+11/04/25-11:14:18 WARN os.remove: ./cache/fontlist/fontinfo.dat: No such file or directory   (×4)
+ffi.findlib: freetype [6]   (×19)
+ffi.load: libs/libfreetype.so.6   (×19)
+ffi.findlib: harfbuzz [0]   (×19)
+ffi.load: libs/libharfbuzz.so.0   (×19)
+ffi.findlib: zstd [1]   (×19)
+ffi.load: libs/libzstd.so.1   (×19)
+11/04/25-11:14:18 INFO ./cache/fontlist/fontinfo.dat fopen: No such file or directory -> initializing it   (×2)
+11/04/25-11:14:20 INFO Performing one-time migration for 20210306 (1/2)
+11/04/25-11:14:20 INFO Performing one-time migration for 20210306 (2/2)
+11/04/25-11:14:20 INFO Performing one-time migration for 20210330  ·
+ffi.findlib: leptonica [6]   (×19)
+ffi.load: libs/libleptonica.so.6   (×19)
+ffi.findlib: k2pdfopt [2]   (×19)
+ffi.load: libs/libk2pdfopt.so.2   (×19)
+11/04/25-11:14:20 INFO Performing one-time migration for 20210404  ·
+11/04/25-11:14:20 INFO Performing one-time migration for 20210409  ·
+11/04/25-11:14:20 WARN os.rename: ./cache/fontinfo.dat: No such file or directory
+11/04/25-11:14:20 INFO Performing one-time migration for 20210412  ·
+11/04/25-11:14:20 WARN os.rename: ./cache/calibre-libraries.lua: No such file or directory
+11/04/25-11:14:20 WARN os.rename: ./cache/calibre-books.dat: No such file or directory
+11/04/25-11:14:20 INFO Performing one-time migration for 20210414  ·
+11/04/25-11:14:20 WARN os.remove: ./cache/calibre/books.dat: No such file or directory
+11/04/25-11:14:20 INFO Performing one-time migration for 20210503 & 20210508
+11/04/25-11:14:20 INFO Performing one-time migration for 20210518  ·
+11/04/25-11:14:20 INFO Performing one-time migration for 20210521  ·
+… 12 lines omitted (from line 62) …
+11/04/25-11:14:20 WARN os.remove: ./cache/fontlist/fontinfo.dat: No such file or directory  ·
+11/04/25-11:14:20 INFO Performing one-time migration for 20220930  ·
+11/04/25-11:14:20 WARN loadfile: cannot open ./defaults.persistent.lua: No such file or directory
+11/04/25-11:14:20 WARN os.rename: ./defaults.persistent.lua: No such file or directory
+11/04/25-11:14:20 INFO Performing one-time migration for 20221027  ·
+11/04/25-11:14:20 INFO Performing one-time migration for 20230531  ·
+… 3 lines omitted (from line 80) …
+11/04/25-11:14:20 INFO Performing one-time migration for 20230731  ·
+11/04/25-11:14:20 INFO Performing one-time migration for 20230802  ·
+11/04/25-11:14:20 INFO statistics.sqlite3 not found.
+11/04/25-11:14:20 INFO Performing one-time migration for 20230901  ·
+11/04/25-11:14:20 INFO Performing one-time migration for 20231217  ·
+… 17 lines omitted (from line 88) …
+11/04/25-11:14:20 INFO Performing one-time migration for 20250914  ·
+11/04/25-11:14:20 INFO Performing one-time migration for 20250929  ·
+11/04/25-11:14:21 INFO opening file ./help/quickstart-en-v2025.10.html   (×3)
+CRE: font NotoSerifKR regular: updated weight from 500 to 400   (×21)
+CRE: font NotoSerifKR bold: updated weight from 900 to 700   (×21)
+CRE: font PMN Caecilia LT regular: updated weight from 500 to 400   (×21)
+CRE: font NotoSansKR bold: updated weight from 900 to 700   (×21)
+11/04/25-11:14:21 INFO Inhibiting user input   (×188)
+11/04/25-11:14:21 INFO Looking for plugins in directory: plugins   (×19)
+11/04/25-11:14:22 INFO CoverBrowser: setting default display modes
+11/04/25-11:14:22 WARN BookInfo cache DB schema updated from version 0 to version 20201210
+11/04/25-11:14:22 WARN Deleting existing ./settings/bookinfo_cache.sqlite3 to recreate it
+11/04/25-11:14:22 WARN No gestures file or invalid gestures file found, copying defaults
+11/04/25-11:14:24 INFO Restoring user input handling   (×188)
+11/04/25-11:15:58 INFO Inhibiting user input  ·
+11/04/25-11:16:20 INFO Restoring user input handling  ·
+… 22 lines omitted (from line 121) …
+11/04/25-11:22:32 INFO Inhibiting user input  ·
+11/04/25-11:22:52 INFO Restoring user input handling  ·
+11/04/25-11:23:12 INFO UIManager: No dialogs left to show   (×6)
+11/04/25-11:23:12 INFO Tearing down UIManager with exit code: 0   (×6)
+[ko-input] Closed input device with fd: 18 @ idx: 1 (matched by idx)   (×7)
+[ko-input] Closed input device with fd: 17 @ idx: 0 (matched by idx)   (×7)
+lipc-wait-event exited normally with status: 0   (×16)
+--------------------------------------------- launching...  ·
+_ _____ ____ _  ·
+… 106 lines omitted (from line 152) …
+CRE: font PMN Caecilia LT regular: updated weight from 500 to 400  ·
+CRE: font NotoSansKR bold: updated weight from 900 to 700  ·
+11/04/25-12:42:36 INFO opening file /mnt/us/buks/The Way of Kings (Brandon Sanderson) (Z-Library).epub   (×37)
+CRE: font NotoSerifKR regular: updated weight from 500 to 400  ·
+CRE: font NotoSerifKR bold: updated weight from 900 to 700  ·
+… 6 lines omitted (from line 263) …
+11/04/25-13:17:48 INFO Inhibiting user input  ·
+11/04/25-13:49:48 INFO Restoring user input handling  ·
+11/04/25-13:50:04 INFO Kindle unscheduled wakeup   (×44)
+11/04/25-13:50:05 INFO Inhibiting user input  ·
+11/04/25-13:51:07 INFO Restoring user input handling  ·
+… 8 lines omitted (from line 274) …
+11/04/25-14:18:35 INFO Inhibiting user input  ·
+11/04/25-14:20:01 INFO Restoring user input handling  ·
+11/04/25-14:26:01 INFO opening file /mnt/us/wallpapers/sherma.png   (×2)
+11/04/25-14:26:01 INFO Inhibiting user input  ·
+11/04/25-14:26:01 INFO setting zoom mode to pagewidth   (×3)
+11/04/25-14:26:01 INFO setting zoom mode to contentwidth   (×3)
+11/04/25-14:26:03 INFO Restoring user input handling  ·
+11/04/25-14:33:55 INFO opening file /mnt/us/buks/The Way of Kings (Brandon Sanderson) (Z-Library).epub  ·
+… 41 lines omitted (from line 290) …
+11/04/25-14:58:22 INFO setting zoom mode to contentwidth  ·
+11/04/25-14:58:23 INFO Restoring user input handling  ·
+11/04/25-14:58:24 INFO setting zoom mode to page   (×13)
+11/04/25-14:58:25 INFO opening file /mnt/us/buks/The Way of Kings (Brandon Sanderson) (Z-Library).epub  ·
+11/04/25-14:58:25 INFO Inhibiting user input  ·
+11/04/25-14:58:26 INFO Restoring user input handling  ·
+11/04/25-14:58:45 INFO opening file /mnt/us/buks/LADR4e.pdf   (×7)
+11/04/25-14:58:45 INFO Inhibiting user input  ·
+11/04/25-14:58:45 INFO setting zoom mode to pagewidth  ·
+11/04/25-14:58:45 INFO setting zoom mode to contentwidth  ·
+warning: invalid marked content and clip nesting   (×4)
+11/04/25-14:58:48 INFO Restoring user input handling  ·
+11/04/25-15:00:44 INFO setting zoom mode to columns   (×2)
+11/04/25-15:00:48 INFO setting zoom mode to page  ·
+11/04/25-15:00:49 INFO opening file /mnt/us/buks/The Way of Kings (Brandon Sanderson) (Z-Library).epub  ·
+warning: ... repeated 2 times...
+11/04/25-15:00:49 INFO Inhibiting user input  ·
+11/04/25-15:00:51 INFO Restoring user input handling  ·
+… 3 lines omitted (from line 349) …
+11/04/25-15:00:52 INFO setting zoom mode to columns  ·
+11/04/25-15:00:53 INFO Restoring user input handling  ·
+11/04/25-15:01:12 INFO setting zoom mode to content   (×4)
+11/04/25-15:01:14 INFO setting zoom mode to page  ·
+11/04/25-15:01:17 INFO setting zoom mode to pagewidth  ·
+… 52 lines omitted (from line 357) …
+11/04/25-15:07:56 INFO Inhibiting user input  ·
+11/04/25-15:07:56 INFO Looking for plugins in directory: plugins  ·
+11/04/25-15:07:57 INFO setting zoom mode to manual   (×3)
+warning: invalid marked content and clip nesting  ·
+11/04/25-15:07:59 INFO Restoring user input handling  ·
+… 50 lines omitted (from line 414) …
+11/04/25-16:39:41 INFO opening file /mnt/us/buks/The Way of Kings (Brandon Sanderson) (Z-Library).epub  ·
+11/04/25-16:39:41 INFO Inhibiting user input  ·
+CRE WARNING: cached rendering is invalid (stylesheet hash mismatch): doing full rendering
+11/04/25-16:39:53 INFO Restoring user input handling  ·
+11/04/25-16:39:54 INFO opening file /mnt/us/buks/LADR4e.pdf  ·
+… 77 lines omitted (from line 469) …
+11/04/25-17:59:41 INFO Kindle unscheduled wakeup  ·
+11/04/25-18:41:29 INFO Restoring user input handling  ·
+11/04/25-18:41:35 WARN NetworkMgr:turnOnWifiAndWaitForConnection: Connection failed!   (×17)
+./luajit: frontend/device/kindle/device.lua:128: Lipc error: 3:lipcErrNoSuchSource   (×9)
+stack traceback: [C]: in function 'get_string_property' frontend/device/kindle/device.lua:128: in function '<REDACTED:hi>' frontend/device/kindle/device.lua:418: in function 'getNetworkList' frontend/ui/network/manager.lua:1067: in function 'requestToTurnOnWifi' frontend/ui/network/manager.lua:505: in function 'beforeWifiAction' frontend/ui/network/manager.lua:678: in function 'willRerunWhenOnline' plugins/kosync.koplugin/main.lua:634: in function 'updateProgress' plugins/kosync.koplugin/main.lua:886: in function 'handleEvent' frontend/ui/widget/container/widgetcontainer.lua:83: in function 'propagateEvent' frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/uimanager.lua:959: in function 'broadcastEvent' frontend/device/generic/device.lua:1151: in function '_beforeSuspend' frontend/device/kindle/powerd.lua:321: in function 'beforeSuspend' frontend/device/kindle/device.lua:708: in function 'intoScreenSaver' frontend/device/kindle/device.lua:802: in function 'handler' frontend/ui/uimanager.lua:1421: in function 'handleInputEvent' frontend/ui/uimanager.lua:1523: in function 'handleInput' frontend/ui/uimanager.lua:1567: in function 'run' ./reader.lua:265: in main chunk [C]: at 0x00013ed5   (×4)
+lipc-wait-event exited normally with status: 0  ·
+--------------------------------------------- launching...  ·
+… 55 lines omitted (from line 553) …
+11/04/25-22:45:33 WARN NetworkMgr:turnOnWifiAndWaitForConnection: Connection failed!  ·
+./luajit: frontend/device/kindle/device.lua:128: Lipc error: 3:lipcErrNoSuchSource  ·
+stack traceback: [C]: in function 'get_string_property' frontend/device/kindle/device.lua:128: in function '<REDACTED:hi>' frontend/device/kindle/device.lua:418: in function 'getNetworkList' frontend/ui/network/manager.lua:1067: in function 'requestToTurnOnWifi' frontend/ui/network/manager.lua:339: in function 'enableWifi' frontend/ui/network/manager.lua:406: in function 'toggleWifiOn' frontend/ui/network/manager.lua:438: in function 'ok_callback' frontend/ui/widget/confirmbox.lua:118: in function 'callback' frontend/ui/widget/buttontable.lua:81: in function 'callback' frontend/ui/widget/button.lua:482: in function 'handleEvent' frontend/ui/widget/container/inputcontainer.lua:266: in function 'handleEvent' ... frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/widget/container/widgetcontainer.lua:83: in function 'propagateEvent' frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/uimanager.lua:896: in function 'sendEvent' frontend/ui/uimanager.lua:53: in function '__default__' frontend/ui/uimanager.lua:1423: in function 'handleInputEvent' frontend/ui/uimanager.lua:1523: in function 'handleInput' frontend/ui/uimanager.lua:1567: in function 'run' ./reader.lua:265: in main chunk [C]: at 0x00013ed5
+lipc-wait-event exited normally with status: 0  ·
+--------------------------------------------- launching...  ·
+… 115 lines omitted (from line 613) …
+11/04/25-22:58:10 INFO Inhibiting user input  ·
+11/04/25-23:04:19 INFO Restoring user input handling  ·
+11/04/25-23:04:21 WARN Initial Wi-Fi scan yielded no results, rescanning   (×9)
+11/04/25-23:04:22 INFO Wi-Fi successfully restored (after 0.75 seconds)!   (×4)
+11/04/25-23:19:22 INFO Inhibiting user input  ·
+11/05/25-00:21:24 INFO Kindle unscheduled wakeup  ·
+… 2 lines omitted (from line 734) …
+11/05/25-08:01:16 WARN NetworkMgr:turnOnWifiAndWaitForConnection: Connection failed!  ·
+./luajit: frontend/device/kindle/device.lua:128: Lipc error: 3:lipcErrNoSuchSource  ·
+stack traceback: [C]: in function 'get_string_property' frontend/device/kindle/device.lua:128: in function '<REDACTED:hi>' frontend/device/kindle/device.lua:418: in function 'getNetworkList' frontend/ui/network/manager.lua:1067: in function 'requestToTurnOnWifi' frontend/ui/network/manager.lua:339: in function 'enableWifi' frontend/ui/network/manager.lua:406: in function 'toggleWifiOn' frontend/ui/network/manager.lua:476: in function 'choice2_callback' frontend/ui/widget/multiconfirmbox.lua:117: in function 'callback' frontend/ui/widget/buttontable.lua:81: in function 'callback' frontend/ui/widget/button.lua:482: in function 'handleEvent' frontend/ui/widget/container/inputcontainer.lua:266: in function 'handleEvent' ... frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/widget/container/widgetcontainer.lua:83: in function 'propagateEvent' frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/uimanager.lua:896: in function 'sendEvent' frontend/ui/uimanager.lua:53: in function '__default__' frontend/ui/uimanager.lua:1423: in function 'handleInputEvent' frontend/ui/uimanager.lua:1523: in function 'handleInput' frontend/ui/uimanager.lua:1567: in function 'run' ./reader.lua:265: in main chunk [C]: at 0x00013ed5
+lipc-wait-event exited normally with status: 0  ·
+--------------------------------------------- launching...  ·
+… 62 lines omitted (from line 741) …
+11/05/25-08:44:01 INFO Inhibiting user input  ·
+11/05/25-08:50:09 INFO Restoring user input handling  ·
+11/05/25-08:50:12 INFO Wi-Fi successfully restored (after 1 seconds)!
+11/05/25-08:50:37 INFO Inhibiting user input  ·
+11/05/25-09:29:04 INFO Restoring user input handling  ·
+… 4 lines omitted (from line 808) …
+11/05/25-13:03:08 WARN NetworkMgr:turnOnWifiAndWaitForConnection: Connection failed!  ·
+./luajit: frontend/device/kindle/device.lua:128: Lipc error: 3:lipcErrNoSuchSource  ·
+stack traceback: [C]: in function 'get_string_property' frontend/device/kindle/device.lua:128: in function '<REDACTED:hi>' frontend/device/kindle/device.lua:418: in function 'getNetworkList' frontend/ui/network/manager.lua:1067: in function 'requestToTurnOnWifi' frontend/ui/network/manager.lua:505: in function 'beforeWifiAction' frontend/ui/network/manager.lua:678: in function 'willRerunWhenOnline' plugins/kosync.koplugin/main.lua:634: in function 'updateProgress' plugins/kosync.koplugin/main.lua:886: in function 'handleEvent' frontend/ui/widget/container/widgetcontainer.lua:83: in function 'propagateEvent' frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/uimanager.lua:959: in function 'broadcastEvent' frontend/device/generic/device.lua:1151: in function '_beforeSuspend' frontend/device/kindle/powerd.lua:321: in function 'beforeSuspend' frontend/device/kindle/device.lua:708: in function 'intoScreenSaver' frontend/device/kindle/device.lua:802: in function 'handler' frontend/ui/uimanager.lua:1421: in function 'handleInputEvent' frontend/ui/uimanager.lua:1523: in function 'handleInput' frontend/ui/uimanager.lua:1567: in function 'run' ./reader.lua:265: in main chunk [C]: at 0x00013ed5
+lipc-wait-event exited normally with status: 0  ·
+--------------------------------------------- launching...  ·
+… 58 lines omitted (from line 817) …
+11/05/25-17:07:43 INFO Restoring user input handling  ·
+./luajit: frontend/device/kindle/device.lua:57: Lipc error: 3:lipcErrNoSuchSource  ·
+stack traceback: [C]: in function 'access_hash_property' frontend/device/kindle/device.lua:57: in function '<REDACTED:hi>' frontend/device/kindle/device.lua:433: in function 'getNetworkList' frontend/ui/network/manager.lua:1067: in function 'requestToTurnOnWifi' frontend/ui/network/manager.lua:505: in function 'beforeWifiAction' frontend/ui/network/manager.lua:678: in function 'willRerunWhenOnline' plugins/kosync.koplugin/main.lua:713: in function 'getProgress' plugins/kosync.koplugin/main.lua:879: in function 'action' frontend/ui/uimanager.lua:1001: in function '_checkTasks' frontend/ui/uimanager.lua:1447: in function 'handleInput' frontend/ui/uimanager.lua:1567: in function 'run' ./reader.lua:265: in main chunk [C]: at 0x00013ed5
+lipc-wait-event exited normally with status: 0  ·
+--------------------------------------------- launching...  ·
+… 52 lines omitted (from line 880) …
+11/05/25-17:33:50 INFO Inhibiting user input  ·
+11/05/25-17:42:48 INFO Restoring user input handling  ·
+11/05/25-17:42:55 INFO Wi-Fi successfully restored (after 2.5 seconds)!
+11/05/25-17:43:52 INFO Inhibiting user input  ·
+11/05/25-17:44:08 INFO Restoring user input handling  ·
+… 4 lines omitted (from line 937) …
+11/05/25-17:47:08 INFO Inhibiting user input  ·
+11/05/25-18:01:19 INFO Restoring user input handling  ·
+11/05/25-18:01:24 WARN NetworkMgr:turnOnWifiAndWaitForConnection: A previous connection attempt is still ongoing!
+11/05/25-18:01:24 INFO Inhibiting user input  ·
+11/05/25-18:01:25 INFO Wi-Fi successfully restored (after 1.25 seconds)!
+11/05/25-18:01:37 INFO Kindle unscheduled wakeup  ·
+11/05/25-19:03:25 INFO Kindle unscheduled wakeup  ·
+… 1 lines omitted (from line 948) …
+11/05/25-22:53:29 WARN NetworkMgr:turnOnWifiAndWaitForConnection: Connection failed!  ·
+./luajit: frontend/device/kindle/device.lua:128: Lipc error: 3:lipcErrNoSuchSource  ·
+stack traceback: [C]: in function 'get_string_property' frontend/device/kindle/device.lua:128: in function '<REDACTED:hi>' frontend/device/kindle/device.lua:418: in function 'getNetworkList' frontend/ui/network/manager.lua:1067: in function 'requestToTurnOnWifi' frontend/ui/network/manager.lua:505: in function 'beforeWifiAction' frontend/ui/network/manager.lua:723: in function 'goOnlineToRun' plugins/kosync.koplugin/main.lua:839: in function 'handleEvent' frontend/ui/widget/container/widgetcontainer.lua:83: in function 'propagateEvent' frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/apps/reader/readerui.lua:827: in function 'onClose' frontend/apps/reader/readerui.lua:918: in function 'switchDocument' ... frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/widget/container/widgetcontainer.lua:83: in function 'propagateEvent' frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/uimanager.lua:896: in function 'sendEvent' frontend/ui/uimanager.lua:53: in function '__default__' frontend/ui/uimanager.lua:1423: in function 'handleInputEvent' frontend/ui/uimanager.lua:1523: in function 'handleInput' frontend/ui/uimanager.lua:1567: in function 'run' ./reader.lua:265: in main chunk [C]: at 0x00013ed5
+lipc-wait-event exited normally with status: 0  ·
+--------------------------------------------- launching...  ·
+… 59 lines omitted (from line 954) …
+11/05/25-23:42:56 INFO Inhibiting user input  ·
+11/05/25-23:44:30 INFO Restoring user input handling  ·
+11/05/25-23:44:46 INFO Wi-Fi successfully restored (after 7.25 seconds)!
+11/05/25-23:45:12 INFO Inhibiting user input  ·
+11/06/25-00:47:14 INFO Kindle unscheduled wakeup  ·
+… 27 lines omitted (from line 1018) …
+11/06/25-17:02:33 WARN NetworkMgr:turnOnWifiAndWaitForConnection: Connection failed!  ·
+./luajit: frontend/device/kindle/device.lua:74: Lipc error: 3:lipcErrNoSuchSource  ·
+stack traceback: [C]: in function 'access_hash_property' frontend/device/kindle/device.lua:74: in function '<REDACTED:hi>' frontend/device/kindle/device.lua:434: in function 'getNetworkList' frontend/ui/network/manager.lua:1067: in function 'requestToTurnOnWifi' frontend/ui/network/manager.lua:505: in function 'beforeWifiAction' frontend/ui/network/manager.lua:678: in function 'willRerunWhenOnline' plugins/kosync.koplugin/main.lua:634: in function 'updateProgress' plugins/kosync.koplugin/main.lua:886: in function 'handleEvent' frontend/ui/widget/container/widgetcontainer.lua:83: in function 'propagateEvent' frontend/ui/widget/container/widgetcontainer.lua:101: in function 'handleEvent' frontend/ui/uimanager.lua:959: in function 'broadcastEvent' frontend/device/generic/device.lua:1151: in function '_beforeSuspend' frontend/device/kindle/powerd.lua:321: in function 'beforeSuspend' frontend/device/kindle/device.lua:708: in function 'intoScreenSaver' frontend/device/kindle/device.lua:802: in function 'handler' frontend/ui/uimanager.lua:1421: in function 'handleInputEvent' frontend/ui/uimanager.lua:1523: in function 'handleInput' frontend/ui/uimanager.lua:1567: in function 'run' ./reader.lua:265: in main chunk [C]: at 0x00013ed5
+lipc-wait-event exited normally with status: 0  ·
+--------------------------------------------- launching...  ·
+… 178 lines omitted (from line 1050) …
+11/07/25-17:07:42 INFO Kindle unscheduled wakeup  ·
+11/07/25-20:15:36 INFO Restoring user input handling  ·
+11/07/25-20:15:42 WARN NetworkMgr:enableWifi: Connection failed!   (×2)
+11/07/25-20:15:54 WARN Initial Wi-Fi scan yielded no results, rescanning  ·
+11/07/25-20:15:54 WARN NetworkMgr:enableWifi: Connection failed!  ·
+… 3 lines omitted (from line 1233) …
+11/07/25-20:17:57 INFO opening file /mnt/us/buks/The Way of Kings (Brandon Sanderson) (Z-Library).epub  ·
+11/07/25-20:17:58 INFO Inhibiting user input  ·
+11/07/25-20:17:58 WARN KOSync: Automatic sync has been disabled because wifi_enable_action is *not* turn_on
+11/07/25-20:18:01 INFO Restoring user input handling  ·
+11/07/25-20:18:02 INFO Inhibiting user input  ·
+… 68 lines omitted (from line 1241) …
+11/16/25-00:38:41 INFO Inhibiting user input  ·
+11/16/25-00:53:10 INFO Restoring user input handling  ·
+lipc-wait-event was killed by signal 15
+--------------------------------------------- launching...  ·
+_ _____ ____ _  ·
+… 48 lines omitted (from line 1314) …
+11/16/25-07:29:47 INFO Inhibiting user input  ·
+11/16/25-07:29:48 INFO Looking for plugins in directory: plugins  ·
+CRE WARNING: cached rendering is invalid (page width mismatch): doing full rendering
+11/16/25-07:30:07 INFO Restoring user input handling  ·
+11/16/25-07:31:33 INFO Inhibiting user input  ·
+… 58 lines omitted (from line 1367) …
+11/16/25-07:37:08 INFO Looking for plugins in directory: plugins  ·
+11/16/25-07:37:14 INFO Restoring user input handling  ·
+11/16/25-07:43:38 INFO Preparing to quit UIManager with exit code: 85
+11/16/25-07:43:39 INFO Tearing down UIManager with exit code: 85
+[ko-input] Closed input device with fd: 18 @ idx: 1 (matched by idx)  ·
+[ko-input] Closed input device with fd: 17 @ idx: 0 (matched by idx)  ·
+… 199 lines omitted (from line 1431) …

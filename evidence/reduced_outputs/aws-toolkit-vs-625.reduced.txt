@@ -1,0 +1,657 @@
+# LOG SUMMARY  |  946 lines → 589 kept (62%)
+# levels: FATAL 0  ERROR 7  WARN 3  INFO 1  OTHER 935
+# top templates: "<NUM>/9/<NUM> 3:<NUM>:<NUM> PM - Cache invalidated by '<REDACTED:hi>'" ×173 ; "<NUM>/9/<NUM> 3:<NUM>:<NUM> PM - Setting discovered per-machine extension '<REDACTED:hi>' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }" ×34 ; "<NUM>/9/<NUM> 3:<NUM>:<NUM> PM - Extension '<REDACTED:hi>' initial state set to 'Enabled' because 'Per-machine extension enabled by default'" ×34 ; "<NUM>/9/<NUM> 3:<NUM>:<NUM> PM - Found extension in incompatibility list" ×17 ; "Extension Action - Disable" ×14
+# Note: token counts use tiktoken cl100k_base — slightly conservative for Claude.
+
+28/9/2026 3:57:45 PM - Microsoft VSIX Installer   (×2)
+28/9/2026 3:57:45 PM - -------------------------------------------   (×4)
+28/9/2026 3:57:45 PM - vsixinstaller.exe version:
+28/9/2026 3:57:45 PM - 18.10.1186+a8223c899a
+… 1 lines omitted (from line 4) …
+28/9/2026 3:57:45 PM - Command line parameters:
+28/9/2026 3:57:45 PM - C:\Program Files (x86)\Microsoft Visual Studio\Installer\resources\app\ServiceHub\Services\Microsoft.VisualStudio.Setup.Service\VsixInstaller\VSIXInstaller.exe,/appidinstallpath:C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\devenv.exe,/skuName:Microsoft.VisualStudio.Community,/skuVersion:18.10.12217.157,/appidname:Visual Studio 2026,/culture:en-US,/noep,C:\Users\Acer\AppData\Local\Temp\VSIXuskv01m2.vsix,/callingprocessid:23480,/installas:4204
+… 3 lines omitted (from line 7) …
+28/9/2026 3:57:46 PM - Skipping product Microsoft.VisualStudio.Product.BuildTools (771909d5) since it does not support extensions
+28/9/2026 3:57:46 PM - Initializing Install...
+28/9/2026 3:57:47 PM - Failed to get 'IVsAppCommandLine' service
+28/9/2026 3:57:47 PM - Local compatibility list path: C:\Users\Acer\AppData\Local\Microsoft\VisualStudio\18.0_645c7848\Extensions\CompatibilityList.xml - Timestamp: 134344492861799193
+28/9/2026 3:57:47 PM - Installed compatibility list path: C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\Shell\CompatibilityList.xml - Timestamp: 134344452914867578
+28/9/2026 3:57:47 PM - Using local compatibility list file at 'C:\Users\Acer\AppData\Local\Microsoft\VisualStudio\18.0_645c7848\Extensions\CompatibilityList.xml'.
+28/9/2026 3:57:47 PM - Try downloading compatibility list file.
+28/9/2026 3:57:47 PM - Visual Studio Version: 18.10.12217.157
+28/9/2026 3:57:47 PM - Parsing compatibility list file - C:\Users\Acer\AppData\Local\Microsoft\VisualStudio\18.0_645c7848\Extensions\CompatibilityList.xml
+28/9/2026 3:57:47 PM - Found extension in incompatibility list   (×17)
+Extension ID - SolutionErrorVisualizer.a392f96b-6b33-4b53-b4bb-3376a05f986c
+Extension Version - (,2.1)
+Extension Action - Disable   (×14)
+Product Version - [15.0,)   (×2)
+Disable During Update Configuration - False   (×9)
+Incompatible Reason -   (×14)
+… 1 lines omitted (from line 26) …
+Extension ID - <REDACTED:hi>   (×4)
+Extension Version - (,2.9)
+… 1 lines omitted (from line 29) …
+Product Version - [14.0.25420.1,)
+… 4 lines omitted (from line 31) …
+Extension Version - (,1.0)
+… 1 lines omitted (from line 36) …
+Product Version - [14.0.22528,)   (×3)
+… 4 lines omitted (from line 38) …
+Extension Version - (,42.42.42.42)
+… 1 lines omitted (from line 43) …
+Product Version - (,)
+… 3 lines omitted (from line 45) …
+Extension ID - DeploymentProject.14.0.VSIX.42D3833A-56C3-440E-8127-558CCE16AE00
+Extension Version - (,2.6)   (×2)
+Extension Action - Warning   (×3)
+… 4 lines omitted (from line 51) …
+Extension ID - 177DDE05-53AD-4611-A5A7-1D52F75AA3F0
+… 6 lines omitted (from line 56) …
+Extension ID - VSColorThemeEditor.26c6a2c2-1956-480f-845d-c32d9a14e1b4
+Extension Version - (,)
+… 1 lines omitted (from line 64) …
+Product Version - [16.0.28608.199,)   (×5)
+… 3 lines omitted (from line 66) …
+Extension ID - Microsoft.VisualStudio.EdgeDevTools
+Extension Version - [17.2.25.21968,)
+… 1 lines omitted (from line 71) …
+Product Version - [17.5.33209.295,)
+… 3 lines omitted (from line 73) …
+Extension ID - GitHub.Copilot
+Extension Version - [0.0.1,)   (×3)
+… 1 lines omitted (from line 78) …
+Product Version - [17.10.34720,)   (×3)
+Disable During Update Configuration - True   (×8)
+Incompatible Reason - Copilot Transition   (×3)
+… 1 lines omitted (from line 82) …
+Extension ID - VS.GitHub.Copilot
+… 6 lines omitted (from line 84) …
+Extension ID - VS.GitHub.Copilot.Service
+… 6 lines omitted (from line 91) …
+Extension ID - NuGetSolver.ecccc3de-a53e-4834-8b5d-7f07b8633436
+Extension Version - [0.1,)   (×6)
+… 5 lines omitted (from line 99) …
+Extension ID - Microsoft.NET.UpgradeAssistant
+… 6 lines omitted (from line 105) …
+Extension ID - Microsoft.AppCAT
+… 6 lines omitted (from line 112) …
+Extension ID - Microsoft.GitHub.Copilot.Upgrade.NET
+… 13 lines omitted (from line 119) …
+Extension ID - TimeStampMargin2022.255e8b14-4a53-4eb7-89a7-7ab741c1f612
+… 2 lines omitted (from line 133) …
+Product Version - [18.3.11304.161,)
+… 2 lines omitted (from line 136) …
+28/9/2026 3:57:48 PM - Compatibility list file in server is same from local path.
+28/9/2026 3:57:48 PM - File content is not updated or not found while downloading the compatibility list file.
+28/9/2026 3:57:48 PM - Using <REDACTED:hi> for VSIXInstaller host.
+28/9/2026 3:57:48 PM - User extensions root: C:\Users\Acer\AppData\Local\Microsoft\VisualStudio\18.0_645c7848\Extensions
+28/9/2026 3:57:48 PM - Application extensions root: C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions
+28/9/2026 3:57:48 PM - Cache invalidated by '<REDACTED:hi>'   (×173)
+… 166 lines omitted (from line 144) …
+28/9/2026 3:57:48 PM - Retaining extension 'Microsoft.VisualStudio.Copilot.LogViewerExtension' between cache rebuilds.
+28/9/2026 3:57:48 PM - Retaining extension 'Microsoft.Modernization.MigrateToAzure' between cache rebuilds.
+… 1 lines omitted (from line 312) …
+28/9/2026 3:57:48 PM - Running extension locator '<REDACTED:hi>' because the per-user invalidation handler was invalidated   (×2)
+… 1 lines omitted (from line 314) …
+28/9/2026 3:57:48 PM - Running extension locator '<REDACTED:hi>' because the per-instance invalidation handler was invalidated   (×2)
+… 1 lines omitted (from line 316) …
+28/9/2026 3:57:48 PM - Running extension locator '<REDACTED:hi>' because the current cache was invalidated.   (×2)
+… 6 lines omitted (from line 318) …
+28/9/2026 3:57:48 PM - Capping recursion at 5 directories in each extension root 'C:\Users\Acer\AppData\Local\Microsoft\VisualStudio\18.0_645c7848\Extensions' due to 'default limit behavior'.
+28/9/2026 3:57:48 PM - Capping recursion at 5 directories in each extension root 'C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions' due to 'default limit behavior'.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\0tjgvajy.pii\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\2rd5qmiu.05f\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\3e4om1hv.vpr\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\4vbqnzkj.0lx\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\5azeavgy.ezz\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\a13rb3tq.l1x\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\dklypmel.xwv\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\exfsv40b.epj\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\frxn04uo.emo\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\g5diwqal.gq3\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\jsjlxp3w.fhw\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\katzjcd5.ia2\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft.Vsix.TemplatesPackage\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\n2ojrnvo.j2a\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\o2gh2lwn.gwa\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\oy0h1gjl.1jk\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\tbs1tv2p.ce1\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\TestPlatform\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\tmxr1flt.jhh\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\tsqzxs1t.il3\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\uzcmil1p.h3z\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\v3elbbla.l1z\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\VSSDK\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\xceqejw1.omp\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\.NetNative\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\AppCAT\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Aspire\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\ClickOnce\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\ConnectedServices\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Copilot\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\CopilotUpgradeAgent\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\DebugAdapterHost\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\DebuggerServices\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\IntelliCode\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\IntelliCode.CSharp\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\JavaScript\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\LiveShare.VSCore\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\ManagedProjectSystem\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Portable Library Tools\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Publish\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\ResourceExplorer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\TailoredProjectServices\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\TemplateEngine\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\TSModernizer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\UpgradeAssistant\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\WCF Connected Service\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools JSON\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools Languages Shared\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools Shared\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\VSSDK\ProjectSystem\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\ADL Tools\2.6.5000.0\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\AppInsights\Contracts\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\AppInsights\Core\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\CodeSense\Framework\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Graphics\Debugger\Extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Modeling\18.0\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\SQLDB\SSDTUpdate\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\SQLDB\Vsix\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\SQLEditor\Vsix\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Unit Test Explorer\TestWIExtension\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\VC\ClassWizard\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web\Mvc\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools\Azure\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools\Library Manager\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Windows Azure Tools\SnapshotViewer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web\Mvc\Scaffolding\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools\Azure\Package\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Web Tools\Azure\WebJobs\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Capping recursion at 5 directories in each extension root 'C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions' due to 'default limit behavior'.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\DataDesign\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\AnalyzeCodeCoverage\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Asal\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CallHierarchy\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ClientDiagnostics\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CodeAnalysis\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\DesignTools\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\DesktopBridge\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\EBF\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Editor\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ErrorList\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ExtensibilityDiagnostics\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ExtensibilityProject\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Identity\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\IdentityGS\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Interactive\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\InteractiveWindow\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\LanguageServer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Markdown\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Microsoft.VisualStudio.Copilot.Contracts\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ModelBuilder\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\NavigateTo\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\NuGet\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\NuGetRecommender\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\OpenFolder\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Performance Tools\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Project\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ProjectServices\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ProjectSystemQuery\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\RazorLanguageServices\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ReferenceManager\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Search\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TextMate\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TS7\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TSServer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TypeScript\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\UniversalFlavor\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VC\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Windows.Forms\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\XamlDiagnostics\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\XamlLanguageService\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\XamlTaskList\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\BenchmarkDotNet\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\CppBuildInsights\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\CPUSampling\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\Database\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\Debugger\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\DiagnosticsHub\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\DotNetAsync\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\DotNetCounters\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\DotNetObjectAlloc\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\EventsViewer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\ExtensionManager\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\FileIO\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\Instrumentation\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\ParallelDebugger\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\PerfMarkers\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\Shell\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\TreeNavigation\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\UserMarks\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Architecture Tools\GraphProviderPackage\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\ClientDiagnostics\AppResponsiveness\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Client\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Linux\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Linux.TestAdapter\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\EBF\TestExplorer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Editorconfig\Command\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Editorconfig\Wizard\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\JSDiagnostics\Debugger\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Language\GenerateType\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Linux\Linux\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Linux\Shared\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\NuGet\MCP\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\RazorLanguageServices\ServiceHubCore\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow\Profiler\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VBCSharp\ExpressionEvaluators\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VBCSharp\LanguageServices\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VBCSharp\SourceBasedTestDiscovery\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VC\CodeLens\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VC\Copilot\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VC\Debugger\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VC\LanguageServer\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VC\Project\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VisualStudio\Editors\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\CppBuildInsights\Collector\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Platform\Debugger\Visualizers\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Architecture Tools\Providers\ManagedProvider\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Architecture Tools\Providers\NativeCode\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Architecture Tools\Providers\Solution\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\VBCSharp\LanguageServices\Core\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Found extension manifest at C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\Web\Razor\v3.0\extension.vsixmanifest.
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.SingleProjectMSIXPackagingTools.Dev17' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.SingleProjectMSIXPackagingTools.Dev17' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension '<REDACTED:hi>' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }   (×34)
+28/9/2026 3:57:48 PM - Extension '<REDACTED:hi>' initial state set to 'Enabled' because 'Per-machine extension enabled by default'   (×34)
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.WindowsAppSDK.Cs.Dev17' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.WindowsAppSDK.Cs.Dev17' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Package.ContainersTools' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Package.ContainersTools' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 501) …
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'mstestProjectTemplate' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'mstestProjectTemplate' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Containers.Tools.Extensions' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Containers.Tools.Extensions' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 507) …
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'MSTestDesktopVB.Microsoft.c6c7fff6-20cb-405d-9ad4-a60a6d0c55d9' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'MSTestDesktopVB.Microsoft.c6c7fff6-20cb-405d-9ad4-a60a6d0c55d9' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Copilot.Build.Analyzer' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Copilot.Build.Analyzer' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Cache.Service' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Cache.Service' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Package.NodeJs.9ecec6f7-3c09-4cb4-ab9c-54b1e65defee' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Package.NodeJs.9ecec6f7-3c09-4cb4-ab9c-54b1e65defee' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.Vsix.TemplatesPackage' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.Vsix.TemplatesPackage' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Copilot.Testing.UI' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Copilot.Testing.UI' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'GoogleTestAdapterVSIX.d3b8e668-8582-4be9-ab42-aaf872704ef3' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'GoogleTestAdapterVSIX.d3b8e668-8582-4be9-ab42-aaf872704ef3' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Templates.AssemblyInfo.Wizard' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Templates.AssemblyInfo.Wizard' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'BoostUnitTestAdapter.95183667-1f65-419b-9cac-c9fbbed28f8b' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'BoostUnitTestAdapter.95183667-1f65-419b-9cac-c9fbbed28f8b' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.TestPlatform.VSIX.Microsoft.0e51abf6-9f5f-401e-a812-4043b87acabf' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.TestPlatform.VSIX.Microsoft.0e51abf6-9f5f-401e-a812-4043b87acabf' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.TypeScript.3105e3af-f2c4-4ddc-be8e-d065c00a5be1' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }   (×2)
+28/9/2026 3:57:48 PM - Extension 'Microsoft.TypeScript.3105e3af-f2c4-4ddc-be8e-d065c00a5be1' initial state set to 'Enabled' because 'Per-machine extension enabled by default'   (×2)
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Debugger.VsDbg.Integration.7B06A237-37E6-4260-A5D5-BC8C5BFC851D' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Debugger.VsDbg.Integration.7B06A237-37E6-4260-A5D5-BC8C5BFC851D' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.AzureAgent.VS.Dev18' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.AzureAgent.VS.Dev18' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'EdgeDriverTestDotNetCore.047a6d51-9322-4a4c-825b-5fe6cd48494c' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'EdgeDriverTestDotNetCore.047a6d51-9322-4a4c-825b-5fe6cd48494c' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.SDK' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.SDK' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 539) …
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension '.NetNative.Microsoft.76F163D5-4A7A-47F7-9F5D-AA1743525C3F' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension '.NetNative.Microsoft.76F163D5-4A7A-47F7-9F5D-AA1743525C3F' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.Modernization.AppCAT' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.Modernization.AppCAT' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 545) …
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'ClickOnceProvider.13ff266c-3231-421f-870e-f31a8ca48395' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'ClickOnceProvider.13ff266c-3231-421f-870e-f31a8ca48395' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'ConnectedServices.897486C9-63BD-48D3-8A33-CB770FBD0723' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'ConnectedServices.897486C9-63BD-48D3-8A33-CB770FBD0723' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'VisualStudio.GitHub.Copilot' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'VisualStudio.GitHub.Copilot' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.Modernization.UpgradeAgent' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.Modernization.UpgradeAgent' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Debugger.VSCodeDebuggerHost.Microsoft.42741dc7-574b-4d5b-b8d7-02b7d23cbc85' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Debugger.VSCodeDebuggerHost.Microsoft.42741dc7-574b-4d5b-b8d7-02b7d23cbc85' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Debugger.BrokeredServices' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.Debugger.BrokeredServices' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'IntelliCode.VSIX.598224b2-b987-401b-8509-f568d0c0b946' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'IntelliCode.VSIX.598224b2-b987-401b-8509-f568d0c0b946' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.IntelliCode.CSharp' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.IntelliCode.CSharp' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.JavaScript.ProjectSystem' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.JavaScript.ProjectSystem' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.LiveShare.VSCore' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.LiveShare.VSCore' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 6 lines omitted (from line 567) …
+28/9/2026 3:57:48 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.ResourceExplorer' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:48 PM - Extension 'Microsoft.VisualStudio.ResourceExplorer' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.TailoredProjectServices.Debugger.dll' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.TailoredProjectServices.Debugger.dll' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 577) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'TSModernizer.VisualStudio' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'TSModernizer.VisualStudio' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.Modernization.UpgradeAssistant' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.Modernization.UpgradeAssistant' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'WCFSVCREF.4E55C53D-1367-4057-9DA7-2507AFF68A55' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'WCFSVCREF.4E55C53D-1367-4057-9DA7-2507AFF68A55' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 6 lines omitted (from line 585) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'E8105105-1014-4688-9F62-52186FEBF19B' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'E8105105-1014-4688-9F62-52186FEBF19B' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Sdk.ProjectSystem' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Sdk.ProjectSystem' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 10 lines omitted (from line 595) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Modeling.Extension' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Modeling.Extension' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 607) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Data.Tools' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Data.Tools' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Data.Tools.SqlEditor' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Data.Tools.SqlEditor' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 613) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VCClassWizard.ClassWizardPackage' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VCClassWizard.ClassWizardPackage' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 4 lines omitted (from line 617) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.Web.LibraryManager' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.Web.LibraryManager' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.SnapshotDebugger.03cacfb4-a900-400a-8545-e2be7f835124' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.SnapshotDebugger.03cacfb4-a900-400a-8545-e2be7f835124' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.AspNet.Scaffolding.Mvc.5.0' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.AspNet.Scaffolding.Mvc.5.0' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 627) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Web.AzureFunctions' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Web.AzureFunctions' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.DataDesign' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.DataDesign' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'CodeCoverage.Microsoft.f47a268a-bba9-442d-ac61-eef97f906458' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'CodeCoverage.Microsoft.f47a268a-bba9-442d-ac61-eef97f906458' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.KeychainCredentialHelper' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.KeychainCredentialHelper' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Platform.CallHierarchy' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Platform.CallHierarchy' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'ClientDiagnostics..ac2d8bbe-fced-4277-8f61-24cecafa06b6' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'ClientDiagnostics..ac2d8bbe-fced-4277-8f61-24cecafa06b6' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.CMake.VC.526FBDAA-5C95-4044-8131-A5B7057781B1' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }   (×2)
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.CMake.VC.526FBDAA-5C95-4044-8131-A5B7057781B1' initial state set to 'Enabled' because 'Per-machine extension enabled by default'   (×2)
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.CodeAnalysis' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.CodeAnalysis' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.DesignTools.XamlDesignerHost' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.DesignTools.XamlDesignerHost' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.DesktopBridge.ProjectSystem.dll' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.DesktopBridge.ProjectSystem.dll' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Workspace.ExternalBuildFramework.F3641056-6B12-4C85-A36F-77736BEA3FC9' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Workspace.ExternalBuildFramework.F3641056-6B12-4C85-A36F-77736BEA3FC9' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Platform.Editor' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Platform.Editor' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.ErrorList' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.ErrorList' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Extensibility.Diagnostics.91188533-639b-46e5-b9a9-7bb0b9cedbdb' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Extensibility.Diagnostics.91188533-639b-46e5-b9a9-7bb0b9cedbdb' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Extensibility.Project' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Extensibility.Project' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'VisualFSharp' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'VisualFSharp' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.HotReload' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.HotReload' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Identity' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Identity' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.Developer.IdentityServiceGS' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.Developer.IdentityServiceGS' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 4 lines omitted (from line 667) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.LanguageServer' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.LanguageServer' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Platform.Markdown' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Platform.Markdown' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Copilot.Contracts' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Copilot.Contracts' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 677) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Platform.NavigateTo' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Platform.NavigateTo' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'NuGet.72c5d240-f742-48d4-a0f1-7016671e405b' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'NuGet.72c5d240-f742-48d4-a0f1-7016671e405b' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'NuGetRecommender.1c74c0d3-19bc-4e51-a0f1-5258a3023d2b' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'NuGetRecommender.1c74c0d3-19bc-4e51-a0f1-5258a3023d2b' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.AnyCode' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.AnyCode' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.PerformanceTools.EditorIntegration' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.PerformanceTools.EditorIntegration' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.ProjectSystem' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.ProjectSystem' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.ProjectServices' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.ProjectServices' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.ProjectSystem.Query' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.ProjectSystem.Query' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.RazorExtension' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.RazorExtension' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.ReferenceManager' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.ReferenceManager' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Platform.Search' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Platform.Search' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'TestWindow.Microsoft.0771d463-d74d-4e95-aac2-39d3c7ec1f97' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'TestWindow.Microsoft.0771d463-d74d-4e95-aac2-39d3c7ec1f97' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.TextMateGrammars' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.TextMateGrammars' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Package.TypeScript.TSServer.b6fe773c-24c4-428e-9557-0883d0cbe5b4' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }   (×2)
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Package.TypeScript.TSServer.b6fe773c-24c4-428e-9557-0883d0cbe5b4' initial state set to 'Enabled' because 'Per-machine extension enabled by default'   (×2)
+… 2 lines omitted (from line 707) …
+28/9/2026 3:57:49 PM - Discovered extension with id "Microsoft.VisualStudio.Package.TypeScript.TSServer.b6fe773c-24c4-428e-9557-0883d0cbe5b4" at path "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TSServer\". An extension with the same identifer and version was already discoverd at path "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TS7\". The conflict cannot be resolved.
+28/9/2026 3:57:49 PM - Discovered another extension with id "Microsoft.VisualStudio.Package.TypeScript.TSServer.b6fe773c-24c4-428e-9557-0883d0cbe5b4". We couldn't handle it, so we are not adding either copy to the cache.
+… 2 lines omitted (from line 711) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.UniversalLibrary.dll' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.UniversalLibrary.dll' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.VC' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.VC' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 717) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.DesignTools.Diagnostics' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.DesignTools.Diagnostics' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.DesignTools.XamlLanguageService' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.DesignTools.XamlLanguageService' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.DesignTools.XamlTaskList' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.DesignTools.XamlTaskList' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'BenchmarkDotNet.Microsoft Corp..b880d9be-372a-40bf-9aec-0801dd3a2b5d' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'BenchmarkDotNet.Microsoft Corp..b880d9be-372a-40bf-9aec-0801dd3a2b5d' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'CppBuildInsights.Microsoft Corp..8332E269-72A4-4020-B678-0AAA2A6562F5' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'CppBuildInsights.Microsoft Corp..8332E269-72A4-4020-B678-0AAA2A6562F5' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'CpuSampling.Microsoft Corp..7cdb3050-b7a1-4c26-8480-0769a8432ee7' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'CpuSampling.Microsoft Corp..7cdb3050-b7a1-4c26-8480-0769a8432ee7' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'DatabaseTool.Microsoft Corp..94b63a54-1218-4d29-adff-ae2f856c67f4' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'DatabaseTool.Microsoft Corp..94b63a54-1218-4d29-adff-ae2f856c67f4' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 4 lines omitted (from line 733) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'DotNetAsync.Microsoft Corp..b880d9be-372a-40bf-9aec-0801dd3a2b5d' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'DotNetAsync.Microsoft Corp..b880d9be-372a-40bf-9aec-0801dd3a2b5d' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'DotNetCountersTool.Microsoft Corp..0ec7bae7-c2b8-4df3-87ed-47dccb4d0192' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'DotNetCountersTool.Microsoft Corp..0ec7bae7-c2b8-4df3-87ed-47dccb4d0192' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'DotNetObjectAllocation.Microsoft Corp..2205b5d8-e06d-453d-80b8-dcea82c6dd5b' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'DotNetObjectAllocation.Microsoft Corp..2205b5d8-e06d-453d-80b8-dcea82c6dd5b' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'EventsViewerTool.Microsoft Corp..01FAD7C8-77EC-4E88-9F80-C88FA0055252' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'EventsViewerTool.Microsoft Corp..01FAD7C8-77EC-4E88-9F80-C88FA0055252' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.ExtensionManager.Implementation' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.ExtensionManager.Implementation' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'FileIO.Microsoft Corp..96f6ae6f-3915-41b7-aadb-bcf77c540729' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'FileIO.Microsoft Corp..96f6ae6f-3915-41b7-aadb-bcf77c540729' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Instrumentation.Microsoft Corp..7cdb3050-b7a1-4c26-8480-0769a8432ee7' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Instrumentation.Microsoft Corp..7cdb3050-b7a1-4c26-8480-0769a8432ee7' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'ParallelDebugPackage' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'ParallelDebugPackage' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'PerfMarkers.Microsoft Corporation.5f945160-e23d-49c5-8997-e05932baa944' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'PerfMarkers.Microsoft Corporation.5f945160-e23d-49c5-8997-e05932baa944' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Platform' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Platform' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.TreeNavigation' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.TreeNavigation' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'UserMarksTool.Microsoft Corp..27656D46-B6EC-4B37-85FA-32C6C90ADCE5' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'UserMarksTool.Microsoft Corp..27656D46-B6EC-4B37-85FA-32C6C90ADCE5' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 761) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'AppResponsiveness..D57E4960-6C0D-4336-AFEF-CB2FAD5E97AD' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'AppResponsiveness..D57E4960-6C0D-4336-AFEF-CB2FAD5E97AD' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 765) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Linux.CMake.VC.10F84D6A-F5B4-4FB8-9988-352ED3051200' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Linux.CMake.VC.10F84D6A-F5B4-4FB8-9988-352ED3051200' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Linux.CMake.VC.TestAdapter.460F03F1-7738-4500-B95E-68CBB470E0E4' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Linux.CMake.VC.TestAdapter.460F03F1-7738-4500-B95E-68CBB470E0E4' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'MS.VS.Workspace.EBF.TestProvider.E7C2F617-305E-4EFE-A0AB-46C392988EAF' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'MS.VS.Workspace.EBF.TestProvider.E7C2F617-305E-4EFE-A0AB-46C392988EAF' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Templates.Editorconfig.Command' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Templates.Editorconfig.Command' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Templates.Editorconfig.Wizard.Setup' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Templates.Editorconfig.Wizard.Setup' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.JavaScript.DebugAdapter.cde3ffb3-2b8d-4776-b1d9-ff645a8f11ca' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.JavaScript.DebugAdapter.cde3ffb3-2b8d-4776-b1d9-ff645a8f11ca' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Language.GenerateType' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Language.GenerateType' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Linux.VC.53CDC963-411A-4C4D-921C-DE3B5A78025F' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Linux.VC.53CDC963-411A-4C4D-921C-DE3B5A78025F' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Linux.Shared' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Linux.Shared' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.NuGet.Mcp.Server' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.NuGet.Mcp.Server' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.RazorExtension.ServiceHub.x64' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.RazorExtension.ServiceHub.x64' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.TeamFoundation.TeamExplorer.Extensions' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.TeamFoundation.TeamExplorer.Extensions' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.TestWindow.Profiler.0e4de14d-16c3-43b8-a5a4-e8d19fd1a8bc' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.TestWindow.Profiler.0e4de14d-16c3-43b8-a5a4-e8d19fd1a8bc' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 6 lines omitted (from line 793) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.VC.CodeLens' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.VC.CodeLens' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.VC.Copilot' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.VC.Copilot' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'CppDebug' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'CppDebug' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.VC.LanguageServer' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.VC.LanguageServer' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Project.VisualC' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Project.VisualC' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 809) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'CppBuildInsightsCollector.218bbdca-4b88-4917-8ca6-22fce8e5303b' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'CppBuildInsightsCollector.218bbdca-4b88-4917-8ca6-22fce8e5303b' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.DebuggerVisualizers.Package' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.DebuggerVisualizers.Package' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Progression.LanguageService.ManagedProvider' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Progression.LanguageService.ManagedProvider' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Progression.Native.CodeProvider' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Progression.Native.CodeProvider' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.Progression.VSProvider' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Progression.VSProvider' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.VisualStudio.TeamFoundation.TeamExplorer.MinGit' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.TeamFoundation.TeamExplorer.MinGit' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+… 2 lines omitted (from line 823) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.WebTools.Languages.Razor.3' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }
+28/9/2026 3:57:49 PM - Extension 'Microsoft.WebTools.Languages.Razor.3' initial state set to 'Enabled' because 'Per-machine extension enabled by default'
+28/9/2026 3:57:49 PM - Capping recursion at 5 directories in each extension root 'C:\Program Files (x86)\Common Files\Microsoft\ExtensionManager\Extensions' due to 'default limit behavior'.   (×2)
+28/9/2026 3:57:49 PM - Found extension manifest at C:\Program Files (x86)\Common Files\Microsoft\ExtensionManager\Extensions\Microsoft\Windows Kits\10\Desktop SDK\extension.vsixmanifest.   (×2)
+28/9/2026 3:57:49 PM - Found extension manifest at C:\Program Files (x86)\Common Files\Microsoft\ExtensionManager\Extensions\Microsoft\Windows Kits\10\Windows Store SDK\extension.vsixmanifest.   (×2)
+… 3 lines omitted (from line 830) …
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.Windows.DevelopmentKit.Desktop' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }   (×2)
+28/9/2026 3:57:49 PM - Extension 'Microsoft.Windows.DevelopmentKit.Desktop' initial state set to 'Enabled' because 'Per-machine extension enabled by default'   (×2)
+28/9/2026 3:57:49 PM - Setting discovered per-machine extension 'Microsoft.Windows.DevelopmentKit.WindowsStore' initial state to InitialExtensionState { State = Enabled, Reason = Per-machine extension enabled by default }   (×2)
+28/9/2026 3:57:49 PM - Extension 'Microsoft.Windows.DevelopmentKit.WindowsStore' initial state set to 'Enabled' because 'Per-machine extension enabled by default'   (×2)
+… 2 lines omitted (from line 837) …
+28/9/2026 3:57:49 PM - Discovered extension with identifier 'Microsoft.Windows.DevelopmentKit.Desktop' at 'C:\Program Files (x86)\Common Files\Microsoft\ExtensionManager\Extensions\Microsoft\Windows Kits\10\Desktop SDK\' is already in the cache.
+28/9/2026 3:57:49 PM - Discovered extension 'Microsoft.Windows.DevelopmentKit.Desktop' is already in the cache. Skipping it.
+… 2 lines omitted (from line 841) …
+28/9/2026 3:57:49 PM - Discovered extension with identifier 'Microsoft.Windows.DevelopmentKit.WindowsStore' at 'C:\Program Files (x86)\Common Files\Microsoft\ExtensionManager\Extensions\Microsoft\Windows Kits\10\Windows Store SDK\' is already in the cache.
+28/9/2026 3:57:49 PM - Discovered extension 'Microsoft.Windows.DevelopmentKit.WindowsStore' is already in the cache. Skipping it.
+28/9/2026 3:57:49 PM - Extension 'Microsoft.VisualStudio.Copilot.LogViewerExtension' initial state set to 'Enabled'   (×2)
+28/9/2026 3:57:49 PM - Discovered extension with identifier 'Microsoft.VisualStudio.Copilot.LogViewerExtension' at 'C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\VSExtensions\Microsoft\CopilotLogViewer\' is already in the cache.
+28/9/2026 3:57:49 PM - Discovered extension 'Microsoft.VisualStudio.Copilot.LogViewerExtension' is already in the cache. Skipping it.
+28/9/2026 3:57:49 PM - Extension 'Microsoft.Modernization.MigrateToAzure' initial state set to 'Enabled'   (×2)
+28/9/2026 3:57:49 PM - Discovered extension with identifier 'Microsoft.Modernization.MigrateToAzure' at 'C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\VSExtensions\Microsoft\AppModernizationForDotNet\' is already in the cache.
+28/9/2026 3:57:49 PM - Discovered extension 'Microsoft.Modernization.MigrateToAzure' is already in the cache. Skipping it.
+… 2 lines omitted (from line 851) …
+28/9/2026 3:57:49 PM - The extension with ID '<REDACTED:hi>' is not installed to Visual Studio Community 2026.
+28/9/2026 3:57:49 PM - Extension Details...
+28/9/2026 3:57:49 PM - Identifier : <REDACTED:hi>
+28/9/2026 3:57:49 PM - Name : AWS Toolkit with Amazon Q
+28/9/2026 3:57:49 PM - Author : Amazon Web Services
+28/9/2026 3:57:49 PM - Version : 1.105.0.0
+28/9/2026 3:57:49 PM - Description : Develop, debug, and deploy .NET applications using Amazon Web Services. Amazon Q is your generative AI-powered assistant across the software development lifecycle.
+28/9/2026 3:57:49 PM - Locale : en-US
+28/9/2026 3:57:49 PM - MoreInfoURL : https://aws.amazon.com/visualstudio/
+28/9/2026 3:57:49 PM - InstalledByMSI : False
+28/9/2026 3:57:49 PM - <REDACTED:hi> : [0.0,2147483647.2147483647]
+28/9/2026 3:57:51 PM - SignatureState : InvalidTimestamp
+28/9/2026 3:57:51 PM - SignedBy : Amazon Web Services, Inc.
+28/9/2026 3:57:51 PM - Certificate Info :
+28/9/2026 3:57:51 PM - -------------------------------------------------------   (×2)
+28/9/2026 3:57:51 PM - [Subject] : CN="Amazon Web Services, Inc.", OU=AWS IDEs, O="Amazon Web Services, Inc.", L=Seattle, S=Washington, C=US, <REDACTED:hi>, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US
+28/9/2026 3:57:51 PM - [Issuer] : CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O="DigiCert, Inc.", C=US
+28/9/2026 3:57:51 PM - [Serial Number] : <REDACTED:hi>
+28/9/2026 3:57:51 PM - [Not Before] : 6/2/2026 8:00:00 AM
+28/9/2026 3:57:51 PM - [Not After] : 6/2/2027 7:59:59 AM
+28/9/2026 3:57:51 PM - [Thumbprint] : <REDACTED:hi>
+28/9/2026 3:57:51 PM - Supported Products :
+28/9/2026 3:57:51 PM - Microsoft.VisualStudio.Community   (×2)
+28/9/2026 3:57:51 PM - Version : [17.7,19.0)   (×3)
+28/9/2026 3:57:51 PM - ProductArchitecture : amd64
+… 2 lines omitted (from line 878) …
+28/9/2026 3:57:51 PM - ProductArchitecture : arm64
+28/9/2026 3:57:51 PM - References :
+28/9/2026 3:57:51 PM - Prerequisites :
+… 1 lines omitted (from line 883) …
+28/9/2026 3:57:51 PM - Identifier : Microsoft.VisualStudio.Component.CoreEditor
+28/9/2026 3:57:51 PM - Name : Visual Studio core editor
+… 1 lines omitted (from line 886) …
+28/9/2026 3:57:51 PM - Signature Details...
+28/9/2026 3:57:51 PM - Extension is signed with an invalid timestamp.
+28/9/2026 3:58:12 PM - Blocking processes:
+28/9/2026 3:58:12 PM - InstallProgressPage ChangeType: 'SingleTarget' operationCount: '2' Text: 'Modifying Visual Studio Community 2026...'
+28/9/2026 3:58:12 PM - The following target products have been selected...
+28/9/2026 3:58:12 PM - Visual Studio Community 2026
+28/9/2026 3:58:12 PM - Beginning to install extension to Visual Studio Community 2026...
+28/9/2026 3:58:12 PM - Allow incremental major version dependencies
+28/9/2026 3:58:12 PM - Beginning installation of extension: 'AWS Toolkit with Amazon Q' Identifier '<REDACTED:hi>' Version '1.105.0.0' InstallFlags: <REDACTED:hi> PerMachine: True.
+28/9/2026 3:58:12 PM - Install path does not exist: C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\idkrpknz.ujm\
+28/9/2026 3:58:12 PM - Beginning Setup Engine install for extension AWS Toolkit with Amazon Q with identifier <REDACTED:hi> and version 1.105.0.0.
+28/9/2026 3:58:12 PM - Instantiate download manager silently: False
+28/9/2026 3:58:13 PM - Windows Installer found the package 'Microsoft.VisualCpp.RuntimeDebug.14.ARM64,version=14.51.36247,chip=x64,machinearch=arm64' superseded but corresponding compatible package information was not found. Attempts to repair will be skipped and that to uninstall may leave the cache behind.
+28/9/2026 3:58:14 PM - Calling into setup engine service to install.
+28/9/2026 3:58:16 PM - Skipping non-applicable package Microsoft.Net.4.8.FullRedist.20H2: The current OS Version '10.0.26200.0' is not in the supported version range '[10.0.19042,10.0.22000]'.
+28/9/2026 3:58:16 PM - Skipping non-applicable package Microsoft.Net.4.8.FullRedist: The current OS Version '10.0.26200.0' is not in the supported version range '[6.1.1,10.0.17763]'.
+28/9/2026 3:58:16 PM - Skipping non-applicable package Microsoft.VisualStudio.NuGet.PowershellBindingRedirect: The current OS Version '10.0.26200.0' is not in the supported version range '[6.1,6.2)'.
+28/9/2026 3:58:17 PM - Skipping non-applicable package Microsoft.Ancm.IIS.Msi: Required conditions are not satisfied: <REDACTED:hi> And <REDACTED:hi>
+28/9/2026 3:58:17 PM - Skipping non-applicable package Microsoft.Ancmv2.IIS.Msi: Required conditions are not satisfied: <REDACTED:hi> And <REDACTED:hi>
+28/9/2026 3:58:17 PM - Skipping non-applicable package Microsoft.Net.4.8.1.FullRedist: The current OS Version '10.0.26200.0' is not in the supported version range '[10.0.19042,10.0.22000]'.
+28/9/2026 3:58:19 PM - Windows Installer found the package 'Microsoft.VisualStudio.Debugger.Script.Msi,version=16.10.31205.180,chip=x86' superseded but corresponding compatible package information was not found. Attempts to repair will be skipped and that to uninstall may leave the cache behind.
+28/9/2026 3:58:19 PM - Windows Installer found the package 'Microsoft.VisualStudio.MinShell.Msi.Resources,version=16.10.31306.167,language=en-US' superseded but corresponding compatible package information was not found. Attempts to repair will be skipped and that to uninstall may leave the cache behind.
+28/9/2026 3:58:19 PM - Windows Installer found the package 'Microsoft.VisualStudio.FileHandler.Msi,version=16.11.31503.54,chip=x86' superseded but corresponding compatible package information was not found. Attempts to repair will be skipped and that to uninstall may leave the cache behind.
+28/9/2026 3:58:19 PM - Windows Installer found the package 'Microsoft.VisualStudio.FileHandler.Msi,version=16.11.31503.54,chip=x64' superseded but corresponding compatible package information was not found. Attempts to repair will be skipped and that to uninstall may leave the cache behind.
+28/9/2026 3:58:19 PM - Windows Installer found the package 'Microsoft.VisualStudio.Community.Msi.Resources,version=16.10.31213.239,language=en-US' superseded but corresponding compatible package information was not found. Attempts to repair will be skipped and that to uninstall may leave the cache behind.
+28/9/2026 3:58:19 PM - Scheduling without hotload: No hotloadable VSIX packages were present in the plan
+28/9/2026 3:58:19 PM - Remote settings service is not available
+28/9/2026 3:58:21 PM - Certificate is invalid: AWSToolkitPackage.v17.vsix
+28/9/2026 3:58:21 PM - Cache failed. Retrying download of '0B82CB16-0E52-4363-9BC0-61E758689176,version=1.105.0.0'.
+28/9/2026 3:58:21 PM - Value cannot be null.   (×2)
+Parameter name: uri   (×3)
+… 2 lines omitted (from line 918) …
+28/9/2026 3:58:21 PM - Activity threw exception System.ArgumentNullException: Value cannot be null.
+… 1 lines omitted (from line 921) …
+28/9/2026 3:58:21 PM - Skipping cache of package '0B82CB16-0E52-4363-9BC0-61E758689176,version=1.105.0.0' since installing or downloading it failed
+28/9/2026 3:58:21 PM - Skipping cache of package 'Component.0B82CB16-0E52-4363-9BC0-61E758689176,version=1.105.0.0' since the package or a parent package had a vital failure.
+28/9/2026 3:58:55 PM - Installation of extension '<REDACTED:hi>' failed with <REDACTED:hi>: Package '<REDACTED:hi>' failed to download. Rolling back.
+28/9/2026 3:58:55 PM - Installation of extension '<REDACTED:hi>' failed.
+Package '<REDACTED:hi>' failed to download
+at Microsoft.VisualStudio.Setup.InstallOperation.Run(CancellationToken token)   (×2)
+at Microsoft.VisualStudio.Setup.Engine.RunOperation(InstallOperation installOperation, CancellationToken token, ExecuteAction action, ITelemetryOperation telemetryOperation)   (×2)
+at Microsoft.VisualStudio.Setup.Engine.RunCoreOperation(InstallOperation coreOperation, ExecuteAction action, ITelemetryOperation telemetryOperation, CancellationToken token)   (×2)
+at Microsoft.VisualStudio.Setup.Engine.Install(Product product, String destination, CancellationToken token)   (×2)
+at Microsoft.VisualStudio.ExtensionManager.SetupEngineService.Install()   (×2)
+at Microsoft.VisualStudio.Extension.Management.ExtensionInstallModule.PerformSetupEngineInstall(IInstallableExtension extensionToInstall, Boolean installPerMachine, Boolean isPackComponent, IDictionary`2 <REDACTED:hi>, List`1 <REDACTED:hi>, <REDACTED:hi> <REDACTED:hi>, IProgress`1 progress, InstallFlags installFlags, AsyncOperation asyncOp, Version targetedVsVersion, IInstalledExtension& newExtension)   (×2)
+at Microsoft.VisualStudio.Extension.Management.ExtensionInstallModule.InstallInternal(IInstallableExtension extension, InstallFlags installFlags, IDictionary`2 <REDACTED:hi>, List`1 <REDACTED:hi>, <REDACTED:hi> <REDACTED:hi>, AsyncOperation asyncOp, IProgress`1 progress, Version targetedVsVersion)   (×2)
+at Microsoft.VisualStudio.Extension.Management.ExtensionInstallModule.BeginInstall(IInstallableExtension installableExtension, InstallFlags installFlags, AsyncOperation asyncOp, Version targetedVsVersion)   (×2)
+at Microsoft.VisualStudio.Extension.Management.ExtensionInstallModule.InstallWorker(IInstallableExtension extension, InstallFlags installFlags, AsyncOperation asyncOp)   (×2)
+28/9/2026 3:58:55 PM - Install Error : Microsoft.VisualStudio.Setup.PackageFailureException: Package '<REDACTED:hi>' failed to download
+… 9 lines omitted (from line 937) …

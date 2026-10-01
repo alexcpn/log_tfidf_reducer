@@ -132,6 +132,18 @@ On a 1M-line synthetic log (16-core machine):
 | 8,000 | 374 | **99.9%** | 2.3 s |
 | 32,000 | 1,506 | **99.8%** | 2.3 s |
 
+### Real-world GitHub issues
+
+Tested against real bug reports and crash logs attached to open-source GitHub issues (see [`evidence/`](evidence/)):
+
+| Repository & Issue | Domain | Raw Lines | Reduced Lines | Line Reduction | Token Reduction |
+|---|---|---|---|---|---|
+| [open-webui #19215](https://github.com/open-webui/open-webui/issues/19215) | Docker Web Server | 30,003 | 2,622 | **-91.3%** | **-73.4%** |
+| [koreader #14632](https://github.com/koreader/koreader/issues/14632) | Embedded Device Crash | 1,885 | 274 | **-85.5%** | **-71.6%** |
+| [aws-toolkit-visual-studio #625](https://github.com/aws/aws-toolkit-visual-studio/issues/625) | Windows VSIX Installer | 947 | 657 | **-30.6%** | **-23.5%** |
+| [Virtuoel/Pehkui #614](https://github.com/Virtuoel/Pehkui/issues/614) | Java Gradle Build | 817 | 660 | **-19.2%** | **-19.7%** |
+| [diagonal-fences #57](https://github.com/Fuzss/diagonal-fences/issues/57) | Java Mod Crash Loop | 13,668 | 11,987 | **-12.3%** | **-5.3%** |
+
 ---
 
 ## Build & develop

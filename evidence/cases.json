@@ -1,0 +1,67 @@
+[
+  {
+    "id": "open-webui-19215",
+    "repo": "open-webui/open-webui",
+    "issue": 19215,
+    "issue_url": "https://github.com/open-webui/open-webui/issues/19215",
+    "title": "Server Connection Failed when opening Admin Images settings",
+    "log_name": "docker.log",
+    "url": "https://github.com/user-attachments/files/23569704/docker.log",
+    "domain": "Container / Python Web Backend",
+    "local_path": "/home/alex/.gemini/antigravity-cli/brain/ab9b1935-0109-4ab8-94f9-15e95369fae2/scratch/github_issue_tests/open-webui-19215.log",
+    "raw_lines": 30003,
+    "raw_bytes": 5696265
+  },
+  {
+    "id": "pehkui-build-614",
+    "repo": "Virtuoel/Pehkui",
+    "issue": 614,
+    "issue_url": "https://github.com/Virtuoel/Pehkui/issues/614",
+    "title": "[Bug]: Invalid Mixin Dependency Issue - Gradle build failure",
+    "log_name": "build.log",
+    "url": "https://github.com/user-attachments/files/23841365/build.log",
+    "domain": "CI / Java Gradle Build",
+    "local_path": "/home/alex/.gemini/antigravity-cli/brain/ab9b1935-0109-4ab8-94f9-15e95369fae2/scratch/github_issue_tests/pehkui-build-614.log",
+    "raw_lines": 817,
+    "raw_bytes": 157841
+  },
+  {
+    "id": "koreader-crash-14632",
+    "repo": "koreader/koreader",
+    "issue": 14632,
+    "issue_url": "https://github.com/koreader/koreader/issues/14632",
+    "title": "Screen is rotated, but touch not / crash loop",
+    "log_name": "crash.log",
+    "url": "https://github.com/user-attachments/files/23567966/crash.log",
+    "domain": "Embedded / Lua & C Crash",
+    "local_path": "/home/alex/.gemini/antigravity-cli/brain/ab9b1935-0109-4ab8-94f9-15e95369fae2/scratch/github_issue_tests/koreader-crash-14632.log",
+    "raw_lines": 1885,
+    "raw_bytes": 88624
+  },
+  {
+    "id": "aws-toolkit-vs-625",
+    "repo": "aws/aws-toolkit-visual-studio",
+    "issue": 625,
+    "issue_url": "https://github.com/aws/aws-toolkit-visual-studio/issues/625",
+    "title": "AWS Toolkit with Amazon Q extension on Visual Studio 2026 not installing",
+    "log_name": "vsix_installer.log",
+    "url": "https://github.com/user-attachments/files/32733602/dd_VSIXInstaller_20260928155745_1258.log",
+    "domain": "Dev Tools / Windows VSIX Installer",
+    "local_path": "/home/alex/.gemini/antigravity-cli/brain/ab9b1935-0109-4ab8-94f9-15e95369fae2/scratch/github_issue_tests/aws-toolkit-vs-625.log",
+    "raw_lines": 947,
+    "raw_bytes": 136019
+  },
+  {
+    "id": "diagonal-fences-57",
+    "repo": "Fuzss/diagonal-fences",
+    "issue": 57,
+    "issue_url": "https://github.com/Fuzss/diagonal-fences/issues/57",
+    "title": "[Bug]: Diagonal Fences not working fabric 26.2",
+    "log_name": "latest.log",
+    "url": "https://github.com/user-attachments/files/31055040/latest.log",
+    "domain": "Gaming / Java Runtime Server & Mod",
+    "local_path": "/home/alex/.gemini/antigravity-cli/brain/ab9b1935-0109-4ab8-94f9-15e95369fae2/scratch/github_issue_tests/diagonal-fences-57.log",
+    "raw_lines": 13668,
+    "raw_bytes": 3628691
+  }
+]
