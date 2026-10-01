@@ -344,3 +344,81 @@ fn severity_inference_from_text() {
     assert_eq!(infer_level_from_text("WARNING: disk full"), Severity::Warn);
     assert_eq!(infer_level_from_text("routine heartbeat"), Severity::Other);
 }
+
+// ── T036: redaction gaps found in review (inline input, no fixture) ───────────
+
+fn redacted(raw: &str) -> String {
+    let config = ReduceConfig {
+        redact: true,
+        budget_tokens: 8000,
+        context_window: 0,
+        ..Default::default()
+    };
+    let out = reduce(&config, raw);
+    format!("{}\n{}", out.header, out.body)
+}
+
+#[test]
+fn t036_redaction_of_previously_leaked_secrets() {
+    let raw = "\
+2026-10-01T10:00:00Z ERROR db connect failed url=postgres://admin:Sup3rS3cretPw@db.internal:5432/app
+2026-10-01T10:00:01Z ERROR redis connect failed redis://:hunter2hunter2@cache:6379/0
+2026-10-01T10:00:02Z WARN request header Authorization: Basic YWRtaW46aHVudGVyMg==
+2026-10-01T10:00:03Z ERROR run: mysql -u root --password hunter2pass -h db
+2026-10-01T10:00:04Z ERROR export DB_PASSWORD=\"correct horse battery\"
+2026-10-01T10:00:05Z ERROR {\"api_key\": \"abc123xyz789\", \"user\": \"bob\"}
+2026-10-01T10:00:06Z ERROR {\"token\": \"token\"}
+";
+    let full = redacted(raw);
+    for leaked in [
+        "Sup3rS3cretPw",
+        "hunter2hunter2",
+        "YWRtaW46aHVudGVyMg",
+        "hunter2pass",
+        "horse",
+        "battery",
+        "abc123xyz789",
+    ] {
+        assert!(
+            !full.contains(leaked),
+            "{leaked:?} must be redacted:\n{full}"
+        );
+    }
+    // What is not secret survives, so the line stays useful.
+    assert!(
+        full.contains("postgres://admin:<REDACTED:password>@db.internal"),
+        "{full}"
+    );
+    assert!(
+        full.contains("Authorization: Basic <REDACTED:auth>"),
+        "{full}"
+    );
+    assert!(full.contains("\"user\": \"bob\""), "{full}");
+    // The key is kept even when the value equals it.
+    assert!(
+        full.contains("{\"token\": \"<REDACTED:secret>\"}"),
+        "{full}"
+    );
+}
+
+#[test]
+fn t037_redaction_leaves_benign_lines_alone() {
+    let lines = [
+        "INFO Basic configuration loaded from /etc/app.yaml",
+        "INFO used tokens: 1234 of 8000",
+        "INFO token=5 retries=3",
+        "INFO Password reset email sent",
+        "INFO fetched https://github.com/o/r/issues/12 ok",
+        "INFO running ./build --pass-through --token-file /run/tok",
+        "INFO secrets_loaded=true secret_count=4",
+        "INFO Authorization header missing",
+    ];
+    let full = redacted(&(lines.join("\n") + "\n"));
+    assert!(
+        !full.contains("<REDACTED"),
+        "benign line was redacted:\n{full}"
+    );
+    for line in lines {
+        assert!(full.contains(line), "{line:?} missing:\n{full}");
+    }
+}

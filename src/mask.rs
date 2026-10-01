@@ -24,10 +24,33 @@ static RE_PEM: Lazy<Regex> = Lazy::new(|| {
 static RE_EMAIL: Lazy<Regex> =
     Lazy::new(|| Regex::new(r"\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b").unwrap());
 
-// key=value or "key":"value" where key is a secret keyword
+// Password in a URL's userinfo: scheme://user:PASSWORD@host. Keeps the user.
+static RE_URL_PASSWORD: Lazy<Regex> =
+    Lazy::new(|| Regex::new(r"(?i)\b([a-z][a-z0-9+.-]*://[^\s:/@]*:)([^\s@/]+)@").unwrap());
+
+// Non-Bearer Authorization schemes (Basic carries base64 user:password).
+// Anchored to the header name so the word "Basic" in prose is left alone.
+static RE_AUTH_SCHEME: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(
+        r#"(?i)(authorization["']?\s*[=:]\s*["']?(?:basic|digest|token|negotiate|ntlm)\s+)([^\s"',}\]]+)"#,
+    )
+    .unwrap()
+});
+
+// Secret passed as a CLI flag with a space: --password hunter2
+static RE_FLAG_SECRET: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(
+        r"(?i)(\s--?(?:password|passwd|pass|secret|token|api[_-]?key|access[_-]?key)\s+)([^\s-]\S*)",
+    )
+    .unwrap()
+});
+
+// key=value, key: value, or "key": "value" where key is a secret keyword.
+// A quoted value is redacted whole, spaces included; an unquoted one needs
+// 6+ chars so that `token=5`-style counters are left alone.
 static RE_KV_SECRET: Lazy<Regex> = Lazy::new(|| {
     Regex::new(
-        r#"(?i)(?:password|passwd|secret|token|api[_-]?key|apikey|authorization|access[_-]?key|private[_-]?key)\s*[=:]\s*["']?([^\s"',}\]\n]{6,})["']?"#,
+        r#"(?i)(?:password|passwd|secret|token|api[_-]?key|apikey|authorization|access[_-]?key|private[_-]?key)["']?\s*[=:]\s*(?:"([^"\n]+)"|'([^'\n]+)'|([^\s"',}\]\n]{6,}))"#,
     )
     .unwrap()
 });
@@ -72,12 +95,27 @@ fn redact(s: &str) -> String {
     let s = RE_AWS_KEY.replace_all(&s, "<REDACTED:aws_key>");
     let s = RE_BEARER.replace_all(&s, "<REDACTED:bearer>");
     let s = RE_PEM.replace_all(&s, "<REDACTED:pem>");
+    // Before email: "pw@host.tld" in a URL would otherwise half-match as one.
+    let s = RE_URL_PASSWORD.replace_all(&s, "${1}<REDACTED:password>@");
     let s = RE_EMAIL.replace_all(&s, "<REDACTED:email>");
+    let s = RE_AUTH_SCHEME.replace_all(&s, "${1}<REDACTED:auth>");
+    let s = RE_FLAG_SECRET.replace_all(&s, "${1}<REDACTED:secret>");
     // For KV secrets: keep the key name, redact the value
     let s = RE_KV_SECRET.replace_all(&s, |caps: &regex::Captures| {
-        let full = &caps[0];
-        let val = &caps[1];
-        full.replace(val, "<REDACTED:secret>")
+        let full = caps.get(0).unwrap();
+        let Some(val) = caps.get(1).or(caps.get(2)).or(caps.get(3)) else {
+            return full.as_str().to_string();
+        };
+        if val.as_str().starts_with("<REDACTED:") {
+            return full.as_str().to_string();
+        }
+        // Splice by offset: replacing by value would hit the key in `token: "token"`.
+        let (a, b) = (val.start() - full.start(), val.end() - full.start());
+        format!(
+            "{}<REDACTED:secret>{}",
+            &full.as_str()[..a],
+            &full.as_str()[b..]
+        )
     });
     // High-entropy backstop (research R3): base64/hex tokens ≥ 20 chars with entropy ≥ 3.5
     let s = s
